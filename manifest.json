@@ -1,0 +1,57 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "manifest_version": 3,
+  "name": "color helper",
+  "version": "0.0.1",
+  "description": "Assistive extension for people with color vision deficiency",
+  "homepage_url": "https://github.com/Mtillmann/color-helper-extension",
+  "icons": {
+    "16": "/icons/16x16.png",
+    "19": "/icons/19x19.png",
+    "38": "/icons/38x38.png",
+    "48": "/icons/48x48.png",
+    "128": "/icons/128x128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "/icons/16x16.png",
+      "19": "/icons/19x19.png",
+      "38": "/icons/38x38.png",
+      "48": "/icons/48x48.png",
+      "128": "/icons/128x128.png"
+    },
+    "default_title": "color helper"
+  },
+  "background": {
+    "service_worker": "background/index.js"
+  },
+  "options_page": "/options/index.html",
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "/data/shade_lookup.bin",
+        "/data/colors.json",
+        "/data/lookup.json"
+      ]
+    }
+  ],
+  "commands": {
+    "color-helper": {
+      "description": "Analyze shades and colors",
+      "suggested_key": {
+        "default": "Alt+C"
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
+}
