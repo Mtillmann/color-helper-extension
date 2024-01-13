@@ -23,13 +23,13 @@ If you want to use the extension icon to launch the picker, click the extensions
 
 ### Analyze a selected area
 
-1. Click the extension icon or press `ALT + C`
+1. Click the extension icon or press `ALT + C` (`⌥ + C` on macOS)
 2. Select an area on the website you want to analyze
 3. Hover over the pixels to see the color name and shade
 
 ### Analyze the current viewport
 
-1. Click the extension icon or press `ALT + C`
+1. Click the extension icon or press `ALT + C` (`⌥ + C` on macOS)
 2. Press `space` to take a screenshot of the current viewport
 3. Hover over the pixels to see the color name and shade
 
