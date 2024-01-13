@@ -305,6 +305,7 @@ async function captureSelection(e) {
   e?.stopPropagation();
 
   if (selectionOverlay.classList.contains('selecting')) {
+    selectionOverlay.classList.remove('selecting');
     selectionOverlay.classList.add('hide-ants', 'capture-in-progress');
 
     //wait for two frames (at 60fps) to allow the browser to redraw
@@ -365,9 +366,15 @@ async function initialize() {
   selectionOverlay.addEventListener('mouseup', captureSelection);
 
   selectionOverlay.addEventListener('mousemove', (e) => {
+    if (!e.target.classList.contains('selecting')) {
+      return;
+    }
+
+    
     e.preventDefault();
     e.stopPropagation();
 
+    
     const x = e.pageX - window.scrollX;
     const y = e.pageY - window.scrollY;
 
