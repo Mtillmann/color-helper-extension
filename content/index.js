@@ -14,6 +14,10 @@ let SELECTION_START = {
 };
 
 
+
+//TODO move loading spinner to selection overlay
+//to instantly show it before browser waits for screenshot..
+
 const lookup = new Lookup();
 
 function applySelection(x, y, w, h) {
