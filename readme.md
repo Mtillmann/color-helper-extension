@@ -45,6 +45,17 @@ Core extension code loosely based on [Simeon Velichkov' great screenshot-capture
 
 Color names, shades and lookup code from my own project [isit.red](https://isit.red)
 
+## Changelog
+
+### 0.0.2
+
+- Fix: aggressively reset selection overlay styles to prevent issues with sites like wikipedia
+- Improvement: more consistent hover and pause behavior
+
+### 0.0.1
+
+- Initial release
+
 * Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
 
 Alternatively, you can clone the repository, review the code and install the extension manually in developer mode ✌️

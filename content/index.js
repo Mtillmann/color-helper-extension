@@ -128,7 +128,11 @@ async function showAnalysis(crops) {
   target.addEventListener('mousemove', (e) => {
 
     const node = e.currentTarget.closest('.pause-on-click');
+
+    console.log(node, node?.classList.contains('paused'))
+
     if (node?.classList.contains('paused')) {
+      console.log('aborting move')
       return;
     }
 
@@ -165,9 +169,11 @@ async function showAnalysis(crops) {
 
   target.addEventListener('mouseout', (e) => {
     const node = e.currentTarget.closest('.pause-on-click');
+    
     if (node?.classList.contains('paused')) {
       return;
     }
+    
 
 
     target.querySelector('.active')?.classList.remove('active');
