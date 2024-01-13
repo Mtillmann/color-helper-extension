@@ -128,11 +128,7 @@ async function showAnalysis(crops) {
   target.addEventListener('mousemove', (e) => {
 
     const node = e.currentTarget.closest('.pause-on-click');
-
-    console.log(node, node?.classList.contains('paused'))
-
     if (node?.classList.contains('paused')) {
-      console.log('aborting move')
       return;
     }
 
