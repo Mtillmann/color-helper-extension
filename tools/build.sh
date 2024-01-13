@@ -9,9 +9,8 @@ rsync --exclude=dist  --exclude=tools --exclude=build.sh --exclude=make-package.
 $(which google-chrome) --pack-extension=dist/color-helper
 mv dist/color-helper.crx dist/color-helper-$version.crx
 mv dist/color-helper.pem dist/color-helper-$version.pem
-# generic zip
-cd dist/color-helper && zip -rq ../color-helper-$version.zip * && cd ../..
 # firefox
 node ./tools/firefoxify.mjs
+cd dist/color-helper && zip -rq ../color-helper-$version.xpi * && cd ../..
 #rm -rf dist/color-helper
 
