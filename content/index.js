@@ -102,8 +102,20 @@ async function showAnalysis(crops) {
   const overlay = document.getElementById('isItRedBrowserExtensionInspectionOverlay');
 
   const target = overlay.querySelector('.target');
-  target.appendChild(crops.full);
-  crops.full.classList.add('original');
+  
+  if(settings.useCompatMode){
+    overlay.classList.add('uses-compat-mode');
+
+    const image = new Image();
+    await new Promise(r => image.onload = r, image.setAttribute('src', crops.full.toDataURL()));
+    image.classList.add('original');
+    target.appendChild(image);
+
+  }else{
+    target.appendChild(crops.full);
+    crops.full.classList.add('original');
+  }
+  
 
   const tooltip = document.querySelector('#isItRedBrowserExtensionInspectionOverlay .tooltip');
 
