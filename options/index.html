@@ -42,6 +42,17 @@
         </p>
         <p class="small text-muted">Default: 100,000</p>
 
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="useCompatModeCheckbox" x-bind:checked="useCompatMode"
+            @change="toggleUseCompatMode">
+          <label class="form-check-label" for="useCompatModeCheckbox">
+            Use compatibility mode
+          </label>
+        </div>
+        <p>When you experience blank analyze views although the hover is still working, 
+          turn this option on.</p>
+
+
       </div>
       <div class="col-4">
         <h2 class="display-6">Interface</h2>
@@ -214,7 +225,10 @@
             <a href="https://isit.red">isit.red - my assistive app for color vision deficient people</a>
           </li>
           <li class="list-group-item">
-            <a href="https://mtillmann.blog/pages/tags.html?tag=colorblind">more on colorblindness on my blog</a>
+            <a href="https://mtillmann.blog/pages/tags.html?tag=colorblind">More on colorblindness on my blog</a>
+          </li>
+          <li class="list-group-item">
+            <a href="https://github.com/Mtillmann/color-helper-extension/issues">Found a bug? Post it here!</a>
           </li>
         </ul>
 

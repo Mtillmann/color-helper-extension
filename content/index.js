@@ -108,13 +108,8 @@ async function showAnalysis(crops) {
   const tooltip = document.querySelector('#isItRedBrowserExtensionInspectionOverlay .tooltip');
 
   await lookup.init();
-  const shadeCanvases = new Analyzer().analyze(
-    lookup,
-    crops,
-    {
-      targetWidth: SELECTION.w,
-      targetHeight: SELECTION.h,
-    });
+  const analyzer = new Analyzer()
+  const shadeCanvases = await analyzer.analyze(lookup, crops);
 
   shadeCanvases.forEach(c => {
     target.insertAdjacentElement('afterbegin', c);
@@ -131,7 +126,6 @@ async function showAnalysis(crops) {
     if (node?.classList.contains('paused')) {
       return;
     }
-
 
     const fullSizeX = e.layerX * window.devicePixelRatio;
     const fullSizeY = e.layerY * window.devicePixelRatio;
@@ -165,11 +159,11 @@ async function showAnalysis(crops) {
 
   target.addEventListener('mouseout', (e) => {
     const node = e.currentTarget.closest('.pause-on-click');
-    
+
     if (node?.classList.contains('paused')) {
       return;
     }
-    
+
 
 
     target.querySelector('.active')?.classList.remove('active');
@@ -179,7 +173,7 @@ async function showAnalysis(crops) {
   if (settings.pauseOnClick) {
     target.addEventListener('click', (e) => {
 
-      if (e.target.tagName !== 'CANVAS') {
+      if (!['CANVAS','IMG'].includes(e.target.tagName)) {
         return;
       }
 

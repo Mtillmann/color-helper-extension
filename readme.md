@@ -47,6 +47,10 @@ Color names, shades and lookup code from my own project [isit.red](https://isit.
 
 ## Changelog
 
+### 0.0.3
+
+- Fix [#1](https://github.com/Mtillmann/color-helper-extension/issues/1): compatibility mode for certain situations where canvas elements are not treated right by chromium
+
 ### 0.0.2
 
 - Fix: aggressively reset selection overlay styles to prevent issues with sites like wikipedia
@@ -56,6 +60,6 @@ Color names, shades and lookup code from my own project [isit.red](https://isit.
 
 - Initial release
 
-* Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
+\* Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
 
 Alternatively, you can clone the repository, review the code and install the extension manually in developer mode ✌️
