@@ -32,6 +32,7 @@ class Analyzer {
 
             const c = document.createElement('canvas');
             c.dataset.shade = shade;
+            c.classList.add('shade');
             const context = c.getContext('2d');
 
             c.width = crops.full.width;
@@ -45,12 +46,11 @@ class Analyzer {
             canvases.push(c);
         }
 
-        console.log(settings);
-
-        if(true){
+        if(settings.useCompatMode){
             for(let i = 0; i < canvases.length; i++){
                 const image = new Image();
                 await new Promise(r => image.onload = r, image.setAttribute('src', canvases[i].toDataURL()));
+                image.classList.add('shade');
                 image.dataset.shade = canvases[i].dataset.shade;
                 canvases[i] = image;
             }
