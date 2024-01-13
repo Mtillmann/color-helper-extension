@@ -1,6 +1,6 @@
 # Color Helper Extension
 
-Install: [Chrome](https://chromewebstore.google.com/detail/color-helper/lppofdjcegodcddmccmnicgfmblkdpbj) | [Edge]() | [Opera, Brave, Vivaldi and other Chromium-based Browser](https://chromewebstore.google.com/detail/color-helper/lppofdjcegodcddmccmnicgfmblkdpbj)
+Install: [Chrome, Edge*, Opera*, Brave, Vivaldi and other Chromium-based Browser](https://chromewebstore.google.com/detail/color-helper/lppofdjcegodcddmccmnicgfmblkdpbj)
 
 ![Color Helper Extension](./icons/128x128.png)
 
@@ -44,3 +44,7 @@ App Icon by some random GPT-4 bot
 Core extension code loosely based on [Simeon Velichkov' great screenshot-capture](https://github.com/simov/screenshot-capture)
 
 Color names, shades and lookup code from my own project [isit.red](https://isit.red)
+
+* Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
+
+Alternatively, you can clone the repository, review the code and install the extension manually in developer mode ✌️
