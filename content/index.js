@@ -8,6 +8,11 @@ let SELECTION = {
   w: 0,
   h: 0,
 };
+let SELECTION_START = {
+  x: 0,
+  y: 0,
+};
+
 
 const lookup = new Lookup();
 
@@ -350,9 +355,11 @@ async function initialize() {
     e.stopPropagation();
     resetOverlayNode(e.target);
     e.target.classList.add('selecting');
-    //todo refactor this to in memory data
-    e.target.dataset.startX = e.pageX - window.scrollX;
-    e.target.dataset.startY = e.pageY - window.scrollY;
+    
+    SELECTION_START = {
+      x: e.pageX - window.scrollX,
+      y: e.pageY - window.scrollY,
+    }
   });
 
   selectionOverlay.addEventListener('mouseup', captureSelection);
@@ -365,10 +372,10 @@ async function initialize() {
     const y = e.pageY - window.scrollY;
 
     applySelection(
-      Math.min(parseInt(selectionOverlay.dataset.startX), x),
-      Math.min(parseInt(selectionOverlay.dataset.startY), y),
-      Math.abs(x - parseInt(selectionOverlay.dataset.startX)),
-      Math.abs(y - parseInt(selectionOverlay.dataset.startY))
+      Math.min(SELECTION_START.x, x),
+      Math.min(SELECTION_START.y, y),
+      Math.abs(x - SELECTION_START.x),
+      Math.abs(y - SELECTION_START.y)
     )
 
 

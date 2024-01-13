@@ -41,6 +41,9 @@ document.addEventListener('alpine:init', () => {
 
             shortcut: '',
 
+
+            VERSION: chrome.runtime.getManifest().version,
+
             defaultState: {
                 //this is defined in background/index.js
             },
