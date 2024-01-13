@@ -33,6 +33,8 @@ document.addEventListener('alpine:init', () => {
 
             logTimings: false,
 
+            useCompatMode: false,
+
             highlightOptionsDisabled: false,
 
             pauseOnClick: true,
@@ -158,7 +160,11 @@ document.addEventListener('alpine:init', () => {
             toggleLogTimings() {
                 this.logTimings = !this.logTimings;
                 this.store();
-            }
+            },
+            toggleUseCompatMode() {
+                this.useCompatMode = !this.useCompatMode;
+                this.store();
+            },
         }
     })
 })

@@ -15,6 +15,7 @@ const defaults = {
   colorTheme: "Canvas",
   analyzerBackground: "auto",
   logTimings: false,
+  useCompatMode: false
 }
 
 chrome.storage.sync.get((store) => {

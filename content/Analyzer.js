@@ -1,5 +1,5 @@
 class Analyzer {
-    analyze(lookup, crops, options) {
+    async analyze(lookup, crops) {
 
         const sourceScale = crops.full.width / crops.scaled.width;
         let shades = {};
@@ -21,7 +21,7 @@ class Analyzer {
         }
         LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::find shades');
 
-        const canvases = []
+        let canvases = []
 
         LOG_TIMINGS && console.time('COLORHELPER::Analyzer::create canvases');
 
@@ -31,7 +31,6 @@ class Analyzer {
         for (let shade in shades) {
 
             const c = document.createElement('canvas');
-            c.classList.add('shade');
             c.dataset.shade = shade;
             const context = c.getContext('2d');
 
@@ -46,8 +45,18 @@ class Analyzer {
             canvases.push(c);
         }
 
-        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::create canvases');
+        console.log(settings);
 
+        if(true){
+            for(let i = 0; i < canvases.length; i++){
+                const image = new Image();
+                await new Promise(r => image.onload = r, image.setAttribute('src', canvases[i].toDataURL()));
+                image.dataset.shade = canvases[i].dataset.shade;
+                canvases[i] = image;
+            }
+        }
+
+        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::create canvases');
         return canvases;
     }
 }
