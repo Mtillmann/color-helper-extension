@@ -45,6 +45,8 @@ Core extension code loosely based on [Simeon Velichkov' great screenshot-capture
 
 Color names, shades and lookup code from my own project [isit.red](https://isit.red)
 
+Firefox support mainly hinged on [hans_squared's effort](https://discourse.mozilla.org/t/browser-tabs-capturevisibletab-not-working-in-firefox-for-mv3/122965/3)
+
 ## Changelog
 
 ### 0.0.3

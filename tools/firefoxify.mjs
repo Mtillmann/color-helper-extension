@@ -8,8 +8,9 @@ manifest.browser_specific_settings = {
     }
 };
 
-
 manifest.background.scripts = ['background/index.js'];
+manifest.host_permissions = ['<all_urls>'];
+
 delete manifest.background.service_worker;
 delete manifest.update_url;
 
