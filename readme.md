@@ -1,6 +1,6 @@
 # Color Helper Extension
 
-Install: [Chrome, Edge*, Opera*, Brave, Vivaldi and other Chromium-based Browser](https://chromewebstore.google.com/detail/color-helper/lppofdjcegodcddmccmnicgfmblkdpbj)
+Install: [Chrome, Edge*, Opera*, Brave, Vivaldi and other Chromium-based Browser](https://chromewebstore.google.com/detail/color-helper/lppofdjcegodcddmccmnicgfmblkdpbj) | [Firefox](https://addons.mozilla.org/en-US/firefox/addon/color-helper/)
 
 ![Color Helper Extension](./icons/128x128.png)
 
