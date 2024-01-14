@@ -53,10 +53,14 @@ class Lookup {
 
     cache = new Map();
 
-    async init() {
+    async init(showShadePrefix) {
 
         if (this.initialized) {
             return true;
+        }
+
+        if(!showShadePrefix){
+            this.map = this.map.map(m => m.replace(/(Light|Dark) /, ''));
         }
 
         LOG_TIMINGS && console.time('COLORHELPER::Lookup::init');

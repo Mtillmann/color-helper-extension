@@ -52,6 +52,14 @@
         <p>When you experience blank analyze views although the hover is still working,
           turn this option on.</p>
 
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="showShadePrefixCheckbox" x-bind:checked="showShadePrefix"
+            @change="toggleShowShadePrefix">
+          <label class="form-check-label" for="showShadePrefixCheckbox">
+            Show color shade prefixes ("Light", "Dark")
+          </label>
+        </div>
+
 
       </div>
       <div class="col-12 col-lg-4">

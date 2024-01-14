@@ -79,7 +79,7 @@ function template() {
   style="${styles.join('; ')}"
 >
   <div class="tooltip">
-    <strong class="shade-name">asdf</strong>
+    <strong class="shade-name"></strong>
     <br>
     <span class="color-name"></span>
     <br>
@@ -123,7 +123,7 @@ async function showAnalysis(crops) {
 
   const tooltip = document.querySelector('#isItRedBrowserExtensionInspectionOverlay .tooltip');
 
-  await lookup.init();
+  await lookup.init(settings.showShadePrefix);
   const analyzer = new Analyzer()
   const shadeCanvases = await analyzer.analyze(lookup, crops);
 
@@ -160,6 +160,7 @@ async function showAnalysis(crops) {
     target.querySelector('.active')?.classList.remove('active');
     target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
 
+    
     tooltip.querySelector('.shade-name').textContent = `Shade: ${shade}`;
     tooltip.querySelector('.color-name').textContent = 'Color: ' + color.colors[0].alias[0] + ' (ΔE=' + color.colors[0].deltaE.toFixed(2) + ')';
     tooltip.querySelector('.color-rgb').textContent = 'RGB: ' + scaledPixel.slice(0, 3).join(',');
