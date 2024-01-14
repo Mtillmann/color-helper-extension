@@ -35,7 +35,28 @@ If you want to use the extension icon to launch the picker, click the extensions
 
 ### Show the options page
 
-Right click the extension icon and select `Options`
+Chromium: Right click the extension icon and select `Options`  
+Firefox: Navigate to `about:addons` and find the extension in the list, then click `Preferences`
+
+## Changelog
+
+### 0.0.4
+
+- Add option to toggle more verbose color shade names and detection
+
+### 0.0.3
+
+- Fix [#1](https://github.com/Mtillmann/color-helper-extension/issues/1): compatibility mode for certain situations where canvas elements are not treated right by chromium
+- Firefox support
+
+### 0.0.2
+
+- Fix: aggressively reset selection overlay styles to prevent issues with sites like wikipedia
+- Improvement: more consistent hover and pause behavior
+
+### 0.0.1
+
+- Initial release
 
 ## Acknowledgements
 
@@ -47,20 +68,6 @@ Color names, shades and lookup code from my own project [isit.red](https://isit.
 
 Firefox support mainly hinged on [hans_squared's effort](https://discourse.mozilla.org/t/browser-tabs-capturevisibletab-not-working-in-firefox-for-mv3/122965/3)
 
-## Changelog
-
-### 0.0.3
-
-- Fix [#1](https://github.com/Mtillmann/color-helper-extension/issues/1): compatibility mode for certain situations where canvas elements are not treated right by chromium
-
-### 0.0.2
-
-- Fix: aggressively reset selection overlay styles to prevent issues with sites like wikipedia
-- Improvement: more consistent hover and pause behavior
-
-### 0.0.1
-
-- Initial release
 
 \* Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
 
