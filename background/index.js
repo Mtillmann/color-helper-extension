@@ -16,7 +16,7 @@ const defaults = {
   analyzerBackground: "auto",
   logTimings: false,
   useCompatMode: false,
-  showShadePrefix: true,
+  showShadePrefix: false,
 }
 
 chrome.storage.sync.get((store) => {
