@@ -68,6 +68,8 @@ Color names, shades and lookup code from my own project [isit.red](https://isit.
 
 Firefox support mainly hinged on [hans_squared's effort](https://discourse.mozilla.org/t/browser-tabs-capturevisibletab-not-working-in-firefox-for-mv3/122965/3)
 
+---
+
 
 \* Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
 
