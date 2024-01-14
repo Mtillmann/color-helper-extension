@@ -35,6 +35,8 @@ document.addEventListener('alpine:init', () => {
 
             useCompatMode: false,
 
+            showShadePrefix: true,
+
             highlightOptionsDisabled: false,
 
             pauseOnClick: true,
@@ -166,6 +168,10 @@ document.addEventListener('alpine:init', () => {
             },
             toggleUseCompatMode() {
                 this.useCompatMode = !this.useCompatMode;
+                this.store();
+            },
+            toggleShowShadePrefix() {
+                this.showShadePrefix = !this.showShadePrefix;
                 this.store();
             },
         }

@@ -1,4 +1,6 @@
 class Analyzer {
+
+    
     async analyze(lookup, crops) {
 
         const sourceScale = crops.full.width / crops.scaled.width;
