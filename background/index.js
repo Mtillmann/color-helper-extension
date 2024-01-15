@@ -59,6 +59,9 @@ function inject(tab) {
 }
 
 chrome.action.onClicked.addListener((tab) => {
+  if ('geckoProfiler' in chrome) {
+    browser.permissions.request({ origins: ['<all_urls>'] })
+  }
   inject(tab)
 })
 
@@ -71,6 +74,17 @@ chrome.commands.onCommand.addListener((command) => {
 })
 
 chrome.runtime.onMessage.addListener((req, sender, res) => {
+
+
+  if (req.message === 'check-permission') {
+    res({
+      message: 'permission-state',
+      tabs : 'tabs' in chrome,
+      captureVisibleTab: 'tabs' in chrome && 'captureVisibleTab' in chrome.tabs,
+      isGecko: 'geckoProfiler' in chrome,
+    })
+  }
+
   if (req.message === 'capture') {
     chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
       chrome.tabs.captureVisibleTab(tab.windowId, { format: req.format, quality: req.quality }, (image) => {

@@ -29,7 +29,6 @@ function applySelection(x, y, w, h) {
 
 function template() {
 
-  let theme = settings.colorTheme;
   const classes = ['loading'];
   const styles = [
     `--w: ${SELECTION.w}px`,
@@ -38,10 +37,6 @@ function template() {
     `--y: ${SELECTION.y}px`,
   ];
 
-
-  if (theme === 'System') {
-    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light';
-  }
 
   if (settings.highlightColorShade) {
     classes.push('highlight-color-shade');
@@ -72,8 +67,7 @@ function template() {
   }
 
   return `
-<div id="isItRedBrowserExtensionInspectionOverlay"
-  data-theme="${theme}"
+<div id="colorHelperBrowserExtensionInspectionOverlay"
   data-random="${Math.random().toString(36).substring(2)}"
   class="${classes.join(' ')}"
   style="${styles.join('; ')}"
@@ -92,9 +86,29 @@ function template() {
 `
 }
 
+const permissionErrorMessage = `  
+<div id="colorHelperBrowserExtensionPermissionError">  
+  <div class="error">
+    <h1><strong>color helper: Permission Error</strong></h1>
+    <p>
+      You need to grant the extension permission to "access your data for all websites".
+    </p>
+    <p>
+      Click the extension button once, then confirm the dialog or 
+      go to <code>about:addons</code>, click on "color helper", click on "Permissions" and grant the permission.
+    </p>
+    <p>
+      Sorry for the inconvenience, but this is the only way to get the permission in Firefox.
+    </p>
+  </div>
+</div>
+`;
+
+
 async function showAnalysis(crops) {
 
-  document.body.insertAdjacentHTML('beforeend', template());
+  const html = template();
+  document.body.insertAdjacentHTML('beforeend', html);
 
   //hide the overlay late to avoid interaction during capture
   hideOverlay(true);
@@ -103,11 +117,11 @@ async function showAnalysis(crops) {
   //will only work ONCE per page load... no idea why
   await new Promise(r => { setTimeout(r, 33) });
 
-  const overlay = document.getElementById('isItRedBrowserExtensionInspectionOverlay');
+  const overlay = document.getElementById('colorHelperBrowserExtensionInspectionOverlay');
 
   const target = overlay.querySelector('.target');
-  
-  if(settings.useCompatMode){
+
+  if (settings.useCompatMode) {
     overlay.classList.add('uses-compat-mode');
 
     const image = new Image();
@@ -115,13 +129,13 @@ async function showAnalysis(crops) {
     image.classList.add('original');
     target.appendChild(image);
 
-  }else{
+  } else {
     target.appendChild(crops.full);
     crops.full.classList.add('original');
   }
-  
 
-  const tooltip = document.querySelector('#isItRedBrowserExtensionInspectionOverlay .tooltip');
+
+  const tooltip = document.querySelector('#colorHelperBrowserExtensionInspectionOverlay .tooltip');
 
   await lookup.init(settings.showShadePrefix);
   const analyzer = new Analyzer()
@@ -160,7 +174,7 @@ async function showAnalysis(crops) {
     target.querySelector('.active')?.classList.remove('active');
     target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
 
-    
+
     tooltip.querySelector('.shade-name').textContent = `Shade: ${shade}`;
     tooltip.querySelector('.color-name').textContent = 'Color: ' + color.colors[0].alias[0] + ' (ΔE=' + color.colors[0].deltaE.toFixed(2) + ')';
     tooltip.querySelector('.color-rgb').textContent = 'RGB: ' + scaledPixel.slice(0, 3).join(',');
@@ -190,7 +204,7 @@ async function showAnalysis(crops) {
   if (settings.pauseOnClick) {
     target.addEventListener('click', (e) => {
 
-      if (!['CANVAS','IMG'].includes(e.target.tagName)) {
+      if (!['CANVAS', 'IMG'].includes(e.target.tagName)) {
         return;
       }
 
@@ -200,7 +214,7 @@ async function showAnalysis(crops) {
   }
 
   function close(e) {
-    document.querySelector('#isItRedBrowserExtensionInspectionOverlay').remove();
+    document.querySelector('#colorHelperBrowserExtensionInspectionOverlay').remove();
   }
 
   document.addEventListener('keydown', (e) => {
@@ -210,7 +224,7 @@ async function showAnalysis(crops) {
   });
 
 
-  document.getElementById('isItRedBrowserExtensionInspectionOverlay').addEventListener('click', (e) => {
+  document.getElementById('colorHelperBrowserExtensionInspectionOverlay').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
       close();
     }
@@ -221,9 +235,23 @@ async function showAnalysis(crops) {
 
 
 async function getSelectedPixels() {
+
+
+  const permissionsState = await chrome.runtime.sendMessage({
+    message: 'check-permission'
+  });
+
+  
+
+  if (!permissionsState.captureVisibleTab) {
+    return false;
+  }
+
   const screenshot = await chrome.runtime.sendMessage({
     message: 'capture', format: 'png', quality: 100
   });
+
+
 
   const width = SELECTION.w * window.devicePixelRatio;
   const height = SELECTION.h * window.devicePixelRatio;
@@ -281,7 +309,7 @@ function resetOverlayNode() {
 
 function removeAnalyzer() {
 
-  document.getElementById('isItRedBrowserExtensionInspectionOverlay')?.remove();
+  document.getElementById('colorHelperBrowserExtensionInspectionOverlay')?.remove();
 
 }
 
@@ -315,8 +343,15 @@ async function captureSelection(e) {
     let crops;
     try {
       crops = await getSelectedPixels();
+
+  
+      if(!crops){
+    
+        showErrorMessage()
+        return false;
+      }
+
     } catch (e) {
-      console.error(e);
       hideOverlay(true);
       return false;
     }
@@ -342,13 +377,21 @@ async function initialize() {
     return;
   }
 
+  
   settings = await chrome.storage.sync.get()
+
+  let theme = settings.colorTheme;
+  if (theme === 'System') {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light';
+  }
+
+  document.documentElement.dataset.colorHelperTheme = theme;
 
   LOG_TIMINGS = settings.logTimings;
 
 
   selectionOverlay = document.createElement('div');
-  selectionOverlay.setAttribute('id', 'isItRedBrowserExtensionSelectionOverlay');
+  selectionOverlay.setAttribute('id', 'colorHelperBrowserExtensionSelectionOverlay');
   document.body.appendChild(selectionOverlay);
 
   selectionOverlay.addEventListener('mousedown', (e) => {
@@ -356,7 +399,7 @@ async function initialize() {
     e.stopPropagation();
     resetOverlayNode(e.target);
     e.target.classList.add('selecting');
-    
+
     SELECTION_START = {
       x: e.pageX - window.scrollX,
       y: e.pageY - window.scrollY,
@@ -370,11 +413,11 @@ async function initialize() {
       return;
     }
 
-    
+
     e.preventDefault();
     e.stopPropagation();
 
-    
+
     const x = e.pageX - window.scrollX;
     const y = e.pageY - window.scrollY;
 
@@ -410,8 +453,16 @@ async function initialize() {
       captureFullScreen();
     }
   });
+}
 
+function showErrorMessage(){
 
+  hideOverlay(true);
+  document.body.insertAdjacentHTML('beforeend', permissionErrorMessage);
+
+  document.getElementById('colorHelperBrowserExtensionPermissionError').addEventListener('click', (e) => {
+    e.currentTarget.remove();
+  });
 
 }
 

@@ -11,9 +11,11 @@ rsync --exclude=dist --exclude=tools --exclude=.git --exclude=.gitignore --exclu
 # mv dist/color-helper.pem dist/color-helper-$version.pem
 # chrome zip
 cd dist/color-helper && zip -rq ../color-helper-$version.zip * && cd ../..
+cp -a dist/color-helper dist/color-helper-chromium
 # firefox
 node ./tools/firefoxify.mjs
 cd dist/color-helper && zip -rq ../color-helper-$version.xpi * && cd ../..
+mv dist/color-helper dist/color-helper-firefox
 echo "Chrome extension: dist/color-helper-$version.zip"
 echo "Chrome Web Store Developer Dashboard: https://chrome.google.com/webstore/devconsole/"
 echo "------"
