@@ -40,6 +40,11 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ## Changelog
 
+### 0.0.5
+
+- Firefox Permissions fix
+- style fixes
+
 ### 0.0.4
 
 - Add option to toggle more verbose color shade names and detection
