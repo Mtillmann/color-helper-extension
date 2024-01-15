@@ -42,7 +42,7 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ### 0.0.5
 
-- Firefox Permissions fix
+- Firefox Permissions request MV3 fix
 - style fixes
 
 ### 0.0.4
