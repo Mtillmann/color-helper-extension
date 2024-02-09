@@ -8,8 +8,10 @@
   <link href="/options/bootstrap@5.3.2.css" rel="stylesheet" type="text/css" media="all" />
   <script src="/options/options.js"></script>
   <style>
-    .mw-50{
-      max-width:50vw
+    @media screen and (min-width: 1111px) {
+      .narrow {
+        max-width: 33vw
+      }
     }
   </style>
 </head>
@@ -50,15 +52,14 @@
             <a class="nav-link" data-target="about" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled" aria-disabled="true">
+              Version <span data-content-property="VERSION"></span>
+            </a>
           </li>
         </ul>
       </div>
-      
-      <div class="col-8 col-xl-10 mw-50 d-none" data-tab="interface">
-        <h2 class="mt-4 mt-lg-0 display-6">Interface</h2>
 
-
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="interface">
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="highlightColorShadeCheckbox"
             data-bind-property="highlightColorShade">
@@ -159,7 +160,8 @@
           <label class="form-check-label" for="analyzerBackgroundCustom">Use Custom Color</label>
         </div>
 
-        <div data-show-for-property="showCustomAnalyzerBackgroundPicker" data-display-class="d-flex" class="justify-content-between mb-3">
+        <div data-show-for-property="showCustomAnalyzerBackgroundPicker" data-display-class="d-flex"
+          class="justify-content-between mb-3">
           <label for="analyzerBackgroundColorInput" class="form-label mb-0 d-flex align-items-center">Custom
             Color</label>
           <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color"
@@ -177,8 +179,7 @@
         </div>
       </div>
 
-      <div class="col-8 col-xl-10 mw-50 d-none" data-tab="processing">
-        <h2 class="display-6">Processing</h2>
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="processing">
 
         <label for="maxPixelRange" class="d-flex justify-content-between"><span>Max Pixels to Process</span> <strong
             class="" data-content-property="maxPixelsFormatted"></strong></label>
@@ -215,8 +216,7 @@
       </div>
 
 
-      <div class="col-8 col-xl-10 mw-50 d-none">
-        <h2 class="mt-4 mt-lg-0 display-6">Misc</h2>
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="shortcuts">
 
         <div class="d-flex justify-content-between">
           <div>
@@ -236,15 +236,19 @@
           <code class="lead mx-2">⟶</code>
           <kbd class="lead">space</kbd>
         </div>
+      </div>
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="reset">
 
 
-        <hr>
-
+        <p>
+          Resetting the extension will restore the default settings. This action cannot be undone.
+        </p>
         <div class="d-flex justify-content-center">
-          <a class="btn btn-outline-warning align-self-center" href="#" id="resetSettings">Reset to
+          <a class="btn btn-outline-danger align-self-center" href="#" id="resetSettings">Reset to
             default settings</a>
         </div>
-        <hr>
+      </div>
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="about">
 
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -261,10 +265,6 @@
           </li>
         </ul>
 
-        <hr>
-        <p class="text-muted">Version:
-          <span data-content-property="VERSION"></span>
-        </p>
 
       </div>
     </div>
