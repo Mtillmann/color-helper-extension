@@ -1,3 +1,7 @@
+const DEFAULTSTATE = {
+    //this is defined in background/index.js
+};
+
 const STATE = {
 
     maxPixels: 100000,
@@ -21,7 +25,8 @@ const STATE = {
 
     colorTheme: 'Canvas',
 
-    analyzerBackground: 'auto',
+    analyzerBackgroundMode: 'theme',
+    analyzerBackground: '#888888',
     showCustomAnalyzerBackgroundPicker: false,
 
     logTimings: false,
@@ -49,19 +54,14 @@ function apply() {
     STATE.disableUnmatchedOpacity = !STATE.reduceUnmatchedOpacity || STATE.highlightOptionsDisabled;
     STATE.disableUnmatchedSaturation = !STATE.desaturateUnmatched || STATE.highlightOptionsDisabled;
 
+    STATE.showCustomAnalyzerBackgroundPicker = STATE.analyzerBackgroundMode === 'custom';
 
-
-/*
     document.querySelector(`[name="colorTheme"][value="${STATE.colorTheme}"]`).setAttribute('checked', true);
 
-    if (STATE.analyzerBackground === 'auto') {
-        STATE.showCustomAnalyzerBackgroundPicker = false;
-        document.querySelector(`[name="analyzerBackground"][value="auto"]`).setAttribute('checked', true);
-    } else {
-        STATE.showCustomAnalyzerBackgroundPicker = true;
-        document.querySelector(`[name="analyzerBackground"][value="custom"]`).setAttribute('checked', true);
-    }
-*/
+    document.querySelector(`[name="analyzerBackgroundMode"][value="${STATE.analyzerBackgroundMode}"]`).setAttribute('checked', true);
+    
+
+
     document.querySelectorAll('[data-bind-property]').forEach(el => {
         const property = el.dataset.bindProperty;
 
@@ -80,19 +80,47 @@ function apply() {
         el.disabled = STATE[el.dataset.disableForProperty];
     });
 
+    document.querySelectorAll('[data-show-for-property]').forEach(el => {
+        const show = STATE[el.dataset.showForProperty];
+        const className = el.dataset.displayClass ?? 'd-block';
+        if(show){
+            el.classList.add(className);
+            el.classList.remove('d-none')
+        }else{
+            el.classList.add('d-none');
+            el.classList.remove(className)
+        }
+        
+    });
+
+    store();
 }
 
+async function store(){
+    const state = Object.keys(DEFAULTSTATE).reduce((all, key) => {
+        all[key] = STATE[key];
+        return all;
+    }, {});
+    await chrome.storage.sync.set(state);    
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+    const settings = await chrome.storage.sync.get();
+    for (const key in settings) {
+        DEFAULTSTATE[key] = settings[key];
+        STATE[key] = settings[key];
+    }
 
 
     ['change', 'input'].forEach(eventName => {
         document.addEventListener(eventName, e => {
-            const property = e.target.dataset.bindProperty;
+            const targetType = e.target.getAttribute('type');            
+            const property = targetType === 'radio' ? e.target.name : e.target.dataset.bindProperty;
             const hint = e.target.dataset.typeHint;
 
-            let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+            let value = targetType === 'checkbox' ? e.target.checked : e.target.value;
 
             if (hint === 'int') {
                 value = parseInt(value, 10);
@@ -102,6 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
             apply();
         });
     });
+
+    chrome.commands.getAll((commands) => {
+        STATE.shortcut = commands.find((command) => command.name === 'color-helper')?.shortcut
+    })
+
     apply();
 
 });
@@ -151,7 +184,7 @@ document.addEventListener('_____alpine:init', () => {
             VERSION: chrome.runtime.getManifest().version,
 
             defaultState: {
-                //this is defined in background/index.js
+                
             },
 
             refresh() {
