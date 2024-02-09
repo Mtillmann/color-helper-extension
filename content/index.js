@@ -61,7 +61,7 @@ function template() {
     classes.push('pause-on-click');
   }
 
-  if (settings.analyzerBackground !== 'auto') {
+  if (settings.analyzerBackgroundMode !== 'theme') {
     classes.push('use-custom-analyzer-background');
     styles.push(`--analyzer-background: ${settings.analyzerBackground}`);
   }
