@@ -13,7 +13,7 @@
 <body>
 
 
-  <div class="container-fluid container-lg pb-5" x-data="settings">
+  <div class="container-fluid container-lg pb-5">
 
     <div class="row">
       <div class="col-12">
@@ -30,21 +30,21 @@
         <h2 class="display-6">Processing</h2>
 
         <label for="maxPixelRange" class="d-flex justify-content-between"><span>Max Pixels to Process</span> <strong
-            class="" x-text="maxPixelsFormatted"></strong></label>
-        <input type="range" class="form-range mb-3" min="100" max="1000000" x-bind:value="maxPixels" id="maxPixelRange"
-          @input="updateMaxPixels">
+            class="" data-content-property="maxPixelsFormatted"></strong></label>
+        <input type="range" class="form-range mb-3" min="100" max="1000000" data-type-hint="int"
+          data-bind-property="maxPixels" id="maxPixelRange">
 
 
         <p>Max number of pixels to process. A higher numbers means it takes longer time to process the selection.</p>
         <p>When the product of your selection's dimensions (width &times; height) exceeds the configured value,
-          the selection will be internally scaled down to have a product of <i x-text="maxPixelsFormatted"></i>
+          the selection will be internally scaled down to have a product of <i
+            data-content-property="maxPixelsFormatted"></i>
           pixels.
         </p>
         <p class="small text-muted">Default: 100,000</p>
 
         <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="useCompatModeCheckbox" x-bind:checked="useCompatMode"
-            @change="toggleUseCompatMode">
+          <input class="form-check-input" type="checkbox" id="useCompatModeCheckbox" data-bind-property="useCompatMode">
           <label class="form-check-label" for="useCompatModeCheckbox">
             Use compatibility mode
           </label>
@@ -53,8 +53,8 @@
           turn this option on.</p>
 
         <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="showShadePrefixCheckbox" x-bind:checked="showShadePrefix"
-            @change="toggleShowShadePrefix">
+          <input class="form-check-input" type="checkbox" id="showShadePrefixCheckbox"
+            data-bind-property="showShadePrefix">
           <label class="form-check-label" for="showShadePrefixCheckbox">
             Differentiate color shades into light/[regular]/dark
           </label>
@@ -68,7 +68,7 @@
 
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="highlightColorShadeCheckbox"
-            x-bind:checked="highlightColorShade" @change="toggleHighlightColorShade">
+            data-bind-property="highlightColorShade">
           <label class="form-check-label" for="highlightColorShadeCheckbox">
             Highlight color shade on hover
           </label>
@@ -76,63 +76,59 @@
 
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="reduceUnmatchedOpacityCheckbox"
-            x-bind:checked="reduceUnmatchedOpacity" @change="toggleReduceUnmatchedOpacity"
-            :disabled="highlightOptionsDisabled">
+            data-bind-property="reduceUnmatchedOpacity" data-disable-for-property="highlightOptionsDisabled">
           <label class="form-check-label" for="reduceUnmatchedOpacityCheckbox">
             Reduce opacity for unmatched color shades
           </label>
         </div>
-        <template x-if="reduceUnmatchedOpacity">
-          <div>
-            <label for="unmatchedOpacityRange" class="d-flex justify-content-between"><span>Unmatched opacity</span>
-              <strong class="" x-text="unmatchedOpacityFormatted"></strong></label>
-            <input type="range" class="form-range" min="0" max="100" :value="unmatchedOpacity"
-              id="unmatchedOpacityRange" @input="updateUnmatchedOpacity" :disabled="disableUnmatchedOpacity">
-          </div>
-        </template>
+
+        <div data-show-for-property="reduceUnmatchedOpacity">
+          <label for="unmatchedOpacityRange" class="d-flex justify-content-between"><span>Unmatched opacity</span>
+            <strong class="" data-content-property="unmatchedOpacityFormatted"></strong></label>
+          <input type="range" class="form-range" min="0" max="100" data-bind-property="unmatchedOpacity"
+            id="unmatchedOpacityRange" data-disable-for-property="disableUnmatchedOpacity">
+        </div>
+
 
 
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="desaturateUnmatchedCheckbox"
-            x-bind:checked="desaturateUnmatched" @change="toggleDesaturateUnmatched"
-            :disabled="highlightOptionsDisabled">
+            data-bind-property="desaturateUnmatched" data-disable-for-property="highlightOptionsDisabled">
           <label class="form-check-label" for="desaturateUnmatchedCheckbox">
             Desaturate unmatched color shades
           </label>
         </div>
 
-        <template x-if="desaturateUnmatched">
-          <div>
-            <label for="unmatchedSaturationRange" class="d-flex justify-content-between"><span>Unmatched
-                saturation</span>
-              <strong class="" x-text="unmatchedSaturationFormatted"></strong></label>
-            <input type="range" class="form-range" min="0" max="100" :value="unmatchedSaturation"
-              id="unmatchedSaturationRange" @input="updateUnmatchedSaturation" :disabled="disableUnmatchedSaturation">
-          </div>
-        </template>
+
+        <div data-show-for-property="desaturateUnmatched">
+          <label for="unmatchedSaturationRange" class="d-flex justify-content-between"><span>Unmatched
+              saturation</span>
+            <strong class="" data-content-property="unmatchedSaturationFormatted"></strong></label>
+          <input type="range" class="form-range" min="0" max="100" data-bind-property="unmatchedSaturation"
+            id="unmatchedSaturationRange" data-disable-for-property="disableUnmatchedSaturation">
+        </div>
+
 
 
         <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="outlineMatchedCheckbox" x-bind:checked="outlineMatched"
-            @change="toggleOutlineMatched" :disabled="highlightOptionsDisabled">
+          <input class="form-check-input" type="checkbox" id="outlineMatchedCheckbox"
+            data-bind-property="outlineMatched" data-disable-for-property="highlightOptionsDisabled">
           <label class="form-check-label" for="outlineMatchedCheckbox">
             Outline matched color shade
           </label>
         </div>
 
-        <template x-if="outlineMatched">
 
-          <div class="d-flex justify-content-between">
-            <label for="outlineColorInput" class="form-label mb-0 d-flex align-items-center">Outline Color</label>
-            <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color" id="outlineColorInput"
-              :value="outlineColor" :disabled="disableOutlineColor" @input="updateOutlineColor">
-            <span class="font-monospace d-flex align-items-center" x-text="outlineColor"></span>
-          </div>
-        </template>
+        <div data-show-for-property="outlineMatched" class="d-flex justify-content-between">
+          <label for="outlineColorInput" class="form-label mb-0 d-flex align-items-center">Outline Color</label>
+          <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color" id="outlineColorInput"
+            data-bind-property="outlineColor" data-disable-for-property="disableOutlineColor">
+          <span class="font-monospace d-flex align-items-center" data-content-property="outlineColor"></span>
+        </div>
+
 
         <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="pauseOnClickCheckbox" x-bind:checked="pauseOnClick"
-            @change="togglePauseOnClick">
+          <input class="form-check-input" type="checkbox" id="pauseOnClickCheckbox" data-bind-property="pauseOnClick">
           <label class="form-check-label" for="pauseOnClickCheckbox">
             Pause hover on click<br><small class="text-muted">Useful when you want to copy the color</small>
           </label>
@@ -141,52 +137,47 @@
         <label for="colorThemeCanvas" class="form-label mt-3 mb-1">Color Theme</label>
 
         <div class="form-check">
-          <input @change="toggleColorTheme" class="form-check-input" type="radio" name="colorTheme" value="Canvas"
-            id="colorThemeCanvas">
+          <input class="form-check-input" type="radio" name="colorTheme" value="Canvas" id="colorThemeCanvas">
           <label class="form-check-label" for="colorThemeCanvas">Attempt to adapt to the current website's
             design</label>
         </div>
         <div class="form-check">
-          <input @change="toggleColorTheme" class="form-check-input" type="radio" name="colorTheme" value="Light"
-            id="colorThemeLight">
+          <input class="form-check-input" type="radio" name="colorTheme" value="Light" id="colorThemeLight">
           <label class="form-check-label" for="colorThemeLight">Always use light</label>
         </div>
         <div class="form-check">
-          <input @change="toggleColorTheme" class="form-check-input" type="radio" name="colorTheme" value="Dark"
-            id="colorThemeDark">
+          <input class="form-check-input" type="radio" name="colorTheme" value="Dark" id="colorThemeDark">
           <label class="form-check-label" for="colorThemeDark">Always use dark</label>
         </div>
         <div class="form-check">
-          <input @change="toggleColorTheme" class="form-check-input" type="radio" name="colorTheme" value="System"
-            id="colorThemeSystem">
+          <input class="form-check-input" type="radio" name="colorTheme" value="System" id="colorThemeSystem">
           <label class="form-check-label" for="colorThemeSystem">Use System Default</label>
         </div>
 
         <label for="analyzerBackgroundAuto" class="mt-3 form-label mb-1">Analyzer Background</label>
         <div class="form-check">
-          <input @change="toggleAnalyzerBackground" class="form-check-input" type="radio" name="analyzerBackground"
-            value="auto" id="analyzerBackgroundAuto">
+          <input class="form-check-input" type="radio" name="analyzerBackground" value="auto"
+            id="analyzerBackgroundAuto">
           <label class="form-check-label" for="analyzerBackgroundAuto">Use color from Theme</label>
         </div>
         <div class="form-check">
-          <input @change="toggleAnalyzerBackground" class="form-check-input" type="radio" name="analyzerBackground"
-            value="custom" id="analyzerBackgroundCustom">
+          <input class="form-check-input" type="radio" name="analyzerBackground" value="custom"
+            id="analyzerBackgroundCustom">
           <label class="form-check-label" for="analyzerBackgroundCustom">Use Custom Color</label>
         </div>
-        <template x-if="showCustomAnalyzerBackgroundPicker">
-          <div class="d-flex justify-content-between mb-3">
-            <label for="analyzerBackgroundColorInput" class="form-label mb-0 d-flex align-items-center">Custom
-              Color</label>
-            <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color"
-              id="analyzerBackgroundColorInput" :value="analyzerBackground" @input="toggleAnalyzerBackground">
-            <span class="font-monospace d-flex align-items-center" x-text="analyzerBackground"></span>
-          </div>
-        </template>
+
+        <div data-show-for-property="showCustomAnalyzerBackgroundPicker" class="d-flex justify-content-between mb-3">
+          <label for="analyzerBackgroundColorInput" class="form-label mb-0 d-flex align-items-center">Custom
+            Color</label>
+          <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color"
+            id="analyzerBackgroundColorInput" data-bind-property="analyzerBackground">
+          <span class="font-monospace d-flex align-items-center" data-content-property="analyzerBackground"></span>
+        </div>
+
 
 
         <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="logTimingsCheckbox" x-bind:checked="logTimings"
-            @change="toggleLogTimings">
+          <input class="form-check-input" type="checkbox" id="logTimingsCheckbox" data-bind-property="logTimings">
           <label class="form-check-label" for="logTimingsCheckbox">
             Log some timings to console
           </label>
@@ -199,7 +190,7 @@
 
         <div class="d-flex justify-content-between">
           <div>
-            Keyboard Shortcut: <kbd class="lead" x-text="shortcut"></kbd>
+            Keyboard Shortcut: <kbd class="lead" data-content-property="shortcut"></kbd>
           </div>
           <div class="d-flex align-items-center">
 
@@ -209,13 +200,13 @@
         </div>
 
 
-        <template x-if="shortcut">
-          <div class="my-4">
-            Fullscreen Shortcut: <kbd class="lead" x-text="shortcut"></kbd>
-            <code class="lead mx-2">⟶</code>
-            <kbd class="lead">space</kbd>
-          </div>
-        </template>
+
+        <div data-show-for-property="shortcut" class="my-4">
+          Fullscreen Shortcut: <kbd class="lead" data-content-property="shortcut"></kbd>
+          <code class="lead mx-2">⟶</code>
+          <kbd class="lead">space</kbd>
+        </div>
+
 
         <hr>
 
@@ -242,7 +233,7 @@
 
         <hr>
         <p class="text-muted">Version:
-          <span x-text="VERSION"></span>
+          <span data-content-property="VERSION"></span>
         </p>
 
       </div>

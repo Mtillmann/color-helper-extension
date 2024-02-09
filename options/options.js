@@ -1,8 +1,112 @@
+const STATE = {
+
+    maxPixels: 100000,
+    maxPixelsFormatted: '',
+
+    highlightColorShade: true,
+
+    reduceUnmatchedOpacity: true,
+    unmatchedOpacity: 50,
+    unmatchedOpacityFormatted: '50%',
+    disableUnmatchedOpacity: false,
+
+    desaturateUnmatched: true,
+    unmatchedSaturation: 50,
+    unmatchedSaturationFormatted: '50%',
+    disableUnmatchedSaturation: false,
+
+    outlineMatched: true,
+    outlineColor: '#000000',
+    disableOutlineColor: false,
+
+    colorTheme: 'Canvas',
+
+    analyzerBackground: 'auto',
+    showCustomAnalyzerBackgroundPicker: false,
+
+    logTimings: false,
+
+    useCompatMode: false,
+
+    showShadePrefix: true,
+
+    highlightOptionsDisabled: false,
+
+    pauseOnClick: true,
+
+    shortcut: '',
+
+
+    VERSION: chrome.runtime.getManifest().version
+}
+
+function apply() {
+    STATE.maxPixelsFormatted = STATE.maxPixels.toLocaleString();
+    STATE.highlightOptionsDisabled = !STATE.highlightColorShade;
+    STATE.unmatchedOpacityFormatted = STATE.unmatchedOpacity + '%';
+    STATE.unmatchedSaturationFormatted = STATE.unmatchedSaturation + '%';
+    STATE.disableOutlineColor = !STATE.outlineMatched || STATE.highlightOptionsDisabled;
+    STATE.disableUnmatchedOpacity = !STATE.reduceUnmatchedOpacity || STATE.highlightOptionsDisabled;
+    STATE.disableUnmatchedSaturation = !STATE.desaturateUnmatched || STATE.highlightOptionsDisabled;
+
+
+
+/*
+    document.querySelector(`[name="colorTheme"][value="${STATE.colorTheme}"]`).setAttribute('checked', true);
+
+    if (STATE.analyzerBackground === 'auto') {
+        STATE.showCustomAnalyzerBackgroundPicker = false;
+        document.querySelector(`[name="analyzerBackground"][value="auto"]`).setAttribute('checked', true);
+    } else {
+        STATE.showCustomAnalyzerBackgroundPicker = true;
+        document.querySelector(`[name="analyzerBackground"][value="custom"]`).setAttribute('checked', true);
+    }
+*/
+    document.querySelectorAll('[data-bind-property]').forEach(el => {
+        const property = el.dataset.bindProperty;
+
+        if (el.type === 'checkbox') {
+            el.checked = STATE[property];
+        } else {
+            el.value = STATE[property];
+        }
+    });
+
+    document.querySelectorAll('[data-content-property]').forEach(el => {
+        el.textContent = STATE[el.dataset.contentProperty];
+    });
+
+    document.querySelectorAll('[data-disable-for-property]').forEach(el => {
+        el.disabled = STATE[el.dataset.disableForProperty];
+    });
+
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
-    document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+
+    ['change', 'input'].forEach(eventName => {
+        document.addEventListener(eventName, e => {
+            const property = e.target.dataset.bindProperty;
+            const hint = e.target.dataset.typeHint;
+
+            let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
+            if (hint === 'int') {
+                value = parseInt(value, 10);
+            }
+
+            STATE[property] = value;
+            apply();
+        });
+    });
+    apply();
+
 });
 
-document.addEventListener('alpine:init', () => {
+document.addEventListener('_____alpine:init', () => {
     Alpine.data('settings', () => {
 
         return {
@@ -60,7 +164,7 @@ document.addEventListener('alpine:init', () => {
                 this.disableUnmatchedOpacity = !this.reduceUnmatchedOpacity || this.highlightOptionsDisabled;
                 this.disableUnmatchedSaturation = !this.desaturateUnmatched || this.highlightOptionsDisabled;
 
-                
+
 
 
                 document.querySelector(`[name="colorTheme"][value="${this.colorTheme}"]`).setAttribute('checked', true);
