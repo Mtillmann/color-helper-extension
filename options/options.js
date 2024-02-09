@@ -2,6 +2,8 @@ let DEFAULTSTATE = {
     //this is defined in background/index.js
 };
 
+let currentTab = null;
+
 const STATE = {
 
     maxPixels: 100000,
@@ -104,6 +106,18 @@ async function store() {
     await chrome.storage.sync.set(state);
 }
 
+function changeTab(tab) {
+    if (currentTab) {
+        document.querySelector(`[data-target="${currentTab}"]`).classList.remove('active','bg-primary-subtle');
+        document.querySelector(`[data-tab="${currentTab}"]`).classList.add('d-none');
+    }
+    currentTab = tab;
+    document.querySelector(`[data-target="${currentTab}"]`).classList.add('active','bg-primary-subtle');
+    document.querySelector(`[data-tab="${currentTab}"]`).classList.remove('d-none');
+
+
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
@@ -155,5 +169,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         apply();
     })
 
+    if(!currentTab){
+        changeTab(document.querySelector('#verticalTabs a').dataset.target);
+    }
+
+    document.querySelector('#verticalTabs').addEventListener('click', e => {
+        e.preventDefault();
+        if (e.target.dataset.target) {
+            changeTab(e.target.dataset.target);
+        }
+    });
 
 });
