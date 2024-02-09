@@ -7,12 +7,19 @@
   <title>Color Helper</title>
   <link href="/options/bootstrap@5.3.2.css" rel="stylesheet" type="text/css" media="all" />
   <script src="/options/options.js"></script>
+  <style>
+    .mw-50{
+      max-width:50vw
+    }
+  </style>
 </head>
 
 <body>
 
 
   <div class="container-fluid container-lg pb-5">
+
+
 
     <div class="row">
       <div class="col-12">
@@ -25,43 +32,30 @@
       </div>
     </div>
     <div class="row gx-5">
-      <div class="col-12 col-lg-4">
-        <h2 class="display-6">Processing</h2>
-
-        <label for="maxPixelRange" class="d-flex justify-content-between"><span>Max Pixels to Process</span> <strong
-            class="" data-content-property="maxPixelsFormatted"></strong></label>
-        <input type="range" class="form-range mb-3" min="100" max="1000000" data-type-hint="int"
-          data-bind-property="maxPixels" id="maxPixelRange">
-
-
-        <p>Max number of pixels to process. A higher numbers means it takes longer time to process the selection.</p>
-        <p>When the product of your selection's dimensions (width &times; height) exceeds the configured value,
-          the selection will be internally scaled down to have a product of <i
-            data-content-property="maxPixelsFormatted"></i>
-          pixels.
-        </p>
-        <p class="small text-muted">Default: 100,000</p>
-
-        <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="useCompatModeCheckbox" data-bind-property="useCompatMode">
-          <label class="form-check-label" for="useCompatModeCheckbox">
-            Use compatibility mode
-          </label>
-        </div>
-        <p>When you experience blank analyze views although the hover is still working,
-          turn this option on.</p>
-
-        <div class="form-check mt-3">
-          <input class="form-check-input" type="checkbox" id="showShadePrefixCheckbox"
-            data-bind-property="showShadePrefix">
-          <label class="form-check-label" for="showShadePrefixCheckbox">
-            Differentiate color shades into light/[regular]/dark
-          </label>
-        </div>
-
-
+      <div class="col-4 col-xl-2">
+        <ul class="nav flex-column" id="verticalTabs">
+          <li class="nav-item">
+            <a class="nav-link" data-target="interface" aria-current="page" href="#">Interface</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-target="processing" aria-current="page" href="#">Processing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-target="shortcuts" href="#">Shortcuts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-target="reset" href="#">Reset</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-target="about" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-12 col-lg-4">
+      
+      <div class="col-8 col-xl-10 mw-50 d-none" data-tab="interface">
         <h2 class="mt-4 mt-lg-0 display-6">Interface</h2>
 
 
@@ -181,10 +175,47 @@
             Log some timings to console
           </label>
         </div>
+      </div>
+
+      <div class="col-8 col-xl-10 mw-50 d-none" data-tab="processing">
+        <h2 class="display-6">Processing</h2>
+
+        <label for="maxPixelRange" class="d-flex justify-content-between"><span>Max Pixels to Process</span> <strong
+            class="" data-content-property="maxPixelsFormatted"></strong></label>
+        <input type="range" class="form-range mb-3" min="100" max="1000000" data-type-hint="int"
+          data-bind-property="maxPixels" id="maxPixelRange">
+
+
+        <p>Max number of pixels to process. A higher numbers means it takes longer time to process the selection.</p>
+        <p>When the product of your selection's dimensions (width &times; height) exceeds the configured value,
+          the selection will be internally scaled down to have a product of <i
+            data-content-property="maxPixelsFormatted"></i>
+          pixels.
+        </p>
+        <p class="small text-muted">Default: 100,000</p>
+
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="useCompatModeCheckbox" data-bind-property="useCompatMode">
+          <label class="form-check-label" for="useCompatModeCheckbox">
+            Use compatibility mode
+          </label>
+        </div>
+        <p>When you experience blank analyze views although the hover is still working,
+          turn this option on.</p>
+
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="showShadePrefixCheckbox"
+            data-bind-property="showShadePrefix">
+          <label class="form-check-label" for="showShadePrefixCheckbox">
+            Differentiate color shades into light/[regular]/dark
+          </label>
+        </div>
 
 
       </div>
-      <div class="col-12 col-lg-4">
+
+
+      <div class="col-8 col-xl-10 mw-50 d-none">
         <h2 class="mt-4 mt-lg-0 display-6">Misc</h2>
 
         <div class="d-flex justify-content-between">
