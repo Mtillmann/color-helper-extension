@@ -20,7 +20,8 @@
       "48": "/icons/48x48.png",
       "128": "/icons/128x128.png"
     },
-    "default_title": "color helper"
+    "default_title": "color helper",
+    "default_popup": "popup/index.html"
   },
   "background": {
     "service_worker": "background/index.js"
