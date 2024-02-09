@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Color Helper</title>
   <link href="/options/bootstrap@5.3.2.css" rel="stylesheet" type="text/css" media="all" />
-  <script defer src="/options/alpine-CSP@3.13.3.min.js"></script>
   <script src="/options/options.js"></script>
 </head>
 
@@ -195,7 +194,7 @@
           <div class="d-flex align-items-center">
 
 
-            <a class="btn btn-outline-secondary btn-sm" href="#" @click="showShortcutsPage">change</a>
+            <a class="btn btn-outline-secondary btn-sm" href="#" id="changeShortCuts">change</a>
           </div>
         </div>
 
@@ -211,7 +210,7 @@
         <hr>
 
         <div class="d-flex justify-content-center">
-          <a class="btn btn-outline-warning align-self-center" href="#" @click="resetSettings">Reset to
+          <a class="btn btn-outline-warning align-self-center" href="#" id="resetSettings">Reset to
             default settings</a>
         </div>
         <hr>
