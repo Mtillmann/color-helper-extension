@@ -156,17 +156,17 @@
 
         <label for="analyzerBackgroundAuto" class="mt-3 form-label mb-1">Analyzer Background</label>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="analyzerBackground" value="auto"
+          <input class="form-check-input" type="radio" name="analyzerBackgroundMode" value="theme"
             id="analyzerBackgroundAuto">
-          <label class="form-check-label" for="analyzerBackgroundAuto">Use color from Theme</label>
+          <label class="form-check-label" for="analyzerBackgroundAuto">Use Theme Color</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="analyzerBackground" value="custom"
+          <input class="form-check-input" type="radio" name="analyzerBackgroundMode" value="custom"
             id="analyzerBackgroundCustom">
           <label class="form-check-label" for="analyzerBackgroundCustom">Use Custom Color</label>
         </div>
 
-        <div data-show-for-property="showCustomAnalyzerBackgroundPicker" class="d-flex justify-content-between mb-3">
+        <div data-show-for-property="showCustomAnalyzerBackgroundPicker" data-display-class="d-flex" class="justify-content-between mb-3">
           <label for="analyzerBackgroundColorInput" class="form-label mb-0 d-flex align-items-center">Custom
             Color</label>
           <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color"
