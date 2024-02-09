@@ -146,8 +146,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.querySelector('#resetSettings').addEventListener('click', e => {
         e.preventDefault();
-        console.log('FFFS')
-
         Object.entries(DEFAULTSTATE).forEach(([key, value]) => {
             value = JSON.parse(JSON.stringify(value));
             STATE[key] = value;
