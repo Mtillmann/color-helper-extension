@@ -45,7 +45,14 @@
       "suggested_key": {
         "default": "Alt+C"
       }
+    },
+    "chart-helper": {
+      "description": "Make Charts Accessible",
+      "suggested_key": {
+        "default": "Alt+V"
+      }
     }
+
   },
   "permissions": [
     "storage",

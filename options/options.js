@@ -45,7 +45,8 @@ const STATE = {
 
     pauseOnClick: true,
 
-    shortcut: '',
+    colorShortcut: '',
+    chartShortcut: '',
 
 
     VERSION: chrome.runtime.getManifest().version
@@ -64,7 +65,7 @@ function renderPopupButtons() {
         <table class="table table-sm">
         <thead>
           <tr>
-            <th class="w-100">Action</th>
+            <th class="w-100"></th>
             <th></th>
             <th></th>
           </tr>
@@ -200,15 +201,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.addEventListener('click', e => {
         
-        if(e.target.closest('.move-button')){
-            const t = e.target.closest('.move-button');
+        const t = e.target.closest('.move-button');
+        if(t){
             e.preventDefault();
             const tr = t.closest('tr');
-            const group = tr.dataset.group;
-            const index = tr.dataset.index;
+            const group = parseInt(tr.dataset.group);
+            const index = parseInt(tr.dataset.index);
             const direction = t.classList.contains('up') ? -1 : 1;
-            const item = STATE.popupGroups[group].items.splice(index, 1)[0];
-            STATE.popupGroups[group].items.splice(index + direction, 0, item);
+
+            const source = STATE.popupGroups[group].items[index];
+            const target = STATE.popupGroups[group].items[index + direction];
+
+            STATE.popupGroups[group].items[index] = target;
+            STATE.popupGroups[group].items[index + direction] = source;
+            
             renderPopupButtons();
             apply();
         }
@@ -246,7 +252,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     chrome.commands.getAll((commands) => {
-        STATE.shortcut = commands.find((command) => command.name === 'color-helper')?.shortcut
+        STATE.colorShortcut = commands.find((command) => command.name === 'color-helper')?.shortcut
+        STATE.chartShortcut = commands.find((command) => command.name === 'chart-helper')?.shortcut
         apply();
     })
 
@@ -269,7 +276,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     if (!currentTab) {
-        changeTab(document.querySelector('#verticalTabs a[data-target="popup"]').dataset.target);
+        changeTab(document.querySelector('#verticalTabs a[data-target="shortcuts"]').dataset.target);
     }
 
     document.querySelector('#verticalTabs').addEventListener('click', e => {

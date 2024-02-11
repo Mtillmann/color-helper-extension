@@ -16,14 +16,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
 
-    const target = document.getElementById('links');
-
+    
     for (let group of groups) {
         let div = document.createElement('div');
         div.classList.add('btn-group-vertical','btn-group-sm', 'mb-2', 'w-100');
         div.textContent = group.group;
-        target.insertAdjacentElement('beforeend', div);
-
+        
 
         for (let item of group.items) {
             if(!item.show){
@@ -59,8 +57,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             div.insertAdjacentElement('beforeend', a);
         }
-        if(div.children.length > 0){
-            target.insertAdjacentElement('beforeend', div);   
+        if(div.querySelectorAll('a').length > 0){
+            console.log('inserting')
+            document.body.insertAdjacentElement('beforeend', div);   
         }
     }
 

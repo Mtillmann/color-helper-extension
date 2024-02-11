@@ -21,23 +21,27 @@ const defaults = {
   popupGroups: [
     {
       name: "Colors & Shades",
+      id: "colors",
       items: [
         {
           icon: 'PICKER',
           action: "Selection",
-          shortcut: "Ctrl + Shift + C",
+          shortcut: "ALT + C",
+          shortcut2: "",
           show: true
         },
         {
           icon: 'PICKER',
           action: "DOM Element",
-          shortcut: "Ctrl + Shift + C",
+          shortcut: "ALT + C",
+          shortcut2: "D",
           show: true
         },
         {
           icon: 'PICKER',
           action: "Viewport",
-          shortcut: "Ctrl + Shift + C",
+          shortcut: "ALT + C",
+          shortcut2: "SPACE",
           show: true
         }
 
@@ -45,29 +49,34 @@ const defaults = {
     },
     {
       name: "Charts & Graphs",
+      id: "charts",
       items: [
         {
           icon: 'CHART',
           action: "Selection",
-          shortcut: "Ctrl + Shift + C",
+          shortcut: "ALT + V",
+          shortcut2: "",
           show: true
         },
         {
           icon: 'CHART',
           action: "DOM Element",
-          shortcut: "Ctrl + Shift + C",
+          shortcut: "ALT + V",
+          shortcut2: "D",
           show: true
         },
         {
           icon: 'CHART',
           action: "Viewport",
-          shortcut: "Ctrl + Shift + C",
+          shortcut: "ALT + V",
+          shortcut2: "SPACE",
           show: true
         }
 
       ]
     }, {
       name: "Settings",
+      id: "settings",
       items: [
         {
           icon: 'GEAR',
