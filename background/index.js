@@ -23,7 +23,6 @@ const defaults = {
       name: "Colors & Shades",
       id: "colors",
       shortcutId: "color-helper",
-      shortcut: "ALT + C",
       items: [
         {
           id : "selection",
@@ -52,20 +51,22 @@ const defaults = {
       name: "Charts & Graphs",
       id: "charts",
       shortcutId: "chart-helper",
-      shortcut: "ALT + V",
       items: [
         {
+          id : "selection",
           icon: 'CHART',
           action: "Selection",
           show: true
         },
         {
+          id : "dom",
           icon: 'CHART',
           action: "DOM Element",
           shortcut: "D",
           show: true
         },
         {
+          id : "viewport",
           icon: 'CHART',
           action: "Viewport",
           shortcut: "SPACE",
@@ -105,8 +106,8 @@ chrome.storage.sync.get((store) => {
   })
 })
 
-function inject(tab) {
-  chrome.tabs.sendMessage(tab.id, { message: 'init' }, (res) => {
+function inject(tab, options = {type : 'colors', action : 'selection'}) {
+  chrome.tabs.sendMessage(tab.id, { message: 'init', options }, (res) => {
     if (res) {
       clearTimeout(timeout)
     }
@@ -123,7 +124,7 @@ function inject(tab) {
     chrome.scripting.executeScript({ files: ['content/index.js'], target: { tabId: tab.id } })
 
     setTimeout(() => {
-      chrome.tabs.sendMessage(tab.id, { message: 'init' })
+      chrome.tabs.sendMessage(tab.id, { message: 'init', options })
     }, 100)
   }, 100)
 }
@@ -145,6 +146,12 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener((req, sender, res) => {
 
+  if(req.message === 'inject') {
+    console.log('injecting...', req)
+    chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
+      inject(tab[0], req.options)
+    });
+  }
 
   if (req.message === 'check-permission') {
     res({

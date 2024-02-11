@@ -8,12 +8,17 @@ let SELECTION = {
   w: 0,
   h: 0,
 };
+let ANALYZE_OPTIONS = {
+  type : 'colors',
+  action: 'selection'
+};
 let SELECTION_START = {
   x: 0,
   y: 0,
 };
 
 const lookup = new Lookup();
+
 
 function applySelection(x, y, w, h) {
   SELECTION.x = x;
@@ -368,16 +373,12 @@ async function captureSelection(e) {
 
 async function initialize() {
 
-
-
   if (selectionOverlay) {
     resetOverlayNode();
     removeAnalyzer();
     selectionOverlay.classList.remove('hidden', 'capture-in-progress', 'hide-ants', 'selecting');
     return;
-  }
-
-  
+  }  
   settings = await chrome.storage.sync.get()
 
   let theme = settings.colorTheme;
@@ -409,14 +410,39 @@ async function initialize() {
   selectionOverlay.addEventListener('mouseup', captureSelection);
 
   selectionOverlay.addEventListener('mousemove', (e) => {
+    if(ANALYZE_OPTIONS.action === 'dom'){
+
+      e.target.classList.add('selecting');
+
+      const x = e.pageX - window.scrollX;
+      const y = e.pageY - window.scrollY;
+  
+      const elem = document.elementsFromPoint(x, y)[1];
+
+      if(elem){
+        const bounds = elem.getBoundingClientRect();
+
+        const x = bounds.x;
+        const y = bounds.y;
+
+        applySelection(
+          x,
+          y,
+          bounds.width,
+          bounds.height
+        )
+      }
+       
+
+      return;
+    }
+
     if (!e.target.classList.contains('selecting')) {
       return;
     }
 
-
     e.preventDefault();
     e.stopPropagation();
-
 
     const x = e.pageX - window.scrollX;
     const y = e.pageY - window.scrollY;
@@ -427,8 +453,6 @@ async function initialize() {
       Math.abs(x - SELECTION_START.x),
       Math.abs(y - SELECTION_START.y)
     )
-
-
   });
 
   ['click', 'dblclick', 'contextmenu'].forEach(event => {
@@ -446,11 +470,16 @@ async function initialize() {
       hideOverlay();
     }
 
+
+    console.log(e.code);
+
     if (e.code === 'Space' && !selectionOverlay?.classList.contains('hidden')) {
       e.preventDefault();
       e.stopPropagation();
-
       captureFullScreen();
+    } else if (e.code === 'KeyD' && !selectionOverlay?.classList.contains('hidden')){
+      selectionOverlay?.classList.add('selecting');
+      ANALYZE_OPTIONS.action = 'dom';
     }
   });
 }
@@ -467,10 +496,18 @@ function showErrorMessage(){
 }
 
 
-chrome.runtime.onMessage.addListener((req, sender, res) => {
+chrome.runtime.onMessage.addListener(async (req, sender, res) => {
   if (req.message === 'init') {
+    console.log(req.options);
+    
     res({})
-    initialize();
+    await initialize();
+
+    ANALYZE_OPTIONS = req.options;
+    if(ANALYZE_OPTIONS.action === 'viewport'){
+      captureFullScreen(req.options.type);
+    }
+
   }
   return true
 })

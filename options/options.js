@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     if (!currentTab) {
-        changeTab(document.querySelector('#verticalTabs a[data-target="shortcuts"]').dataset.target);
+        changeTab(document.querySelector('#verticalTabs a[data-target]').dataset.target);
     }
 
     document.querySelector('#verticalTabs').addEventListener('click', e => {
