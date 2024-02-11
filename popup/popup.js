@@ -6,25 +6,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let groups;
 
-    try{
+    try {
         const settings = await chrome.storage.sync.get();
         groups = settings.popupGroups;
-        console.log(settings);
-    }catch(e){
+    } catch (e) {
         groups = defaultPopupGroups;
         console.log('using default groups...');
     }
-    
 
-    
+
+
+
     for (let group of groups) {
         let div = document.createElement('div');
-        div.classList.add('btn-group-vertical','btn-group-sm', 'mb-2', 'w-100');
+        div.classList.add('btn-group-vertical', 'btn-group-sm', 'mb-2', 'w-100');
         div.textContent = group.group;
-        
+
 
         for (let item of group.items) {
-            if(!item.show){
+            if (!item.show) {
                 continue;
             }
 
@@ -32,8 +32,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             a.setAttribute('href', '#');
             a.classList.add('icon-link', 'btn', `btn-outline-${item.color ?? 'primary'}`, 'btn-sm');
 
-            if(item.shortcut){
-                a.setAttribute('title', item.shortcut);
+            if (group.shortcut) {
+
+                if (item.shortcut) {
+                    a.setAttribute('title', `${group.shortcut} ⟶ ${item.shortcut}`);
+                } else {
+                    a.setAttribute('title', group.shortcut);
+                }
             }
 
             if (item.icon) {
@@ -57,9 +62,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             div.insertAdjacentElement('beforeend', a);
         }
-        if(div.querySelectorAll('a').length > 0){
+        if (div.querySelectorAll('a').length > 0) {
             console.log('inserting')
-            document.body.insertAdjacentElement('beforeend', div);   
+            document.body.insertAdjacentElement('beforeend', div);
         }
     }
 
