@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     if(!currentTab){
-        changeTab(document.querySelector('#verticalTabs a').dataset.target);
+        changeTab(document.querySelector('#verticalTabs a[data-target="popup"]').dataset.target);
     }
 
     document.querySelector('#verticalTabs').addEventListener('click', e => {
