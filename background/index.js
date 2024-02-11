@@ -1,5 +1,5 @@
 
-//chrome.storage.sync.clear()
+//await chrome.storage.sync.clear()
 
 //this controls which keys are stored in the storage and what is reverted to default in the options page
 const defaults = {
@@ -18,7 +18,68 @@ const defaults = {
   logTimings: false,
   useCompatMode: false,
   showShadePrefix: false,
+  popupGroups: [
+    {
+      name: "Colors & Shades",
+      items: [
+        {
+          icon: 'PICKER',
+          action: "Selection",
+          shortcut: "Ctrl + Shift + C",
+          show: true
+        },
+        {
+          icon: 'PICKER',
+          action: "DOM Element",
+          shortcut: "Ctrl + Shift + C",
+          show: true
+        },
+        {
+          icon: 'PICKER',
+          action: "Viewport",
+          shortcut: "Ctrl + Shift + C",
+          show: true
+        }
+
+      ]
+    },
+    {
+      name: "Charts & Graphs",
+      items: [
+        {
+          icon: 'CHART',
+          action: "Selection",
+          shortcut: "Ctrl + Shift + C",
+          show: true
+        },
+        {
+          icon: 'CHART',
+          action: "DOM Element",
+          shortcut: "Ctrl + Shift + C",
+          show: true
+        },
+        {
+          icon: 'CHART',
+          action: "Viewport",
+          shortcut: "Ctrl + Shift + C",
+          show: true
+        }
+
+      ]
+    }, {
+      name: "Settings",
+      items: [
+        {
+          icon: 'GEAR',
+          color: "secondary",
+          show: true
+        }
+      ]
+    }
+  ]
 }
+
+
 
 chrome.storage.sync.get((store) => {
   var config = {}
@@ -46,7 +107,7 @@ function inject(tab) {
   var timeout = setTimeout(() => {
     chrome.scripting.insertCSS({ files: ['content/index.css'], target: { tabId: tab.id } })
 
-  
+
     chrome.scripting.executeScript({ files: ['content/DeltaE00.js'], target: { tabId: tab.id } })
     chrome.scripting.executeScript({ files: ['content/RGBToLAB.js'], target: { tabId: tab.id } })
     chrome.scripting.executeScript({ files: ['content/Analyzer.js'], target: { tabId: tab.id } })
@@ -80,7 +141,7 @@ chrome.runtime.onMessage.addListener((req, sender, res) => {
   if (req.message === 'check-permission') {
     res({
       message: 'permission-state',
-      tabs : 'tabs' in chrome,
+      tabs: 'tabs' in chrome,
       captureVisibleTab: 'tabs' in chrome && 'captureVisibleTab' in chrome.tabs,
       isGecko: 'geckoProfiler' in chrome,
     })

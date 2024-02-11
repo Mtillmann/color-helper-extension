@@ -37,10 +37,13 @@
       <div class="col-4 col-xl-2">
         <ul class="nav flex-column" id="verticalTabs">
           <li class="nav-item">
-            <a class="nav-link" data-target="interface" aria-current="page" href="#">Interface</a>
+            <a class="nav-link" data-target="interface" href="#">Interface</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="processing" aria-current="page" href="#">Processing</a>
+            <a class="nav-link" data-target="processing" href="#">Processing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-target="popup" href="#">Popup</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-target="shortcuts" href="#">Shortcuts</a>
@@ -113,9 +116,9 @@
         </div>
 
 
-        <div data-show-for-property="outlineMatched" class="d-flex justify-content-between">
+        <div data-show-for-property="outlineMatched" data-display-class="d-flex" class="d-flex">
           <label for="outlineColorInput" class="form-label mb-0 d-flex align-items-center">Outline Color</label>
-          <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color" id="outlineColorInput"
+          <input type="color" class="mx-3 d-flex form-control form-control-color" id="outlineColorInput"
             data-bind-property="outlineColor" data-disable-for-property="disableOutlineColor">
           <span class="font-monospace d-flex align-items-center" data-content-property="outlineColor"></span>
         </div>
@@ -161,10 +164,10 @@
         </div>
 
         <div data-show-for-property="showCustomAnalyzerBackgroundPicker" data-display-class="d-flex"
-          class="justify-content-between mb-3">
+          class="mb-3">
           <label for="analyzerBackgroundColorInput" class="form-label mb-0 d-flex align-items-center">Custom
             Color</label>
-          <input type="color" class="mx-3 d-flex flex-grow-1 form-control form-control-color"
+          <input type="color" class="mx-3 d-flex form-control form-control-color"
             id="analyzerBackgroundColorInput" data-bind-property="analyzerBackground">
           <span class="font-monospace d-flex align-items-center" data-content-property="analyzerBackground"></span>
         </div>
@@ -277,6 +280,23 @@
 
 
       </div>
+
+
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="popup">
+       
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th class="w-100">Action</th>
+              <th>Show</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+        </table>
+
+
+      </div>
+
     </div>
 
 
