@@ -22,26 +22,27 @@ const defaults = {
     {
       name: "Colors & Shades",
       id: "colors",
+      shortcutId: "color-helper",
+      shortcut: "ALT + C",
       items: [
         {
+          id : "selection",
           icon: 'PICKER',
           action: "Selection",
-          shortcut: "ALT + C",
-          shortcut2: "",
           show: true
         },
         {
+          id : "dom",
           icon: 'PICKER',
           action: "DOM Element",
-          shortcut: "ALT + C",
-          shortcut2: "D",
+          shortcut: "D",
           show: true
         },
         {
+          id : "viewport",
           icon: 'PICKER',
           action: "Viewport",
-          shortcut: "ALT + C",
-          shortcut2: "SPACE",
+          shortcut: "SPACE",
           show: true
         }
 
@@ -50,26 +51,24 @@ const defaults = {
     {
       name: "Charts & Graphs",
       id: "charts",
+      shortcutId: "chart-helper",
+      shortcut: "ALT + V",
       items: [
         {
           icon: 'CHART',
           action: "Selection",
-          shortcut: "ALT + V",
-          shortcut2: "",
           show: true
         },
         {
           icon: 'CHART',
           action: "DOM Element",
-          shortcut: "ALT + V",
-          shortcut2: "D",
+          shortcut: "D",
           show: true
         },
         {
           icon: 'CHART',
           action: "Viewport",
-          shortcut: "ALT + V",
-          shortcut2: "SPACE",
+          shortcut: "SPACE",
           show: true
         }
 
