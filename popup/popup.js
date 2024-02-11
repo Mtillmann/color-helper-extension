@@ -75,10 +75,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }, 500);
 
 */
-                window.close();
+                //close is never executed when called after the await below
+                setTimeout(() => {
+                    window.close();
+                }, 500);
+                //            window.close();
 
 
-  
+
 
                 const type = e.currentTarget.dataset.type;
                 const action = e.currentTarget.dataset.action
@@ -93,6 +97,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         type, action
                     }
                 })
+
+                console.log('FUCK')
 
             });
 
