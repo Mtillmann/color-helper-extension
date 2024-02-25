@@ -27,8 +27,9 @@ class Analyzer {
         LOG_TIMINGS && console.time('COLORHELPER::Analyzer::extract Colors');
         let extractedColors = {};
         
-        const downSampleFactor = 4;
-        const halfSampleFactor = downSampleFactor / 2;
+console.log({CHARTDOWNSAMPLE})
+
+        const halfSampleFactor = CHARTDOWNSAMPLE / 2;
 
         const l = imageDataData.length / 4;
         for (let i = 0; i < l; i++) {
@@ -39,7 +40,7 @@ class Analyzer {
             const b = (imageDataData[i * 4 + 2] >> halfSampleFactor) << halfSampleFactor;
     
             
-            const color = lookup.bestMatch(r, g, b).colors[0].alias[0];            
+            const color = lookup.bestMatch(r, g, b).colors[0].alias[0].replace(/[^a-zA-Z0-9]/g, '');            
             if (!(color in extractedColors)) {
                 extractedColors[color] = [i];
                 continue;
@@ -48,10 +49,22 @@ class Analyzer {
         }
         LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::extract Colors');
 
-        const cutoff = l * 0.01;
-
+        const maxArea = l * 0.25;
+        //first remove all colors that use more than 25% of the image, probably background
         extractedColors = Object.entries(extractedColors).reduce((acc, entry) => {
-            if(entry[1].length > cutoff){
+            if(entry[1].length <= maxArea){
+                acc[entry[0]] = entry[1];
+            }
+            return acc;
+        }, {});
+
+        //next, recalculate the total area, 
+        const actualArea = Object.values(extractedColors).reduce((acc, v) => acc + v.length, 0);
+
+        //and remove all colors that use less than 1% of the image
+        const minArea = actualArea * 0.01;
+        extractedColors = Object.entries(extractedColors).reduce((acc, entry) => {
+            if(entry[1].length > minArea){
                 acc[entry[0]] = entry[1];
             }
             return acc;

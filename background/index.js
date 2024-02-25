@@ -17,7 +17,7 @@ const defaults = {
   analyzerBackground: "#888888",
   logTimings: false,
   useCompatMode: false,
-  showShadePrefix: false,
+  showShadePrefix: true,
   popupGroups: [
     {
       name: "Colors & Shades",
@@ -40,34 +40,6 @@ const defaults = {
         {
           id : "viewport",
           icon: 'PICKER',
-          action: "Viewport",
-          shortcut: "SPACE",
-          show: true
-        }
-
-      ]
-    },
-    {
-      name: "Charts & Graphs",
-      id: "charts",
-      shortcutId: "chart-helper",
-      items: [
-        {
-          id : "selection",
-          icon: 'CHART',
-          action: "Selection",
-          show: true
-        },
-        {
-          id : "dom",
-          icon: 'CHART',
-          action: "DOM Element",
-          shortcut: "D",
-          show: true
-        },
-        {
-          id : "viewport",
-          icon: 'CHART',
           action: "Viewport",
           shortcut: "SPACE",
           show: true

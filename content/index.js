@@ -1,6 +1,7 @@
 
 let settings;
 let LOG_TIMINGS = false;
+let CHARTDOWNSAMPLE = 1;
 let selectionOverlay = null;
 let SELECTION = {
   x: 0,
@@ -9,7 +10,6 @@ let SELECTION = {
   h: 0,
 };
 let ANALYZE_OPTIONS = {
-  type : 'colors',
   action: 'selection'
 };
 let SELECTION_START = {
@@ -144,7 +144,7 @@ async function showAnalysis(crops) {
 
   await lookup.init(settings.showShadePrefix);
   const analyzer = new Analyzer()
-  const canvases = ANALYZE_OPTIONS.type === 'colors' ? await analyzer.analyze(lookup, crops):await analyzer.analyzeChart(lookup, crops);
+  const canvases = await analyzer.analyze(lookup, crops);
 
   canvases.forEach(c => {
     target.insertAdjacentElement('afterbegin', c);
@@ -169,20 +169,8 @@ async function showAnalysis(crops) {
     const scaledX = Math.round(fullSizeX * scaleFactor);
     const scaledY = Math.round(fullSizeY * scaleFactor);
 
-
     const pixel = fullContext.getImageData(fullSizeX, fullSizeY, 1, 1).data;
     const scaledPixel = scaledContext.getImageData(scaledX, scaledY, 1, 1).data;
-
-    const shade = lookup.shade(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
-    const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
-
-    target.querySelector('.active')?.classList.remove('active');
-    target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
-
-
-    tooltip.querySelector('.shade-name').textContent = `Shade: ${shade}`;
-    tooltip.querySelector('.color-name').textContent = 'Color: ' + color.colors[0].alias[0] + ' (ΔE=' + color.colors[0].deltaE.toFixed(2) + ')';
-    tooltip.querySelector('.color-rgb').textContent = 'RGB: ' + scaledPixel.slice(0, 3).join(',');
 
     tooltip.style.setProperty('--swatch-color', `rgb(${scaledPixel.slice(0, 3).join(',')})`);
 
@@ -190,6 +178,17 @@ async function showAnalysis(crops) {
     tooltip.style.setProperty('left', (10 + e.clientX) + 'px');
 
     tooltip.classList.add('visible');
+
+      const shade = lookup.shade(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
+      const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
+
+      target.querySelector('.active')?.classList.remove('active');
+      target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
+
+
+      tooltip.querySelector('.shade-name').textContent = `Shade: ${shade}`;
+      tooltip.querySelector('.color-name').textContent = 'Color: ' + color.colors[0].alias[0] + ' (ΔE=' + color.colors[0].deltaE.toFixed(2) + ')';
+      tooltip.querySelector('.color-rgb').textContent = 'RGB: ' + scaledPixel.slice(0, 3).join(',');
 
   });
 
@@ -246,7 +245,7 @@ async function getSelectedPixels() {
     message: 'check-permission'
   });
 
-  
+
 
   if (!permissionsState.captureVisibleTab) {
     return false;
@@ -277,6 +276,9 @@ async function getSelectedPixels() {
   await new Promise(r => rawImage.onload = r, rawImage.setAttribute('src', screenshot.image));
 
   const pixelsToProcess = parseInt(settings.maxPixels);
+
+  console.log({pixelsToProcess, x : settings.maxPixels})
+
   let scaledWidth = width;
   let scaledHeight = height;
 
@@ -349,9 +351,9 @@ async function captureSelection(e) {
     try {
       crops = await getSelectedPixels();
 
-  
-      if(!crops){
-    
+
+      if (!crops) {
+
         showErrorMessage()
         return false;
       }
@@ -378,7 +380,7 @@ async function initialize() {
     removeAnalyzer();
     selectionOverlay.classList.remove('hidden', 'capture-in-progress', 'hide-ants', 'selecting');
     return;
-  }  
+  }
   settings = await chrome.storage.sync.get()
 
   let theme = settings.colorTheme;
@@ -389,7 +391,9 @@ async function initialize() {
   document.documentElement.dataset.colorHelperTheme = theme;
 
   LOG_TIMINGS = settings.logTimings;
+  CHARTDOWNSAMPLE = settings.chartDownSampleFactor;
 
+  console.log({settings})
 
   selectionOverlay = document.createElement('div');
   selectionOverlay.setAttribute('id', 'colorHelperBrowserExtensionSelectionOverlay');
@@ -410,16 +414,16 @@ async function initialize() {
   selectionOverlay.addEventListener('mouseup', captureSelection);
 
   selectionOverlay.addEventListener('mousemove', (e) => {
-    if(ANALYZE_OPTIONS.action === 'dom'){
+    if (ANALYZE_OPTIONS.action === 'dom') {
 
       e.target.classList.add('selecting');
 
       const x = e.pageX - window.scrollX;
       const y = e.pageY - window.scrollY;
-  
+
       const elem = document.elementsFromPoint(x, y)[1];
 
-      if(elem){
+      if (elem) {
         const bounds = elem.getBoundingClientRect();
 
         const x = bounds.x;
@@ -432,7 +436,7 @@ async function initialize() {
           bounds.height
         )
       }
-       
+
 
       return;
     }
@@ -475,14 +479,14 @@ async function initialize() {
       e.preventDefault();
       e.stopPropagation();
       captureFullScreen();
-    } else if (e.code === 'KeyD' && !selectionOverlay?.classList.contains('hidden')){
+    } else if (e.code === 'KeyD' && !selectionOverlay?.classList.contains('hidden')) {
       selectionOverlay?.classList.add('selecting');
       ANALYZE_OPTIONS.action = 'dom';
     }
   });
 }
 
-function showErrorMessage(){
+function showErrorMessage() {
 
   hideOverlay(true);
   document.body.insertAdjacentHTML('beforeend', permissionErrorMessage);
@@ -496,12 +500,12 @@ function showErrorMessage(){
 
 chrome.runtime.onMessage.addListener(async (req, sender, res) => {
   if (req.message === 'init') {
-    
+
     res({})
     await initialize();
 
     ANALYZE_OPTIONS = req.options;
-    if(ANALYZE_OPTIONS.action === 'viewport'){
+    if (ANALYZE_OPTIONS.action === 'viewport') {
       captureFullScreen(req.options.type);
     }
 
