@@ -17,6 +17,11 @@ let SELECTION_START = {
   y: 0,
 };
 
+//firefox has no window object in content scripts
+const $FloatingUIDOM = window?.FloatingUIDOM ?? globalThis?.FloatingUIDOM;
+
+console.log({ $FloatingUIDOM })
+
 const lookup = new Lookup();
 
 function componentToHex(c) {
@@ -168,6 +173,7 @@ async function showAnalysis(crops) {
   const fullContext = crops.full.getContext('2d', { willReadFrequently: true });
   const scaledContext = crops.scaled.getContext('2d', { willReadFrequently: true });
 
+
   target.addEventListener('mousemove', (e) => {
 
     const node = e.currentTarget.closest('.pause-on-click');
@@ -191,7 +197,7 @@ async function showAnalysis(crops) {
     //tooltip.style.setProperty('left', (10 + e.clientX) + 'px');
     tooltip.classList.add('visible');
 
-    
+
 
     const virtualEl = {
       getBoundingClientRect() {
@@ -208,9 +214,12 @@ async function showAnalysis(crops) {
       }
     };
 
-    window.FloatingUIDOM.computePosition(virtualEl, tooltip, {
+
+    
+
+    $FloatingUIDOM.computePosition(virtualEl, tooltip, {
       placement: "right-start",
-      middleware: [window.FloatingUIDOM.offset(10), window.FloatingUIDOM.flip(), window.FloatingUIDOM.shift()]
+      middleware: [$FloatingUIDOM.offset(10), $FloatingUIDOM.flip(), $FloatingUIDOM.shift()]
     }).then(({ x, y }) => {
       Object.assign(tooltip.style, {
         top: `${y}px`,
