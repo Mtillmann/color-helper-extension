@@ -147,7 +147,6 @@ chrome.commands.onCommand.addListener((command) => {
 chrome.runtime.onMessage.addListener((req, sender, res) => {
 
   if(req.message === 'inject') {
-    console.log('injecting...', req)
     chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
       inject(tab[0], req.options)
     });
