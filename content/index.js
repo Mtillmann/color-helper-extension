@@ -19,6 +19,14 @@ let SELECTION_START = {
 
 const lookup = new Lookup();
 
+function componentToHex(c) {
+  const hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
 
 function applySelection(x, y, w, h) {
   SELECTION.x = x;
@@ -78,12 +86,17 @@ function template() {
   style="${styles.join('; ')}"
 >
   <div class="tooltip">
-    <strong class="shade-name"></strong>
-    <br>
-    <span class="color-name"></span>
-    <br>
-    <small class="color-rgb"></small>
+    <ul>
+      <li><span class="color-name"></span> <small>(&Delta;E=<span class="delta-e"></span>)</small></li>
+      <li><strong>Color Shade: <span class="shade-name"></span></strong></li>
+      <li>RGB: <span class="color-rgb"></span></li>
+      <li>HEX: <span class="color-hex"></span></li>
+      <li class="hint"><small>Click to lock the tooltip</small></li>
+    </ul>
+    
+
   </div>
+
   <div class="loading-spinner">
   </div>
   <div class="target"></div>
@@ -174,21 +187,50 @@ async function showAnalysis(crops) {
 
     tooltip.style.setProperty('--swatch-color', `rgb(${scaledPixel.slice(0, 3).join(',')})`);
 
-    tooltip.style.setProperty('top', e.clientY + 'px');
-    tooltip.style.setProperty('left', (10 + e.clientX) + 'px');
-
+    //tooltip.style.setProperty('top', e.clientY + 'px');
+    //tooltip.style.setProperty('left', (10 + e.clientX) + 'px');
     tooltip.classList.add('visible');
 
-      const shade = lookup.shade(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
-      const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
+    
 
-      target.querySelector('.active')?.classList.remove('active');
-      target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
+    const virtualEl = {
+      getBoundingClientRect() {
+        return {
+          width: 0,
+          height: 0,
+          x: e.clientX,
+          y: e.clientY,
+          left: e.clientX,
+          right: e.clientX,
+          top: e.clientY,
+          bottom: e.clientY
+        };
+      }
+    };
+
+    window.FloatingUIDOM.computePosition(virtualEl, tooltip, {
+      placement: "right-start",
+      middleware: [window.FloatingUIDOM.offset(10), window.FloatingUIDOM.flip(), window.FloatingUIDOM.shift()]
+    }).then(({ x, y }) => {
+      Object.assign(tooltip.style, {
+        top: `${y}px`,
+        left: `${x}px`
+      });
+    });
 
 
-      tooltip.querySelector('.shade-name').textContent = `Shade: ${shade}`;
-      tooltip.querySelector('.color-name').textContent = 'Color: ' + color.colors[0].alias[0] + ' (ΔE=' + color.colors[0].deltaE.toFixed(2) + ')';
-      tooltip.querySelector('.color-rgb').textContent = 'RGB: ' + scaledPixel.slice(0, 3).join(',');
+    const shade = lookup.shade(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
+    const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
+
+    target.querySelector('.active')?.classList.remove('active');
+    target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
+
+
+    tooltip.querySelector('.shade-name').textContent = shade;
+    tooltip.querySelector('.color-name').textContent = color.colors[0].alias[0];
+    tooltip.querySelector('.delta-e').textContent = color.colors[0].deltaE.toFixed(2);
+    tooltip.querySelector('.color-rgb').textContent = scaledPixel.slice(0, 3).join(',');
+    tooltip.querySelector('.color-hex').textContent = rgbToHex(...scaledPixel.slice(0, 3));
 
   });
 
@@ -277,7 +319,7 @@ async function getSelectedPixels() {
 
   const pixelsToProcess = parseInt(settings.maxPixels);
 
-  console.log({pixelsToProcess, x : settings.maxPixels})
+  console.log({ pixelsToProcess, x: settings.maxPixels })
 
   let scaledWidth = width;
   let scaledHeight = height;
@@ -393,7 +435,7 @@ async function initialize() {
   LOG_TIMINGS = settings.logTimings;
   CHARTDOWNSAMPLE = settings.chartDownSampleFactor;
 
-  console.log({settings})
+  console.log({ settings })
 
   selectionOverlay = document.createElement('div');
   selectionOverlay.setAttribute('id', 'colorHelperBrowserExtensionSelectionOverlay');

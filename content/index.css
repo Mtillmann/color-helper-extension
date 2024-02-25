@@ -237,7 +237,7 @@
 
   .target {
 
-  
+
     position: absolute;
     width: var(--w);
     height: var(--h);
@@ -267,6 +267,51 @@
   }
 
   .tooltip {
+    & ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      & li:not(:last-child) {
+        margin-bottom: 0.125rem;
+        border-bottom: 1px solid var(--text-color);
+      }
+
+      & li:first-child {
+        font-size: 1rem;
+        padding-left: 14px;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          --dim: 12px;
+          left: 0px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: var(--dim);
+          height: var(--dim);
+          background-color: var(--swatch-color);
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.175);
+        }
+
+
+      }
+
+      & strong {
+        font-weight: bold;
+      }
+
+      & small {
+        font-size: 0.625rem;
+      }
+
+      .hint {
+        text-align: center;
+        opacity: 0.8;
+      }
+    }
+
     font-family: sans-serif;
     line-height: 1.25;
     font-size: 0.825rem;
@@ -275,22 +320,11 @@
 
 
     position: absolute;
-    padding: 4px 4px 4px 26px;
+    padding: 4px;
     border-radius: 0.2rem;
     box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.175);
     z-index: 24;
 
-    &::before {
-      content: '';
-      position: absolute;
-
-      left: 3px;
-      width: 18px;
-      height: 18px;
-      top: 3px;
-      background-color: var(--swatch-color);
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.175);
-    }
 
     display:none;
 

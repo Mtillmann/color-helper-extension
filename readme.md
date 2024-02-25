@@ -11,8 +11,7 @@ Assistive browser extension for people with color vision deficiency that can scr
 - 100% free and open source
 - Highly customizable
 - All processing is done locally
-- No tracking, analytics or ads
-- No external dependencies or 3rd party libraries
+- Free of tracking, analytics or ads
 - Does not break websites
 
 ## Usage
