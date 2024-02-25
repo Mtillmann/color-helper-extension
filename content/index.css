@@ -310,6 +310,17 @@
         text-align: center;
         opacity: 0.8;
       }
+
+      .copy-button{
+        cursor: pointer;
+        opacity: 0.6;
+        margin-left:4px;
+        transition: opacity 0.2s;
+        &:hover {
+          opacity: 1;
+          text-decoration: underline;
+        }
+      }
     }
 
     font-family: sans-serif;
