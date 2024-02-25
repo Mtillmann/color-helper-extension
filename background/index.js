@@ -89,8 +89,8 @@ function inject(tab, options = {type : 'colors', action : 'selection'}) {
     chrome.scripting.insertCSS({ files: ['content/index.css'], target: { tabId: tab.id } })
 
     chrome.scripting.executeScript({ files: ['content/copyToClipboard.js'], target: { tabId: tab.id } })
-    chrome.scripting.executeScript({ files: ['content/floating-ui.core@1.6.0.min.js'], target: { tabId: tab.id } })
-    chrome.scripting.executeScript({ files: ['content/floating-ui.dom@1.6.3.min.js'], target: { tabId: tab.id } })
+    chrome.scripting.executeScript({ files: ['content/floating-ui.core-1.6.0.min.js'], target: { tabId: tab.id } })
+    chrome.scripting.executeScript({ files: ['content/floating-ui.dom-1.6.3.min.js'], target: { tabId: tab.id } })
     chrome.scripting.executeScript({ files: ['content/DeltaE00.js'], target: { tabId: tab.id } })
     chrome.scripting.executeScript({ files: ['content/RGBToLAB.js'], target: { tabId: tab.id } })
     chrome.scripting.executeScript({ files: ['content/Analyzer.js'], target: { tabId: tab.id } })
