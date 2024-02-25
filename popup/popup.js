@@ -66,23 +66,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             a.addEventListener('click', async (e) => {
                 e.preventDefault();
 
-                /*
-                document.body.innerHTML = '<span class="spinner-border spinner-border-lg"></span>';
-                document.body.style.width = 'auto';
-                document.body.classList.add('p-3','pb-1');
-                              setTimeout(() => {
-                //    window.close();
-                }, 500);
-
-*/
                 //close is never executed when called after the await below
                 setTimeout(() => {
                     window.close();
                 }, 500);
-                //            window.close();
-
-
-
 
                 const type = e.currentTarget.dataset.type;
                 const action = e.currentTarget.dataset.action
@@ -113,20 +100,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                 a.insertAdjacentHTML('afterbegin', ICONS[item.icon]);
             }
 
+            /*
             if (group.name) {
                 let span = document.createElement('span');
                 span.classList.add('title');
                 span.textContent = group.name + (item.action ? ':' : '');
                 a.insertAdjacentElement('beforeend', span);
             }
+            */
 
-            if (item.action) {
-
-
+            
                 let span = document.createElement('span');
-                span.textContent = item.action;
+                span.textContent = item.action ?? group.name;
                 a.insertAdjacentElement('beforeend', span);
-            }
+            
 
             div.insertAdjacentElement('beforeend', a);
         }

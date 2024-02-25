@@ -26,20 +26,20 @@ const defaults = {
       items: [
         {
           id : "selection",
-          icon: 'PICKER',
+          icon: 'SELECTION',
           action: "Selection",
           show: true
         },
         {
           id : "dom",
-          icon: 'PICKER',
+          icon: 'DOMNODE',
           action: "DOM Element",
           shortcut: "D",
           show: true
         },
         {
           id : "viewport",
-          icon: 'PICKER',
+          icon: 'VIEWPORT',
           action: "Viewport",
           shortcut: "SPACE",
           show: true
