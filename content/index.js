@@ -471,8 +471,6 @@ async function initialize() {
     }
 
 
-    console.log(e.code);
-
     if (e.code === 'Space' && !selectionOverlay?.classList.contains('hidden')) {
       e.preventDefault();
       e.stopPropagation();
