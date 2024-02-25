@@ -1,33 +1,32 @@
 class Analyzer {
 
 
-    
-    
-    async analyze(lookup, crops) {
-
-        const sourceScale = crops.full.width / crops.scaled.width;
-        let shades = {};
-
-        LOG_TIMINGS && console.time('COLORHELPER::Analyzer::find shades');
-        const id = crops.scaled.getContext('2d').getImageData(0, 0, crops.scaled.width, crops.scaled.height);
-        const l = id.data.length / 4;
+    extractShades(imageDataData, lookup){
+        LOG_TIMINGS && console.time('COLORHELPER::Analyzer::extract Shades');
+        const extractedShades = {};
+        
+        const l = imageDataData.length / 4;
         for (let i = 0; i < l; i++) {
-            const r = id.data[i * 4 + 0];
-            const g = id.data[i * 4 + 1];
-            const b = id.data[i * 4 + 2];
+            const r = imageDataData[i * 4 + 0];
+            const g = imageDataData[i * 4 + 1];
+            const b = imageDataData[i * 4 + 2];
 
             const shade = lookup.shade(r, g, b);
-            if (!(shade in shades)) {
-                shades[shade] = [i];
+            if (!(shade in extractedShades)) {
+                extractedShades[shade] = [i];
                 continue;
             }
-            shades[shade].push(i);
+            extractedShades[shade].push(i);
         }
-        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::find shades');
+        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::extract Shades');
 
-        let canvases = []
+        return extractedShades;
+    }
 
+    buildShadeCanvases(shades, crops){
         LOG_TIMINGS && console.time('COLORHELPER::Analyzer::create canvases');
+        let canvases = [];
+        const sourceScale = crops.full.width / crops.scaled.width;
 
         const w = Math.ceil(sourceScale);
         const h = w;
@@ -49,18 +48,44 @@ class Analyzer {
             }
             canvases.push(c);
         }
-
-        if(settings.useCompatMode){
-            for(let i = 0; i < canvases.length; i++){
-                const image = new Image();
-                await new Promise(r => image.onload = r, image.setAttribute('src', canvases[i].toDataURL()));
-                image.classList.add('shade');
-                image.dataset.shade = canvases[i].dataset.shade;
-                canvases[i] = image;
-            }
-        }
-
         LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::create canvases');
         return canvases;
+    }
+
+    async applyCompatMode(canvases){
+        LOG_TIMINGS && console.time('COLORHELPER::Analyzer::apply compat mode');
+        for(let i = 0; i < canvases.length; i++){
+            const image = new Image();
+            await new Promise(r => image.onload = r, image.setAttribute('src', canvases[i].toDataURL()));
+            image.classList.add('shade');
+            image.dataset.shade = canvases[i].dataset.shade;
+            canvases[i] = image;
+        }
+        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::apply compat mode');
+    }
+
+    /**
+     * analyze the image and return an array of canvases
+     * 
+     * @param  {} lookup 
+     * @param {*} crops 
+     * @returns HTMLCanvasElement[]
+     */
+    async analyze(lookup, crops) {
+
+        const imageData = crops.scaled.getContext('2d').getImageData(0, 0, crops.scaled.width, crops.scaled.height);
+        let shades = this.extractShades(imageData.data, lookup);
+        
+        const canvases = this.buildShadeCanvases(shades, crops);
+
+        if(settings.useCompatMode){
+            await this.applyCompatMode(canvases);
+        }
+        
+        return canvases;
+    }
+
+    async analyzeChart(lookup, crops) {
+
     }
 }
