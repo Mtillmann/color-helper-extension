@@ -144,9 +144,9 @@ async function showAnalysis(crops) {
 
   await lookup.init(settings.showShadePrefix);
   const analyzer = new Analyzer()
-  const shadeCanvases = await analyzer.analyze(lookup, crops);
+  const canvases = ANALYZE_OPTIONS.type === 'colors' ? await analyzer.analyze(lookup, crops):await analyzer.analyzeChart(lookup, crops);
 
-  shadeCanvases.forEach(c => {
+  canvases.forEach(c => {
     target.insertAdjacentElement('afterbegin', c);
   });
 
@@ -496,7 +496,6 @@ function showErrorMessage(){
 
 chrome.runtime.onMessage.addListener(async (req, sender, res) => {
   if (req.message === 'init') {
-    console.log(req.options);
     
     res({})
     await initialize();
