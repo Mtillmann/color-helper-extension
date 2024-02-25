@@ -39,6 +39,13 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ## Changelog
 
+### 0.0.6
+
+- rebuild the options dialog page
+- added popup to select either selection, dom or viewport mode
+- added floating-ui to handle viewport edges
+- misc improvements
+
 ### 0.0.5
 
 - Firefox Permissions request MV3 fix
