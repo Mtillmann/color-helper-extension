@@ -88,10 +88,10 @@ function template() {
   <div class="tooltip">
     <ul>
       <li><span class="color-name"></span> <small>(&Delta;E=<span class="delta-e"></span>)</small></li>
-      <li><strong>Color Shade: <span class="shade-name"></span></strong></li>
-      <li>RGB: <span class="color-rgb"></span></li>
-      <li>HEX: <span class="color-hex"></span></li>
-      <li class="hint"><small>Click to lock the tooltip</small></li>
+      <li>Color Shade: <strong class="shade-name"></strong></li>
+      <li>RGB: <span class="color-rgb"></span> <a href="#" class="copy-button">copy</a></li>
+      <li>HEX: <span class="color-hex"></span> <a href="#" class="copy-button">copy</a></li>
+      <li class="hint"><small>Click to lock/unlock floating info<br>Press Escape to close</small></li>
     </ul>
     
 
@@ -241,8 +241,6 @@ async function showAnalysis(crops) {
       return;
     }
 
-
-
     target.querySelector('.active')?.classList.remove('active');
     tooltip.classList.remove('visible');
   });
@@ -269,6 +267,17 @@ async function showAnalysis(crops) {
     }
   });
 
+  tooltip.addEventListener('click', (e) => {
+    const cb = e.target.closest('.copy-button');
+    if (cb) {
+      e.preventDefault();
+      copyToClipboard(cb.previousElementSibling.textContent)
+      cb.textContent = 'copied!';
+      setTimeout(() => {
+        cb.textContent = 'copy';
+      }, 1000);
+    }
+  });
 
   document.getElementById('colorHelperBrowserExtensionInspectionOverlay').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
