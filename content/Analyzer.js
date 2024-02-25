@@ -1,5 +1,7 @@
 class Analyzer {
 
+
+    
     
     async analyze(lookup, crops) {
 

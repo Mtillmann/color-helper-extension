@@ -98,8 +98,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 })
 
-                console.log('FUCK')
-
             });
 
             if (group.shortcutId && commands[group.shortcutId]) {

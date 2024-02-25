@@ -53,7 +53,7 @@ const STATE = {
 }
 
 function renderPopupButtons() {
-    
+
     const target = document.querySelector('[data-tab="popup"]');
     target.innerHTML = '';
 
@@ -73,14 +73,21 @@ function renderPopupButtons() {
         <tbody>
 
         </tbody>
-      </table>`);
+      </table>
+      `);
 
-      const tbody = target.querySelectorAll('tbody')[i];
+        if (group.name === 'Settings') {
+            target.insertAdjacentHTML('beforeend', `
+                <p class="small text-muted">If you disable the "Settings" button, you can still access the settings by right-clicking the extension icon and selecting "Options".</p>
+            `);
+        }
 
-      const l = group.items.length;
-      for(let j = 0; j < l; j++){
-        const item = group.items[j];
-        tbody.insertAdjacentHTML('beforeend', `<tr data-group="${i}" data-index="${j}">
+        const tbody = target.querySelectorAll('tbody')[i];
+
+        const l = group.items.length;
+        for (let j = 0; j < l; j++) {
+            const item = group.items[j];
+            tbody.insertAdjacentHTML('beforeend', `<tr data-group="${i}" data-index="${j}">
           <td>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" ${item.show ? 'checked' : ''} data-bind-popup-property="${i},${j}" id="cb-${i}-${j}">
@@ -95,23 +102,23 @@ function renderPopupButtons() {
           <td class="down-cell"></td>
         </tr>`);
 
-        if(l === 1){
-            continue;
+            if (l === 1) {
+                continue;
+            }
+
+            const upCell = tbody.querySelectorAll('.up-cell')[j];
+            const downCell = tbody.querySelectorAll('.down-cell')[j];
+
+
+            if (j > 0) {
+                upCell.insertAdjacentHTML('beforeend', `<a href="#" class="move-button up">${ARROW_UP}</a>`);
+            }
+
+            if (j < l - 1) {
+                downCell.insertAdjacentHTML('beforeend', `<a href="#" class="move-button down">${ARROW_DOWN}</a>`);
+            }
+
         }
-
-        const upCell = tbody.querySelectorAll('.up-cell')[j];
-        const downCell = tbody.querySelectorAll('.down-cell')[j];
-
-
-        if( j > 0){
-            upCell.insertAdjacentHTML('beforeend', `<a href="#" class="move-button up">${ARROW_UP}</a>`);
-        }
-
-        if(j < l - 1){
-            downCell.insertAdjacentHTML('beforeend', `<a href="#" class="move-button down">${ARROW_DOWN}</a>`);
-        }
-
-      }
 
     }
 }
@@ -200,9 +207,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderPopupButtons();
 
     document.addEventListener('click', e => {
-        
+
         const t = e.target.closest('.move-button');
-        if(t){
+        if (t) {
             e.preventDefault();
             const tr = t.closest('tr');
             const group = parseInt(tr.dataset.group);
@@ -214,7 +221,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             STATE.popupGroups[group].items[index] = target;
             STATE.popupGroups[group].items[index + direction] = source;
-            
+
             renderPopupButtons();
             apply();
         }
@@ -222,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     ['change', 'input'].forEach(eventName => {
         document.addEventListener(eventName, e => {
-            if('bindPopupProperty' in e.target.dataset){
+            if ('bindPopupProperty' in e.target.dataset) {
                 const group = parseInt(e.target.closest('tr').dataset.group);
                 const index = parseInt(e.target.closest('tr').dataset.index);
                 STATE.popupGroups[group].items[index].show = e.target.checked;
