@@ -120,13 +120,13 @@ function template() {
       <tbody>
         
         <tr class="underline">
-          <td class="label">RGB</td>
-          <td><span class="color-rgb"></span></td>
+          <td class="label nowrap">RGB</td>
+          <td><span class="color-rgb copy-value"></span></td>
           <td class="has-copy-button"><a href="#" class="copy-button">copy</a></td>
         </tr>
         <tr class="underline">
-          <td class="label">HEX</td>
-          <td><span class="color-hex"></span></td>
+          <td class="label nowrap">HEX</td>
+          <td><span class="color-hex copy-value"></span></td>
           <td class="has-copy-button">
             <a href="#" class="copy-button">
               copy
@@ -369,7 +369,7 @@ async function showAnalysis(crops) {
     const cb = e.target.closest('.copy-button');
     if (cb) {
       e.preventDefault();
-      copyToClipboard(cb.previousElementSibling.textContent)
+      copyToClipboard(cb.closest('tr').querySelector('.copy-value').textContent)
       cb.textContent = 'copied!';
       setTimeout(() => {
         cb.textContent = 'copy';
