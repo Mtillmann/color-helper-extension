@@ -346,16 +346,10 @@
       position: relative;
       cursor: pointer;
       border-radius: 0.2rem;
-      font-family: monospace;
-      font-size: 10px;
-      height: 14px;
-      line-height: 14px;
-      padding: 0 4px;
-      background-color: var(--text-color);
-      color: var(--background-color);
-      margin-left: auto;
+      font-size: 90%;
       opacity: 0.6;
       transition: opacity 0.2s;
+      text-decoration: underline;
 
       &:hover {
         opacity: 1;

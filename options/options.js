@@ -34,7 +34,8 @@ const STATE = {
     showCustomAnalyzerBackgroundPicker: false,
 
     popupGroups: [],
-
+    showMatchQuality: false,
+    showAlternativeShade: false,
     logTimings: false,
 
     useCompatMode: false,
