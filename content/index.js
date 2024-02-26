@@ -20,8 +20,6 @@ let SELECTION_START = {
 //firefox has no window object in content scripts
 const $FloatingUIDOM = window?.FloatingUIDOM ?? globalThis?.FloatingUIDOM;
 
-console.log({ $FloatingUIDOM })
-
 const lookup = new Lookup();
 
 function componentToHex(c) {
@@ -337,8 +335,6 @@ async function getSelectedPixels() {
 
   const pixelsToProcess = parseInt(settings.maxPixels);
 
-  console.log({ pixelsToProcess, x: settings.maxPixels })
-
   let scaledWidth = width;
   let scaledHeight = height;
 
@@ -452,8 +448,6 @@ async function initialize() {
 
   LOG_TIMINGS = settings.logTimings;
   CHARTDOWNSAMPLE = settings.chartDownSampleFactor;
-
-  console.log({ settings })
 
   selectionOverlay = document.createElement('div');
   selectionOverlay.setAttribute('id', 'colorHelperBrowserExtensionSelectionOverlay');

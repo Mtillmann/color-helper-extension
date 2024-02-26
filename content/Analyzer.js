@@ -23,58 +23,6 @@ class Analyzer {
         return extractedShades;
     }
 
-    extractColors(imageDataData, lookup){
-        LOG_TIMINGS && console.time('COLORHELPER::Analyzer::extract Colors');
-        let extractedColors = {};
-        
-console.log({CHARTDOWNSAMPLE})
-
-        const halfSampleFactor = CHARTDOWNSAMPLE / 2;
-
-        const l = imageDataData.length / 4;
-        for (let i = 0; i < l; i++) {
-            
-
-            const r = (imageDataData[i * 4 + 0] >> halfSampleFactor) << halfSampleFactor;
-            const g = (imageDataData[i * 4 + 1] >> halfSampleFactor) << halfSampleFactor;
-            const b = (imageDataData[i * 4 + 2] >> halfSampleFactor) << halfSampleFactor;
-    
-            
-            const color = lookup.bestMatch(r, g, b).colors[0].alias[0].replace(/[^a-zA-Z0-9]/g, '');            
-            if (!(color in extractedColors)) {
-                extractedColors[color] = [i];
-                continue;
-            }
-            extractedColors[color].push(i);
-        }
-        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::extract Colors');
-
-        const maxArea = l * 0.25;
-        //first remove all colors that use more than 25% of the image, probably background
-        extractedColors = Object.entries(extractedColors).reduce((acc, entry) => {
-            if(entry[1].length <= maxArea){
-                acc[entry[0]] = entry[1];
-            }
-            return acc;
-        }, {});
-
-        //next, recalculate the total area, 
-        const actualArea = Object.values(extractedColors).reduce((acc, v) => acc + v.length, 0);
-
-        //and remove all colors that use less than 1% of the image
-        const minArea = actualArea * 0.01;
-        extractedColors = Object.entries(extractedColors).reduce((acc, entry) => {
-            if(entry[1].length > minArea){
-                acc[entry[0]] = entry[1];
-            }
-            return acc;
-        }, {});
-
-        
-        return extractedColors;
-    }
-
-
     buildShadeCanvases(shades, crops){
         LOG_TIMINGS && console.time('COLORHELPER::Analyzer::create canvases');
         let canvases = [];
@@ -94,37 +42,6 @@ console.log({CHARTDOWNSAMPLE})
             c.height = crops.full.height;
 
             for (let p of shades[shade]) {
-                const x = Math.ceil((p % crops.scaled.width) * sourceScale)
-                const y = Math.ceil((~~(p / crops.scaled.width)) * sourceScale)
-                context.drawImage(crops.full, x, y, w, h, x, y, w, h);
-            }
-            canvases.push(c);
-        }
-        LOG_TIMINGS && console.timeEnd('COLORHELPER::Analyzer::create canvases');
-        return canvases;
-    }
-
-    buildColorCanvases(colors, crops){
-        LOG_TIMINGS && console.time('COLORHELPER::Analyzer::create canvases');
-        let canvases = [];
-        const sourceScale = crops.full.width / crops.scaled.width;
-
-        const w = Math.ceil(sourceScale);
-        const h = w;
-
-        for (let color in colors) {
-
-            const c = document.createElement('canvas');
-            c.dataset.shade = color;
-            c.classList.add('shade');
-            const context = c.getContext('2d');
-
-            c.width = crops.full.width;
-            c.height = crops.full.height;
-
-            console.log(colors[color].length);
-
-            for (let p of colors[color]) {
                 const x = Math.ceil((p % crops.scaled.width) * sourceScale)
                 const y = Math.ceil((~~(p / crops.scaled.width)) * sourceScale)
                 context.drawImage(crops.full, x, y, w, h, x, y, w, h);
@@ -168,27 +85,4 @@ console.log({CHARTDOWNSAMPLE})
         return canvases;
     }
 
-    async analyzeChart(lookup, crops) {
-
-        const imageData = crops.scaled.getContext('2d').getImageData(0, 0, crops.scaled.width, crops.scaled.height);
-        let colors = this.extractColors(imageData.data, lookup);
-        
-    console.log(colors);
-
-        const canvases = this.buildColorCanvases(colors, crops);
-
-        if(settings.useCompatMode){
-            await this.applyCompatMode(canvases);
-        }
-        
-        canvases.forEach(c => {
-            const x = c.cloneNode();
-            x.style.backgroundColor = 'blue';
-            document.body.appendChild(x);
-        });
-
-
-        return canvases;
-
-    }
 }
