@@ -133,10 +133,11 @@ function template() {
             </a>
           </td>
         </tr>
-        <tr>
-          <td colspan="3" class="hint">
+        <tr class="hint">
+          <td colspan="3">
             <small>Click to lock/unlock floating info</small>
           </td>
+        </tr>
       </tbody>
 
     </table>
@@ -232,8 +233,9 @@ async function showAnalysis(crops) {
     const scaledPixel = scaledContext.getImageData(scaledX, scaledY, 1, 1).data;
 
     tooltip.style.setProperty('--swatch-color', `rgb(${scaledPixel.slice(0, 3).join(',')})`);
-
     tooltip.classList.add('visible');
+
+    console.log(settings);
 
     const virtualEl = {
       getBoundingClientRect() {
@@ -267,6 +269,7 @@ async function showAnalysis(crops) {
     const shade = lookup.shade(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
     const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
 
+    
     target.querySelector('.active')?.classList.remove('active');
     target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
 
@@ -296,12 +299,12 @@ async function showAnalysis(crops) {
 
     let altShade = false;
     let i = 0;
-    while(!altShade){
-      if(!color.colors[0].ginifab[i]){
+    while (!altShade) {
+      if (!color.colors[0].ginifab[i]) {
         break;
       }
 
-      if(color.colors[0].ginifab[i] !== shade){
+      if (color.colors[0].ginifab[i] !== shade) {
         altShade = color.colors[0].ginifab[i];
         break;
       }
@@ -309,6 +312,9 @@ async function showAnalysis(crops) {
       i++;
     }
 
+    if (!settings.pauseOnClick) {
+      tooltip.querySelector('.hint').style.setProperty('display', 'none');
+    }
 
 
     tooltip.querySelector('.shade-name').textContent = shade;
