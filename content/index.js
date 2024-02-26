@@ -135,7 +135,7 @@ function template() {
         </tr>
         <tr class="hint">
           <td colspan="3">
-            <small>Click to lock/unlock floating info</small>
+            <small>Click to pin info box</small>
           </td>
         </tr>
       </tbody>
