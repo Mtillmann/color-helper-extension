@@ -267,18 +267,52 @@
   }
 
   .tooltip {
+    font-family: sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    background: var(--background-color);
+    color: var(--text-color);
+
+
+    position: absolute;
+    padding: 4px;
+    border-radius: 0.2rem;
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.175);
+    z-index: 24;
+
+
+    display:none;
+
     & ul {
       list-style: none;
       padding: 0;
       margin: 0;
 
+      & li {
+        position:relative;
+        display: flex;
+ 
+        padding:3px;
+      }
+
       & li:not(:last-child) {
-        margin-bottom: 0.125rem;
-        border-bottom: 1px solid var(--text-color);
+        
+        
+        &::after{
+          content:"";
+          opacity: 0.5;
+          position:absolute;
+          bottom:0;
+          left:0;
+          width:100%;
+          height:1px;
+          border-bottom: 1px solid var(--text-color);
+        }
+        
       }
 
       & li:first-child {
-        font-size: 1rem;
+        font-size: 120%;
         padding-left: 14px;
         position: relative;
 
@@ -295,6 +329,9 @@
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.175);
         }
 
+        & small {
+          font-size: 60%;
+        }
 
       }
 
@@ -303,41 +340,44 @@
       }
 
       & small {
-        font-size: 0.625rem;
+        font-size: 75%;
       }
 
       .hint {
         text-align: center;
         opacity: 0.8;
+        line-height: 1.2;
       }
 
+      
+
       .copy-button{
+        margin-left: auto;
         cursor: pointer;
         opacity: 0.6;
-        margin-left:4px;
+         
         transition: opacity 0.2s;
         &:hover {
           opacity: 1;
           text-decoration: underline;
         }
       }
+
+      .label{
+        margin-right: 3px;
+      }
+
+      & kbd{
+        background-color: var(--text-color);
+        color: var(--background-color);
+        font-family: monospace;
+        padding: 1px 2px;
+        border-radius: 2px;
+      }
+
     }
 
-    font-family: sans-serif;
-    line-height: 1.25;
-    font-size: 0.825rem;
-    background: var(--background-color);
-    color: var(--text-color);
 
-
-    position: absolute;
-    padding: 4px;
-    border-radius: 0.2rem;
-    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.175);
-    z-index: 24;
-
-
-    display:none;
 
     &.visible {
       display: block;

@@ -91,10 +91,10 @@ function template() {
   <div class="tooltip">
     <ul>
       <li><span class="color-name"></span> <small>(&Delta;E=<span class="delta-e"></span>)</small></li>
-      <li>Color Shade: <strong class="shade-name"></strong></li>
-      <li>RGB: <span class="color-rgb"></span> <a href="#" class="copy-button">copy</a></li>
-      <li>HEX: <span class="color-hex"></span> <a href="#" class="copy-button">copy</a></li>
-      <li class="hint"><small>Click to lock/unlock floating info<br>Press Escape to close</small></li>
+      <li><span class="label">Color Shade:</span> <strong class="shade-name"></strong></li>
+      <li class="has-copy-button"><span class="label">RGB:</span> <span class="color-rgb"></span> <a href="#" class="copy-button">copy</a></li>
+      <li class="has-copy-button"><span class="label">HEX:</span> <span class="color-hex"></span> <a href="#" class="copy-button">copy</a></li>
+      <li class="hint"><small>Click to lock/unlock floating info<br><kbd>Escape</kbd> to close</small></li>
     </ul>
     
 
