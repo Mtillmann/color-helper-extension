@@ -20,6 +20,9 @@ let SELECTION_START = {
 //firefox has no window object in content scripts
 const $FloatingUIDOM = window?.FloatingUIDOM ?? globalThis?.FloatingUIDOM;
 
+//SVG icons are apparently not rendered in chrome...
+const copyIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAIFJREFUSIntlWEKgCAMRp9dIzpQHcST7x7rT0EMyY2av/xABJ174xvMoqpkaknN7gAcgADqWALsNkHpWCTAGihYgC0CuC+LI3kzdngPbj/TAL9rAiZgAvoAuXbPNH3GuwG19eilmGoP7TSNTE+Xhvcg4rlr8lpAxHOXej/aZ6X34AQO5Tvj/Jzy8QAAAABJRU5ErkJggg==';
+
 const lookup = new Lookup();
 
 function componentToHex(c) {
@@ -88,7 +91,46 @@ function template() {
   class="${classes.join(' ')}"
   style="${styles.join('; ')}"
 >
-  <div class="tooltip">
+  <div class="tooltip" style="--copy-icon:url(${copyIcon})">
+    <a href="#" title="close" class="close-button">&#10005;</a>
+    <table>
+      <tbody>
+        <tr>
+          <td colspan="2" class="color-name"></td>
+          <td class="small">
+            &Delta;E=<span class="delta-e"></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" class="color-line"></td>
+        </tr>
+        <tr class="underline">
+          <td class="label">Shade</td>
+          <td><strong class="shade-name"></strong></td>
+          <td class="shade-perc"></td>
+        </tr>
+        <tr class="underline">
+          <td class="label">RGB</td>
+          <td><span class="color-rgb"></span></td>
+          <td class="has-copy-button"><a href="#" class="copy-button">copy</a></td>
+        </tr>
+        <tr class="underline">
+          <td class="label">HEX</td>
+          <td><span class="color-hex"></span></td>
+          <td class="has-copy-button">
+            <a href="#" class="copy-button">
+              copy
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" class="hint">
+            <small>Click to lock/unlock floating info</small>
+          </td>
+      </tbody>
+
+    </table>
+    <!--
     <ul>
       <li><span class="color-name"></span> <small>(&Delta;E=<span class="delta-e"></span>)</small></li>
       <li><span class="label">Color Shade:</span> <strong class="shade-name"></strong></li>
@@ -96,7 +138,7 @@ function template() {
       <li class="has-copy-button"><span class="label">HEX:</span> <span class="color-hex"></span> <a href="#" class="copy-button">copy</a></li>
       <li class="hint"><small>Click to lock/unlock floating info<br><kbd>Escape</kbd> to close</small></li>
     </ul>
-    
+    -->
 
   </div>
 
@@ -212,12 +254,12 @@ async function showAnalysis(crops) {
       }
     };
 
-
-    
-
     $FloatingUIDOM.computePosition(virtualEl, tooltip, {
       placement: "right-start",
-      middleware: [$FloatingUIDOM.offset(10), $FloatingUIDOM.flip(), $FloatingUIDOM.shift()]
+      middleware: [$FloatingUIDOM.offset({
+        mainAxis: 12,
+        crossAxis: 18
+      }), $FloatingUIDOM.flip(), $FloatingUIDOM.shift()]
     }).then(({ x, y }) => {
       Object.assign(tooltip.style, {
         top: `${y}px`,
