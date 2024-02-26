@@ -95,14 +95,11 @@ function template() {
     <a href="#" title="close" class="close-button">&#10005;</a>
     <table>
       <tbody>
-        <tr>
+        <tr class="underline">
           <td colspan="2" class="color-name"></td>
           <td class="small">
             &Delta;E=<span class="delta-e"></span>
           </td>
-        </tr>
-        <tr>
-          <td colspan="3" class="color-line"></td>
         </tr>
         <tr class="underline">
           <td class="label">Shade</td>
