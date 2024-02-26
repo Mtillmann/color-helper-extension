@@ -92,20 +92,33 @@ function template() {
   style="${styles.join('; ')}"
 >
   <div class="tooltip" style="--copy-icon:url(${copyIcon})">
-    <a href="#" title="close" class="close-button">&#10005;</a>
     <table>
       <tbody>
         <tr class="underline">
-          <td colspan="2" class="color-name"></td>
-          <td class="small">
-            &Delta;E=<span class="delta-e"></span>
+          <td class="shade-cell">
+            <small>Color Shade</small>
+            <h2><strong class="shade-name"></strong></h2>
+
+            <small class="opacity-75">
+              <span class="alt-shade-name"></span>
+            </small>
+          </td>
+          <td class="name-cell">
+            <small>Color Name</small>
+            <h2 class="color-name"></h2>
+            
+            <small class="opacity-75">
+              <span class="quality"></span>
+              (&Delta;E=<span class="delta-e"></span>)
+            </small>
+            
           </td>
         </tr>
-        <tr class="underline">
-          <td class="label">Shade</td>
-          <td><strong class="shade-name"></strong></td>
-          <td class="shade-perc"></td>
-        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        
         <tr class="underline">
           <td class="label">RGB</td>
           <td><span class="color-rgb"></span></td>
@@ -127,16 +140,6 @@ function template() {
       </tbody>
 
     </table>
-    <!--
-    <ul>
-      <li><span class="color-name"></span> <small>(&Delta;E=<span class="delta-e"></span>)</small></li>
-      <li><span class="label">Color Shade:</span> <strong class="shade-name"></strong></li>
-      <li class="has-copy-button"><span class="label">RGB:</span> <span class="color-rgb"></span> <a href="#" class="copy-button">copy</a></li>
-      <li class="has-copy-button"><span class="label">HEX:</span> <span class="color-hex"></span> <a href="#" class="copy-button">copy</a></li>
-      <li class="hint"><small>Click to lock/unlock floating info<br><kbd>Escape</kbd> to close</small></li>
-    </ul>
-    -->
-
   </div>
 
   <div class="loading-spinner">
@@ -230,11 +233,7 @@ async function showAnalysis(crops) {
 
     tooltip.style.setProperty('--swatch-color', `rgb(${scaledPixel.slice(0, 3).join(',')})`);
 
-    //tooltip.style.setProperty('top', e.clientY + 'px');
-    //tooltip.style.setProperty('left', (10 + e.clientX) + 'px');
     tooltip.classList.add('visible');
-
-
 
     const virtualEl = {
       getBoundingClientRect() {
@@ -271,10 +270,52 @@ async function showAnalysis(crops) {
     target.querySelector('.active')?.classList.remove('active');
     target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
 
+    const deltaE = color.colors[0].deltaE;
+    let matchQuality;
+    if (deltaE === 0) {
+      matchQuality = 'exact match';
+    }
+    else if (deltaE <= 0.5) {
+      matchQuality = 'almost exact match';
+    }
+    else if (deltaE <= 1) {
+      matchQuality = 'very close match';
+    }
+    else if (deltaE <= 2) {
+      matchQuality = 'close match';
+    }
+    else if (deltaE <= 4) {
+      matchQuality = 'fair match';
+    }
+    else if (deltaE <= 5) {
+      matchQuality = 'moderate match';
+    }
+    else {
+      matchQuality = 'poor match';
+    }
+
+    let altShade = false;
+    let i = 0;
+    while(!altShade){
+      if(!color.colors[0].ginifab[i]){
+        break;
+      }
+
+      if(color.colors[0].ginifab[i] !== shade){
+        altShade = color.colors[0].ginifab[i];
+        break;
+      }
+
+      i++;
+    }
+
+
 
     tooltip.querySelector('.shade-name').textContent = shade;
+    tooltip.querySelector('.alt-shade-name').textContent = altShade || '';
     tooltip.querySelector('.color-name').textContent = color.colors[0].alias[0];
-    tooltip.querySelector('.delta-e').textContent = color.colors[0].deltaE.toFixed(2);
+    tooltip.querySelector('.quality').textContent = matchQuality;
+    tooltip.querySelector('.delta-e').textContent = deltaE.toFixed(2);
     tooltip.querySelector('.color-rgb').textContent = scaledPixel.slice(0, 3).join(',');
     tooltip.querySelector('.color-hex').textContent = rgbToHex(...scaledPixel.slice(0, 3));
 
