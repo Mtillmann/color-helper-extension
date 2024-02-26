@@ -282,7 +282,7 @@
 
 
     display:none;
-
+/*
     .color-line{
       &::before{
         display: block;
@@ -292,9 +292,8 @@
         box-shadow: 1px 1px 3px 0px var(--text-color);
         margin-bottom:2px;
       }
-
     }
-
+*/
     & td{
       padding:2px;
     }
