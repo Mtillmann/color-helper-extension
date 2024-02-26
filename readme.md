@@ -47,6 +47,7 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 - added copy buttons and hex values to the floating info window
 - make DeltaE display optional
 - optionally show ginifab shades
+- improved firefox compatibility
 
 ### 0.0.5
 
