@@ -18,6 +18,8 @@ const defaults = {
   logTimings: false,
   useCompatMode: false,
   showShadePrefix: true,
+  showMatchQuality: false,
+  showAlternativeShade: false,
   popupGroups: [
     {
       name: "Colors & Shades",
