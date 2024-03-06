@@ -32,6 +32,13 @@ If you want to use the extension icon to launch the picker, click the extensions
 2. Press `space` to take a screenshot of the current viewport
 3. Hover over the pixels to see the color name and shade
 
+### Analyze a DOM Element
+
+1. Click the extension icon or press `ALT + C` (`⌥ + C` on macOS)
+2. Press `D` to enter DOM mode, then select the element you want to analyze
+3. Hover over the pixels to see the color name and shade
+
+
 ### Show the options page
 
 Chromium: Right click the extension icon and select `Options`  
