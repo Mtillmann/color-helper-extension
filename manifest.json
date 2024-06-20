@@ -35,6 +35,8 @@
       "resources": [
         "/node_modules/@mtillmann/colors/dist/data/binaryLookup.bin",
         "/node_modules/@mtillmann/colors/dist/data/binaryLookupMaps.json",
+        "node_modules/@mtillmann/colors/dist/data/colorMap.json",
+        "node_modules/@mtillmann/colors/dist/data/lookupCube.json",
         "/data/shade_lookup.bin",
         "/data/colors.json",
         "/data/lookup.json"
