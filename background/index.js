@@ -99,6 +99,9 @@ function inject(tab, options = {type : 'colors', action : 'selection'}) {
     await chrome.scripting.executeScript({ files: ['content/Lookup.js'], target: { tabId: tab.id } })
     await chrome.scripting.executeScript({ files: ['content/index.js'], target: { tabId: tab.id } })
 
+    await chrome.scripting.executeScript({ files: [
+      'node_modules/@mtillmann/colors/dist/umd/colors.js',
+    ], target: { tabId: tab.id } })
 
     setTimeout(() => {
       chrome.tabs.sendMessage(tab.id, { message: 'init', options })

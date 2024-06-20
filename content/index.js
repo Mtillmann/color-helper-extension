@@ -24,6 +24,7 @@ const $FloatingUIDOM = window?.FloatingUIDOM ?? globalThis?.FloatingUIDOM;
 const copyIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAIFJREFUSIntlWEKgCAMRp9dIzpQHcST7x7rT0EMyY2av/xABJ174xvMoqpkaknN7gAcgADqWALsNkHpWCTAGihYgC0CuC+LI3kzdngPbj/TAL9rAiZgAvoAuXbPNH3GuwG19eilmGoP7TSNTE+Xhvcg4rlr8lpAxHOXej/aZ6X34AQO5Tvj/Jzy8QAAAABJRU5ErkJggg==';
 
 const lookup = new Lookup();
+let shadeLookup;
 
 function componentToHex(c) {
   const hex = c.toString(16);
@@ -198,12 +199,24 @@ async function showAnalysis(crops) {
     crops.full.classList.add('original');
   }
 
+  
+  const binaryLookupURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookup.bin")
+  const binaryLookupResponse = await fetch(binaryLookupURL);
+  const binaryLookup = await binaryLookupResponse.text();
+
+  const binaryLookupMapsURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookupMaps.json");
+  const binaryLookupMapsResponse = await fetch(binaryLookupMapsURL);
+  const binaryLookupMaps = await binaryLookupMapsResponse.json();
+
+  shadeLookup = new Colors.ShadeLookup(binaryLookup, binaryLookupMaps.byteToShadeOffset)
+
+  
 
   const tooltip = document.querySelector('#colorHelperBrowserExtensionInspectionOverlay .tooltip');
 
   await lookup.init(settings.showShadePrefix);
   const analyzer = new Analyzer()
-  const canvases = await analyzer.analyze(lookup, crops);
+  const canvases = await analyzer.analyze(shadeLookup, crops);
 
   canvases.forEach(c => {
     target.insertAdjacentElement('afterbegin', c);
@@ -264,7 +277,7 @@ async function showAnalysis(crops) {
     });
 
 
-    const shade = lookup.shade(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
+    const shade = shadeLookup.shadeByRGB(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
     const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
 
 
