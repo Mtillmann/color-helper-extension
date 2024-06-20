@@ -11,7 +11,7 @@ class Analyzer {
             const g = imageDataData[i * 4 + 1];
             const b = imageDataData[i * 4 + 2];
 
-            const shade = lookup.shade(r, g, b);
+            const shade = lookup.shadeByRGB(r, g, b);
             if (!(shade in extractedShades)) {
                 extractedShades[shade] = [i];
                 continue;
