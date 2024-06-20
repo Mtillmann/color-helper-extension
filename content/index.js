@@ -25,6 +25,7 @@ const copyIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADg
 
 const lookup = new Lookup();
 let shadeLookup;
+let colorLookup;
 
 function componentToHex(c) {
   const hex = c.toString(16);
@@ -206,10 +207,25 @@ async function showAnalysis(crops) {
 
   const binaryLookupMapsURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookupMaps.json");
   const binaryLookupMapsResponse = await fetch(binaryLookupMapsURL);
-  const binaryLookupMaps = await binaryLookupMapsResponse.json();
+  let binaryLookupMaps = await binaryLookupMapsResponse.json();
+
+  if(!settings.showShadePrefix){
+    for(const i in binaryLookupMaps.byteToShadeOffset){
+      binaryLookupMaps.byteToShadeOffset[i] = binaryLookupMaps.byteToShadeOffset[i].replace(/(Light|Dark) /, '');
+    }
+  }
 
   shadeLookup = new Colors.ShadeLookup(binaryLookup, binaryLookupMaps.byteToShadeOffset)
 
+  const colorMapURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/colorMap.json")
+  const colorMapResponse = await fetch(colorMapURL);
+  const colorMap = await colorMapResponse.json();
+
+  const lookupCubeURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/lookupCube.json")
+  const lookupCubeResponse = await fetch(lookupCubeURL);
+  const lookupCube = await lookupCubeResponse.json();
+
+  colorLookup = new Colors.ColorLookup(colorMap, lookupCube);
   
 
   const tooltip = document.querySelector('#colorHelperBrowserExtensionInspectionOverlay .tooltip');
@@ -275,11 +291,11 @@ async function showAnalysis(crops) {
         left: `${x}px`
       });
     });
-
+    console.log({chroma})
 
     const shade = shadeLookup.shadeByRGB(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
-    const color = lookup.bestMatch(pixel[0], pixel[1], pixel[2]);
-
+    const color = colorLookup.lookupByRGB(pixel[0], pixel[1], pixel[2], 1);
+    
 
     target.querySelector('.active')?.classList.remove('active');
     target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
