@@ -46,6 +46,11 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ## Changelog
 
+### 0.0.7
+
+- replaced hacky isit.red lookup code with [@mtillmann/colors](https://github.com/Mtillmann/colors)-library and [chroma.js](https://gka.github.io/chroma.js/) for better performance and smoother operation
+- minor style improvements/fixed typos
+
 ### 0.0.6
 
 - rebuild the options dialog page
@@ -53,7 +58,7 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 - added floating-ui to handle viewport edges
 - added copy buttons and hex values to the floating info window
 - make DeltaE display optional
-- optionally show ginifab shades
+- optionally show heuristic color shades
 - improved firefox compatibility
 
 ### 0.0.5
