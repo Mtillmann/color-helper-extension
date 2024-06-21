@@ -170,6 +170,41 @@ const permissionErrorMessage = `
 </div>
 `;
 
+async function initializeLookups() {
+  if (shadeLookup && colorLookup) {
+    return true;
+  }
+
+  const binaryLookupURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookup.bin")
+  const binaryLookupResponse = await fetch(binaryLookupURL);
+  const binaryLookup = await binaryLookupResponse.text();
+
+  const binaryLookupMapsURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookupMaps.json");
+  const binaryLookupMapsResponse = await fetch(binaryLookupMapsURL);
+  let binaryLookupMaps = await binaryLookupMapsResponse.json();
+
+  if (!settings.showShadePrefix) {
+    for (const i in binaryLookupMaps.byteToShadeOffset) {
+      binaryLookupMaps.byteToShadeOffset[i] = binaryLookupMaps.byteToShadeOffset[i].replace(/(Light|Dark) /, '');
+    }
+  }
+
+  shadeLookup = new Colors.ShadeLookup(binaryLookup, binaryLookupMaps.byteToShadeOffset)
+
+  const colorMapURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/colorMap.json")
+  const colorMapResponse = await fetch(colorMapURL);
+  const colorMap = await colorMapResponse.json();
+
+  const lookupCubeURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/lookupCube.json")
+  const lookupCubeResponse = await fetch(lookupCubeURL);
+  const lookupCube = await lookupCubeResponse.json();
+
+  colorLookup = new Colors.ColorLookup(lookupCube, colorMap);
+
+  return true;
+
+}
+
 
 async function showAnalysis(crops) {
 
@@ -200,33 +235,7 @@ async function showAnalysis(crops) {
     crops.full.classList.add('original');
   }
 
-  
-  const binaryLookupURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookup.bin")
-  const binaryLookupResponse = await fetch(binaryLookupURL);
-  const binaryLookup = await binaryLookupResponse.text();
-
-  const binaryLookupMapsURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/binaryLookupMaps.json");
-  const binaryLookupMapsResponse = await fetch(binaryLookupMapsURL);
-  let binaryLookupMaps = await binaryLookupMapsResponse.json();
-
-  if(!settings.showShadePrefix){
-    for(const i in binaryLookupMaps.byteToShadeOffset){
-      binaryLookupMaps.byteToShadeOffset[i] = binaryLookupMaps.byteToShadeOffset[i].replace(/(Light|Dark) /, '');
-    }
-  }
-
-  shadeLookup = new Colors.ShadeLookup(binaryLookup, binaryLookupMaps.byteToShadeOffset)
-
-  const colorMapURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/colorMap.json")
-  const colorMapResponse = await fetch(colorMapURL);
-  const colorMap = await colorMapResponse.json();
-
-  const lookupCubeURL = chrome.runtime.getURL("node_modules/@mtillmann/colors/dist/data/lookupCube.json")
-  const lookupCubeResponse = await fetch(lookupCubeURL);
-  const lookupCube = await lookupCubeResponse.json();
-
-  colorLookup = new Colors.ColorLookup(lookupCube, colorMap);
-  
+  await initializeLookups();
 
   const tooltip = document.querySelector('#colorHelperBrowserExtensionInspectionOverlay .tooltip');
 
@@ -293,11 +302,11 @@ async function showAnalysis(crops) {
         left: `${x}px`
       });
     });
-    
+
 
     const shade = shadeLookup.shadeByRGB(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
     const color = colorLookup.lookupByRGB(pixel[0], pixel[1], pixel[2], 1);
-    
+
 
     target.querySelector('.active')?.classList.remove('active');
     target.querySelector(`[data-shade="${shade}"]`)?.classList.add('active');
