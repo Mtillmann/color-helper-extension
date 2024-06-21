@@ -93,15 +93,22 @@ function inject(tab, options = {type : 'colors', action : 'selection'}) {
     await chrome.scripting.executeScript({ files: ['content/copyToClipboard.js'], target: { tabId: tab.id } })
     await chrome.scripting.executeScript({ files: ['content/floating-ui.core-1.6.0.umd.js'], target: { tabId: tab.id } })
     await chrome.scripting.executeScript({ files: ['content/floating-ui.dom-1.6.3.umd.js'], target: { tabId: tab.id } })
+    /*
     await chrome.scripting.executeScript({ files: ['content/DeltaE00.js'], target: { tabId: tab.id } })
     await chrome.scripting.executeScript({ files: ['content/RGBToLAB.js'], target: { tabId: tab.id } })
     await chrome.scripting.executeScript({ files: ['content/Analyzer.js'], target: { tabId: tab.id } })
     await chrome.scripting.executeScript({ files: ['content/Lookup.js'], target: { tabId: tab.id } })
+    */
     await chrome.scripting.executeScript({ files: ['content/index.js'], target: { tabId: tab.id } })
 
+    /*
     await chrome.scripting.executeScript({ files: [
-      'node_modules/@mtillmann/colors/dist/umd/colors.js',
+      
+    ], target: { tabId: tab.id } })
+*/
+    await chrome.scripting.executeScript({ files: [
       'node_modules/chroma-js/chroma.js',
+      'node_modules/@mtillmann/colors/dist/umd/colors.js',
     ], target: { tabId: tab.id } })
 
     

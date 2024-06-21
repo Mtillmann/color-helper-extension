@@ -225,7 +225,7 @@ async function showAnalysis(crops) {
   const lookupCubeResponse = await fetch(lookupCubeURL);
   const lookupCube = await lookupCubeResponse.json();
 
-  colorLookup = new Colors.ColorLookup(colorMap, lookupCube);
+  colorLookup = new Colors.ColorLookup(lookupCube, colorMap);
   
 
   const tooltip = document.querySelector('#colorHelperBrowserExtensionInspectionOverlay .tooltip');
@@ -291,7 +291,7 @@ async function showAnalysis(crops) {
         left: `${x}px`
       });
     });
-    console.log({chroma})
+    
 
     const shade = shadeLookup.shadeByRGB(scaledPixel[0], scaledPixel[1], scaledPixel[2]);
     const color = colorLookup.lookupByRGB(pixel[0], pixel[1], pixel[2], 1);
@@ -327,12 +327,12 @@ async function showAnalysis(crops) {
     let altShade = false;
     let i = 0;
     while (!altShade) {
-      if (!color.colors[0].ginifab[i]) {
+      if (!color.colors[0].altShade[i]) {
         break;
       }
 
-      if (color.colors[0].ginifab[i] !== shade) {
-        altShade = color.colors[0].ginifab[i];
+      if (color.colors[0].altShade[i] !== shade) {
+        altShade = color.colors[0].altShade[i];
         break;
       }
 
