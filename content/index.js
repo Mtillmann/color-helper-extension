@@ -23,7 +23,7 @@ const $FloatingUIDOM = window?.FloatingUIDOM ?? globalThis?.FloatingUIDOM;
 //SVG icons are apparently not rendered in chrome...
 const copyIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAIFJREFUSIntlWEKgCAMRp9dIzpQHcST7x7rT0EMyY2av/xABJ174xvMoqpkaknN7gAcgADqWALsNkHpWCTAGihYgC0CuC+LI3kzdngPbj/TAL9rAiZgAvoAuXbPNH3GuwG19eilmGoP7TSNTE+Xhvcg4rlr8lpAxHOXej/aZ6X34AQO5Tvj/Jzy8QAAAABJRU5ErkJggg==';
 
-const lookup = new Lookup();
+//const lookup = new Lookup();
 let shadeLookup;
 let colorLookup;
 
@@ -230,7 +230,9 @@ async function showAnalysis(crops) {
 
   const tooltip = document.querySelector('#colorHelperBrowserExtensionInspectionOverlay .tooltip');
 
+  /*
   await lookup.init(settings.showShadePrefix);
+  */
   const analyzer = new Analyzer()
   const canvases = await analyzer.analyze(shadeLookup, crops);
 

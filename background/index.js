@@ -27,20 +27,20 @@ const defaults = {
       shortcutId: "color-helper",
       items: [
         {
-          id : "selection",
+          id: "selection",
           icon: 'SELECTION',
           action: "Selection",
           show: true
         },
         {
-          id : "dom",
+          id: "dom",
           icon: 'DOMNODE',
           action: "DOM Element",
           shortcut: "D",
           show: true
         },
         {
-          id : "viewport",
+          id: "viewport",
           icon: 'VIEWPORT',
           action: "Viewport",
           shortcut: "SPACE",
@@ -80,7 +80,7 @@ chrome.storage.sync.get((store) => {
   })
 })
 
-function inject(tab, options = {type : 'colors', action : 'selection'}) {
+function inject(tab, options = { type: 'colors', action: 'selection' }) {
   chrome.tabs.sendMessage(tab.id, { message: 'init', options }, (res) => {
     if (res) {
       clearTimeout(timeout)
@@ -90,28 +90,19 @@ function inject(tab, options = {type : 'colors', action : 'selection'}) {
   var timeout = setTimeout(async () => {
     await chrome.scripting.insertCSS({ files: ['content/index.css'], target: { tabId: tab.id } })
 
-    await chrome.scripting.executeScript({ files: ['content/copyToClipboard.js'], target: { tabId: tab.id } })
-    await chrome.scripting.executeScript({ files: ['content/floating-ui.core-1.6.0.umd.js'], target: { tabId: tab.id } })
-    await chrome.scripting.executeScript({ files: ['content/floating-ui.dom-1.6.3.umd.js'], target: { tabId: tab.id } })
-    /*
-    await chrome.scripting.executeScript({ files: ['content/DeltaE00.js'], target: { tabId: tab.id } })
-    await chrome.scripting.executeScript({ files: ['content/RGBToLAB.js'], target: { tabId: tab.id } })
-    await chrome.scripting.executeScript({ files: ['content/Analyzer.js'], target: { tabId: tab.id } })
-    await chrome.scripting.executeScript({ files: ['content/Lookup.js'], target: { tabId: tab.id } })
-    */
-    await chrome.scripting.executeScript({ files: ['content/index.js'], target: { tabId: tab.id } })
+    await chrome.scripting.executeScript({
+      files: [
+        'content/copyToClipboard.js',
+        'content/floating-ui.core-1.6.0.umd.js',
+        'content/floating-ui.dom-1.6.3.umd.js',
+        'content/Analyzer.js',
+        'content/index.js',
+        'node_modules/chroma-js/chroma.js',
+        'node_modules/@mtillmann/colors/dist/umd/colors.js',
+      ], target: { tabId: tab.id }
+    })
 
-    /*
-    await chrome.scripting.executeScript({ files: [
-      
-    ], target: { tabId: tab.id } })
-*/
-    await chrome.scripting.executeScript({ files: [
-      'node_modules/chroma-js/chroma.js',
-      'node_modules/@mtillmann/colors/dist/umd/colors.js',
-    ], target: { tabId: tab.id } })
 
-    
 
     setTimeout(() => {
       chrome.tabs.sendMessage(tab.id, { message: 'init', options })
@@ -136,7 +127,7 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener((req, sender, res) => {
 
-  if(req.message === 'inject') {
+  if (req.message === 'inject') {
     chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
       inject(tab[0], req.options)
     });
