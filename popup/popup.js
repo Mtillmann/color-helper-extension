@@ -7,23 +7,7 @@ function inject(tab) {
             clearTimeout(timeout)
         }
     })
-
-    var timeout = setTimeout(() => {
-        chrome.scripting.insertCSS({ files: ['content/index.css'], target: { tabId: tab.id } })
-
-
-        chrome.scripting.executeScript({ files: ['content/DeltaE00.js'], target: { tabId: tab.id } })
-        chrome.scripting.executeScript({ files: ['content/RGBToLAB.js'], target: { tabId: tab.id } })
-        chrome.scripting.executeScript({ files: ['content/Analyzer.js'], target: { tabId: tab.id } })
-        chrome.scripting.executeScript({ files: ['content/Lookup.js'], target: { tabId: tab.id } })
-        chrome.scripting.executeScript({ files: ['content/index.js'], target: { tabId: tab.id } })
-
-        setTimeout(() => {
-            chrome.tabs.sendMessage(tab.id, { message: 'init' })
-        }, 100)
-    }, 100)
 }
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')

@@ -395,13 +395,9 @@ async function showAnalysis(crops) {
     });
   }
 
-  function close(e) {
-    document.querySelector('#colorHelperBrowserExtensionInspectionOverlay').remove();
-  }
-
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Escape') {
-      close()
+      removeAnalyzer()
     }
   });
 
@@ -419,7 +415,7 @@ async function showAnalysis(crops) {
 
   document.getElementById('colorHelperBrowserExtensionInspectionOverlay').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
-      close();
+      removeAnalyzer();
     }
   });
 
