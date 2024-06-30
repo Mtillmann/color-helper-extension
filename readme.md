@@ -48,7 +48,7 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ### 0.0.8
 
-- added optional context menu and special context menu shortcut to analyze images
+- added optional context menu and special context menu shortcut to analyze images**
 - remove some unused code
 
 ### 0.0.7
@@ -101,6 +101,7 @@ Firefox support mainly hinged on [hans_squared's effort](https://discourse.mozil
 
 ---
 
+\*\* does not work on all websites, falls back to DOM node analysis
 
 \* Some browsers will complain about the extension being "unverified" and "unsafe" when installing it from the Chrome Web Store instead of their first-party web stores. Since the extension is reviewed by Google, it is safe to install. 
 
