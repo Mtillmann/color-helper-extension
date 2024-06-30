@@ -693,18 +693,15 @@ chrome.runtime.onMessage.addListener(async (req, sender, res) => {
 
     if (ANALYZE_OPTIONS.info) {
       const srcUrl = ANALYZE_OPTIONS.info.srcUrl;
-      //make srcUrl safe for css attribute selector
-      const safeSrcUrl = srcUrl.replace(/[^a-zA-Z0-9]/g, c => '\\' + c);
-      const elems = document.querySelectorAll(`img[src="${safeSrcUrl}"]`);
-
+      const elems = [...document.images].filter(i => i.src === srcUrl);
       const elem = [...elems].filter(e => {
         const rect = e.getBoundingClientRect();
-
+        //check if the image is at least partially visible
         return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+          rect.bottom >= 0 &&
+          rect.right >= 0
         );
       }).pop();
 
