@@ -49,6 +49,9 @@
             <a class="nav-link" data-target="shortcuts" href="#">Shortcuts</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-target="context" href="#">Context Menu</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-target="reset" href="#">Reset</a>
           </li>
           <li class="nav-item">
@@ -229,8 +232,6 @@
             Differentiate color shades into light/[regular]/dark
           </label>
         </div>
-
-
       </div>
 
 
@@ -263,6 +264,20 @@
 
 
       </div>
+
+      <div class="col-8 col-xl-10 narrow d-none" data-tab="context">
+
+        <h2>Context Menu</h2>
+
+        <div class="form-check mt-3">
+          <input class="form-check-input" type="checkbox" id="showContextMenuCheckbox"
+            data-bind-property="showContextMenu">
+          <label class="form-check-label" for="showContextMenuCheckbox">
+            Add Analyze Options to Context Menu
+          </label>
+        </div>
+      </div>
+
       <div class="col-8 col-xl-10 narrow d-none" data-tab="reset">
 
 
