@@ -153,3 +153,64 @@ chrome.runtime.onMessage.addListener((req, sender, res) => {
 
   return true
 })
+
+
+
+
+chrome.runtime.onInstalled.addListener(() => {
+  [
+    {
+      title: 'Inspect Image',
+      id: 'Inspect_Image',
+      contexts: ['image']
+    },
+    {
+      title: 'Inspect Selection',
+      id: 'che_inspect_selection',
+      contexts: ['all']
+    },
+    {
+      title: 'Inspect DOM Element',
+      id: 'che_inspect_dom_element',
+      contexts: ['all']
+    },
+    {
+      title: 'Inspect Viewport',
+      id: 'che_inspect_viewport',
+      contexts: ['all']
+    },
+    {
+      id: 'separator',
+      type: 'separator',
+      contexts: ['all']
+    },
+    {
+      title: 'Open Settings',
+      id: 'che_settings',
+      contexts: ['all']
+    }
+  ].forEach((item) => {
+    chrome.contextMenus.create(item)
+  });
+
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab, kk) => {
+  switch (info.menuItemId) {
+    case 'che_inspect_selection':
+      inject(tab)
+      break;
+    case 'che_inspect_dom_element':
+      inject(tab, { type: 'colors', action: 'dom' })
+      break;
+    case 'che_inspect_viewport':
+      inject(tab, { type: 'colors', action: 'viewport' })
+      break;
+    case 'che_settings':
+      chrome.runtime.openOptionsPage()
+      break;
+    case 'Inspect_Image':
+      chrome.tabs.create({ url: 'inspect.html' })
+      break;
+  }
+});
