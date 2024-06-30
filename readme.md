@@ -48,7 +48,7 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ### 0.0.8
 
-- added context optional context menu and context menu shortcut to analyze image
+- added optional context menu and special context menu shortcut to analyze images
 - remove some unused code
 
 ### 0.0.7
