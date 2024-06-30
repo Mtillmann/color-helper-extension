@@ -46,6 +46,11 @@ Firefox: Navigate to `about:addons` and find the extension in the list, then cli
 
 ## Changelog
 
+### 0.0.8
+
+- added context optional context menu and context menu shortcut to analyze image
+- remove some unused code
+
 ### 0.0.7
 
 - replaced hacky isit.red lookup code with [@mtillmann/colors](https://github.com/Mtillmann/colors)-library and [chroma.js](https://gka.github.io/chroma.js/) for better performance and smoother operation
