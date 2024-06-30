@@ -20,6 +20,7 @@ const defaults = {
   showShadePrefix: true,
   showMatchQuality: false,
   showAlternativeShade: false,
+  showContextMenu: true,
   popupGroups: [
     {
       name: "Colors & Shades",
@@ -62,6 +63,38 @@ const defaults = {
   ]
 }
 
+const CONTEXTMENUITEMS = [
+  {
+    title: 'Analyze Image',
+    id: 'che_analyze_image',
+    contexts: ['image']
+  },
+  {
+    title: 'Analyze Selection',
+    id: 'che_analyze_selection',
+    contexts: ['all']
+  },
+  {
+    title: 'Analyze DOM Element',
+    id: 'che_analyze_dom_element',
+    contexts: ['all']
+  },
+  {
+    title: 'Analyze Viewport',
+    id: 'che_analyze_viewport',
+    contexts: ['all']
+  },
+  {
+    id: 'separator',
+    type: 'separator',
+    contexts: ['all']
+  },
+  {
+    title: 'Open Settings',
+    id: 'che_settings',
+    contexts: ['all']
+  }
+]
 
 
 chrome.storage.sync.get((store) => {
@@ -69,6 +102,7 @@ chrome.storage.sync.get((store) => {
   Object.assign(config, defaults, JSON.parse(JSON.stringify(store)))
 
   config.defaultState = JSON.parse(JSON.stringify(defaults));
+  config.CONTEXTMENUITEMS = CONTEXTMENUITEMS
 
   chrome.storage.sync.set(config)
 
@@ -158,41 +192,9 @@ chrome.runtime.onMessage.addListener((req, sender, res) => {
 
 
 chrome.runtime.onInstalled.addListener(() => {
-  [
-    {
-      title: 'Analyze Image',
-      id: 'che_analyze_image',
-      contexts: ['image']
-    },
-    {
-      title: 'Analyze Selection',
-      id: 'che_analyze_selection',
-      contexts: ['all']
-    },
-    {
-      title: 'Analyze DOM Element',
-      id: 'che_analyze_dom_element',
-      contexts: ['all']
-    },
-    {
-      title: 'Analyze Viewport',
-      id: 'che_analyze_viewport',
-      contexts: ['all']
-    },
-    {
-      id: 'separator',
-      type: 'separator',
-      contexts: ['all']
-    },
-    {
-      title: 'Open Settings',
-      id: 'che_settings',
-      contexts: ['all']
-    }
-  ].forEach((item) => {
+  for(const item of CONTEXTMENUITEMS){
     chrome.contextMenus.create(item)
-  });
-
+  };
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {

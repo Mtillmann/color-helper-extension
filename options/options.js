@@ -4,6 +4,8 @@ let DEFAULTSTATE = {
     //this is defined in background/index.js
 };
 
+let CONTEXTMENUITEMS = [];
+
 let currentTab = null;
 
 const STATE = {
@@ -191,8 +193,6 @@ function changeTab(tab) {
     currentTab = tab;
     document.querySelector(`[data-target="${currentTab}"]`).classList.add('active', 'bg-primary-subtle');
     document.querySelector(`[data-tab="${currentTab}"]`).classList.remove('d-none');
-
-
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     DEFAULTSTATE = settings.defaultState;
+    CONTEXTMENUITEMS = settings.CONTEXTMENUITEMS;
 
     renderPopupButtons();
 
@@ -292,6 +293,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (e.target.dataset.target) {
             changeTab(e.target.dataset.target);
         }
+    });
+
+
+    document.querySelector('#showContextMenuCheckbox').addEventListener('change', e => {
+        if (e.target.checked) {
+            for (const item of CONTEXTMENUITEMS) {
+                chrome.contextMenus.create(item)
+            };
+        } else {
+            chrome.contextMenus.removeAll();
+        }
+
     });
 
 });
