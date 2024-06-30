@@ -160,23 +160,23 @@ chrome.runtime.onMessage.addListener((req, sender, res) => {
 chrome.runtime.onInstalled.addListener(() => {
   [
     {
-      title: 'Inspect Image',
-      id: 'Inspect_Image',
+      title: 'Analyze Image',
+      id: 'che_analyze_image',
       contexts: ['image']
     },
     {
-      title: 'Inspect Selection',
-      id: 'che_inspect_selection',
+      title: 'Analyze Selection',
+      id: 'che_analyze_selection',
       contexts: ['all']
     },
     {
-      title: 'Inspect DOM Element',
-      id: 'che_inspect_dom_element',
+      title: 'Analyze DOM Element',
+      id: 'che_analyze_dom_element',
       contexts: ['all']
     },
     {
-      title: 'Inspect Viewport',
-      id: 'che_inspect_viewport',
+      title: 'Analyze Viewport',
+      id: 'che_analyze_viewport',
       contexts: ['all']
     },
     {
@@ -195,22 +195,22 @@ chrome.runtime.onInstalled.addListener(() => {
 
 });
 
-chrome.contextMenus.onClicked.addListener((info, tab, kk) => {
+chrome.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
-    case 'che_inspect_selection':
+    case 'che_analyze_selection':
       inject(tab)
       break;
-    case 'che_inspect_dom_element':
+    case 'che_analyze_dom_element':
       inject(tab, { type: 'colors', action: 'dom' })
       break;
-    case 'che_inspect_viewport':
+    case 'che_analyze_viewport':
       inject(tab, { type: 'colors', action: 'viewport' })
       break;
     case 'che_settings':
       chrome.runtime.openOptionsPage()
       break;
-    case 'Inspect_Image':
-      chrome.tabs.create({ url: 'inspect.html' })
+    case 'che_analyze_image':
+      inject(tab, { type: 'colors', action: 'dom', info })
       break;
   }
 });
