@@ -682,6 +682,7 @@ function showErrorMessage() {
 chrome.runtime.onMessage.addListener(async (req, sender, res) => {
   if (req.message === 'init') {
 
+
     res({})
     await initialize();
 
@@ -689,6 +690,44 @@ chrome.runtime.onMessage.addListener(async (req, sender, res) => {
     if (ANALYZE_OPTIONS.action === 'viewport') {
       captureFullScreen(req.options.type);
     }
+
+    if (ANALYZE_OPTIONS.info) {
+      const srcUrl = ANALYZE_OPTIONS.info.srcUrl;
+      //make srcUrl safe for css attribute selector
+      const safeSrcUrl = srcUrl.replace(/[^a-zA-Z0-9]/g, c => '\\' + c);
+      const elems = document.querySelectorAll(`img[src="${safeSrcUrl}"]`);
+
+      const elem = [...elems].filter(e => {
+        const rect = e.getBoundingClientRect();
+
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+        );
+      }).pop();
+
+      if (elem) {
+        //wait 100 ms
+        await new Promise(r => setTimeout(r, 100));
+        const bounds = elem.getBoundingClientRect();
+
+        selectionOverlay.classList.add('selecting');
+
+        applySelection(
+          bounds.x,
+          bounds.y,
+          bounds.width,
+          bounds.height
+        )
+        
+        captureSelection()
+      }
+
+    }
+
+
 
   }
   return true
