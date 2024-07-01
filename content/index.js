@@ -519,6 +519,12 @@ function captureFullScreen() {
 }
 
 async function captureSelection(e) {
+  if(document.getElementById('colorHelperBrowserExtensionInspectionOverlay')){
+    // avoiding double capture that may occur in certain situations in firefox
+    return;
+  }
+
+
   e?.preventDefault();
   e?.stopPropagation();
 
