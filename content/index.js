@@ -498,15 +498,11 @@ function resetOverlayNode() {
 }
 
 function removeAnalyzer() {
-
   document.getElementById('colorHelperBrowserExtensionInspectionOverlay')?.remove();
-
 }
 
 function captureFullScreen() {
   removeAnalyzer();
-
-
   applySelection(
     0,
     0,
