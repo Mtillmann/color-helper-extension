@@ -198,6 +198,9 @@ function changeTab(tab) {
 document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
+    await initI18n();
+    applyI18n();
+
     const settings = await chrome.storage.sync.get();
     for (const key in settings) {
         STATE[key] = settings[key];
@@ -295,6 +298,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+
+    // Language selector init
+    const savedLang = settings.language || 'browser';
+    if (savedLang === 'browser') {
+        document.getElementById('langBrowser').checked = true;
+    } else {
+        document.getElementById('langCustom').checked = true;
+        document.getElementById('languageSelect').value = savedLang;
+        document.getElementById('languageSelect').disabled = false;
+    }
+
+    document.querySelectorAll('[name="languageSetting"]').forEach(radio => {
+        radio.addEventListener('change', async () => {
+            const isCustom = document.getElementById('langCustom').checked;
+            const select = document.getElementById('languageSelect');
+            select.disabled = !isCustom;
+            const lang = isCustom ? select.value : 'browser';
+            await chrome.storage.sync.set({ language: lang });
+        });
+    });
+
+    document.getElementById('languageSelect').addEventListener('change', async (e) => {
+        await chrome.storage.sync.set({ language: e.target.value });
+    });
 
     document.querySelector('#showContextMenuCheckbox').addEventListener('change', e => {
         if (e.target.checked) {

@@ -1,4 +1,8 @@
 {
+  "type": "module",
+  "scripts": {
+    "generate-translations": "node scripts/generate-color-translations.js"
+  },
   "dependencies": {
     "@mtillmann/colors": "^0.0.3"
   }

@@ -27,6 +27,35 @@ const copyIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADg
 let shadeLookup;
 let colorLookup;
 
+let colorTranslations = null;
+let shadeTranslations = null;
+
+async function initColorTranslations() {
+  try {
+    const url = chrome.runtime.getURL('assets/colorTranslations.json');
+    colorTranslations = await fetch(url).then(r => r.json());
+  } catch (e) {
+    colorTranslations = null;
+  }
+  try {
+    const url = chrome.runtime.getURL('assets/shadeTranslations.json');
+    shadeTranslations = await fetch(url).then(r => r.json());
+  } catch (e) {
+    shadeTranslations = null;
+  }
+}
+
+function getColorName(hex, lang) {
+  if (!lang || lang === 'browser' || lang === 'en') return null;
+  const key = '#' + hex.replace('#', '').toUpperCase();
+  return colorTranslations?.[key]?.[lang] ?? null;
+}
+
+function getShadeName(shade, lang) {
+  if (!lang || lang === 'browser' || lang === 'en') return shade;
+  return shadeTranslations?.[lang]?.[shade] ?? shade;
+}
+
 function componentToHex(c) {
   const hex = c.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
@@ -98,7 +127,7 @@ function template() {
       <tbody>
         <tr class="underline">
           <td class="shade-cell">
-            <small>Color Shade</small>
+            <small data-i18n="colorShadeLabel">Color Shade</small>
             <h2><strong class="shade-name"></strong></h2>
 
             <small class="opacity-75 alt-shade">
@@ -106,9 +135,10 @@ function template() {
             </small>
           </td>
           <td class="name-cell">
-            <small>Color Name</small>
+            <small data-i18n="colorNameLabel">Color Name</small>
             <h2 class="color-name"></h2>
-            
+            <small class="color-name-en opacity-50"></small>
+
             <small class="opacity-75 quality-box">
               <span class="quality"></span>
               (&Delta;E=<span class="delta-e"></span>)
@@ -124,15 +154,13 @@ function template() {
         <tr class="underline">
           <td class="label nowrap">RGB</td>
           <td><span class="color-rgb copy-value"></span></td>
-          <td class="has-copy-button"><a href="#" class="copy-button">copy</a></td>
+          <td class="has-copy-button"><a href="#" class="copy-button" data-i18n="copy">copy</a></td>
         </tr>
         <tr class="underline">
           <td class="label nowrap">HEX</td>
           <td><span class="color-hex copy-value"></span></td>
           <td class="has-copy-button">
-            <a href="#" class="copy-button">
-              copy
-            </a>
+            <a href="#" class="copy-button" data-i18n="copy">copy</a>
           </td>
         </tr>
         <tr class="hint">
@@ -219,6 +247,8 @@ async function showAnalysis(crops) {
   await new Promise(r => { setTimeout(r, 33) });
 
   const overlay = document.getElementById('colorHelperBrowserExtensionInspectionOverlay');
+
+  applyI18n(overlay);
 
   const target = overlay.querySelector('.target');
 
@@ -362,9 +392,15 @@ async function showAnalysis(crops) {
       tooltip.querySelector('.alt-shade').style.setProperty('display', 'none');
     }
 
-    tooltip.querySelector('.alt-shade-name').textContent = altShade || '';
-    tooltip.querySelector('.shade-name').textContent = shade;
-    tooltip.querySelector('.color-name').textContent = color.colors[0].alias[0];
+    tooltip.querySelector('.alt-shade-name').textContent = altShade ? getShadeName(altShade, currentLang) : '';
+    tooltip.querySelector('.shade-name').textContent = getShadeName(shade, currentLang);
+    const englishName = color.colors[0].alias[0];
+    const translatedName = getColorName(color.colors[0].hex, currentLang);
+    tooltip.querySelector('.color-name').textContent = translatedName ?? englishName;
+    const enEl = tooltip.querySelector('.color-name-en');
+    if (enEl) {
+      enEl.textContent = (translatedName && translatedName.toLowerCase() !== englishName.toLowerCase()) ? englishName : '';
+    }
     tooltip.querySelector('.quality').textContent = matchQuality;
     tooltip.querySelector('.delta-e').textContent = deltaE.toFixed(2);
     tooltip.querySelector('.color-rgb').textContent = scaledPixel.slice(0, 3).join(',');
@@ -567,6 +603,8 @@ async function initialize() {
     return;
   }
   settings = await chrome.storage.sync.get()
+
+  await Promise.all([initI18n(), initColorTranslations()]);
 
   let theme = settings.colorTheme;
   if (theme === 'System') {

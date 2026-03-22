@@ -21,6 +21,7 @@ const defaults = {
   showMatchQuality: false,
   showAlternativeShade: false,
   showContextMenu: true,
+  language: 'browser',
   popupGroups: [
     {
       name: "Colors & Shades",
@@ -63,24 +64,57 @@ const defaults = {
   ]
 }
 
+// i18n dla background service worker
+let _bgLocaleMessages = null;
+
+async function loadBgLocale(language) {
+  if (language === 'browser') { _bgLocaleMessages = null; return; }
+  try {
+    const url = chrome.runtime.getURL(`assets/locales/${language}.json`);
+    _bgLocaleMessages = await fetch(url).then(r => r.json());
+  } catch (e) {
+    _bgLocaleMessages = null;
+  }
+}
+
+function bgT(key) {
+  if (_bgLocaleMessages?.[key]) return _bgLocaleMessages[key].message;
+  return chrome.i18n.getMessage(key) || key;
+}
+
+async function updateContextMenuTitles() {
+  const { language } = await chrome.storage.sync.get({ language: 'browser' });
+  await loadBgLocale(language);
+  const updates = [
+    ['che_analyze_image',      'analyzeImage'],
+    ['che_analyze_selection',  'analyzeSelection'],
+    ['che_analyze_dom_element','analyzeDomElement'],
+    ['che_analyze_viewport',   'analyzeViewport'],
+    ['che_settings',           'openSettings'],
+  ];
+  for (const [id, key] of updates) {
+    chrome.contextMenus.update(id, { title: bgT(key) });
+  }
+}
+
 const CONTEXTMENUITEMS = [
   {
-    title: 'Analyze Image',
+    title: bgT('analyzeImage'),
     id: 'che_analyze_image',
     contexts: ['image']
   },
   {
-    title: 'Analyze Selection',
+    title: bgT('analyzeSelection'),
     id: 'che_analyze_selection',
     contexts: ['all']
   },
   {
-    title: 'Analyze DOM Element',
+    title: bgT('analyzeDomElement'),
     id: 'che_analyze_dom_element',
     contexts: ['all']
   },
   {
-    title: 'Analyze Viewport',
+    title: bgT('analyzeViewport'),
     id: 'che_analyze_viewport',
     contexts: ['all']
   },
@@ -90,7 +124,7 @@ const CONTEXTMENUITEMS = [
     contexts: ['all']
   },
   {
-    title: 'Open Settings',
+    title: bgT('openSettings'),
     id: 'che_settings',
     contexts: ['all']
   }
@@ -116,6 +150,7 @@ chrome.storage.sync.get((store) => {
 
 function inject(tab, options = { type: 'colors', action: 'selection' }) {
   chrome.tabs.sendMessage(tab.id, { message: 'init', options }, (res) => {
+    if (chrome.runtime.lastError) return;
     if (res) {
       clearTimeout(timeout)
     }
@@ -126,6 +161,7 @@ function inject(tab, options = { type: 'colors', action: 'selection' }) {
 
     await chrome.scripting.executeScript({
       files: [
+        'assets/i18n.js',
         'content/copyToClipboard.js',
         'content/floating-ui.core-1.6.0.umd.js',
         'content/floating-ui.dom-1.6.3.umd.js',
@@ -195,6 +231,13 @@ chrome.runtime.onInstalled.addListener(() => {
   for(const item of CONTEXTMENUITEMS){
     chrome.contextMenus.create(item)
   };
+  updateContextMenuTitles();
+});
+
+chrome.storage.onChanged.addListener((changes) => {
+  if ('language' in changes) {
+    updateContextMenuTitles();
+  }
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {

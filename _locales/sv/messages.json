@@ -1,0 +1,164 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Hjälptillägg för personer med färgsynsnedsättning"
+  },
+  "colorsAndShades": {
+    "message": "Färger & Nyanser"
+  },
+  "chartsAndGraphs": {
+    "message": "Diagram & Grafer"
+  },
+  "settings": {
+    "message": "Inställningar"
+  },
+  "selection": {
+    "message": "Markering"
+  },
+  "domElement": {
+    "message": "DOM-element"
+  },
+  "viewport": {
+    "message": "Synligt område"
+  },
+  "analyzeImage": {
+    "message": "Analysera bild"
+  },
+  "analyzeSelection": {
+    "message": "Analysera markering"
+  },
+  "analyzeDomElement": {
+    "message": "Analysera DOM-element"
+  },
+  "analyzeViewport": {
+    "message": "Analysera synligt område"
+  },
+  "openSettings": {
+    "message": "Öppna inställningar"
+  },
+  "copy": {
+    "message": "kopiera"
+  },
+  "interface": {
+    "message": "Gränssnitt"
+  },
+  "processing": {
+    "message": "Bearbetning"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Genvägar"
+  },
+  "contextMenu": {
+    "message": "Snabbmeny"
+  },
+  "reset": {
+    "message": "Återställ"
+  },
+  "about": {
+    "message": "Om"
+  },
+  "colorTheme": {
+    "message": "Färgtema"
+  },
+  "alwaysLight": {
+    "message": "Alltid ljust"
+  },
+  "alwaysDark": {
+    "message": "Alltid mörkt"
+  },
+  "systemDefault": {
+    "message": "Systemstandard"
+  },
+  "analyzerBackground": {
+    "message": "Analysbakgrund"
+  },
+  "useThemeColor": {
+    "message": "Använd temafärg"
+  },
+  "useCustomColor": {
+    "message": "Använd anpassad färg"
+  },
+  "maxPixels": {
+    "message": "Max pixlar att bearbeta"
+  },
+  "maxPixelsHint": {
+    "message": "Maximalt antal pixlar att bearbeta. Ett högre antal innebär längre bearbetningstid."
+  },
+  "unmatchedOpacity": {
+    "message": "Opacitet för icke-matchande"
+  },
+  "outlineColor": {
+    "message": "Konturfärg"
+  },
+  "language": {
+    "message": "Språk"
+  },
+  "languageBrowser": {
+    "message": "Webbläsarspråk"
+  },
+  "permissionError": {
+    "message": "Du måste ge tillägget behörighet att \"komma åt dina data på alla webbplatser\"."
+  },
+  "permissionFirefox": {
+    "message": "Gå till about:addons, klicka på \"color helper\", klicka på \"Behörigheter\" och bevilja behörigheten."
+  },
+  "highlightColorShade": {
+    "message": "Highlight color shade on hover"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reduce opacity for unmatched color shades"
+  },
+  "unmatchedSaturation": {
+    "message": "Unmatched saturation"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturate unmatched color shades"
+  },
+  "outlineMatched": {
+    "message": "Outline matched color shade"
+  },
+  "pauseOnClick": {
+    "message": "Pin info box on click"
+  },
+  "pauseOnClickHint": {
+    "message": "Useful when you want to copy the color"
+  },
+  "colorThemeAdapt": {
+    "message": "Attempt to adapt to the current website's design"
+  },
+  "showMatchQuality": {
+    "message": "Show Matched Color Quality and Distance (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Show heuristic color shade below the main color shade"
+  },
+  "logTimings": {
+    "message": "Log some timings to console"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Settings"
+  },
+  "useCompatMode": {
+    "message": "Use compatibility mode"
+  },
+  "useCompatModeHint": {
+    "message": "When you experience blank analyze views although the hover is still working, turn this option on."
+  },
+  "showShadePrefix": {
+    "message": "Differentiate color shades into light/[regular]/dark"
+  },
+  "addContextMenu": {
+    "message": "Add Analyze Options to Context Menu"
+  },
+  "colorShadeLabel": {
+    "message": "Color Shade"
+  },
+  "colorNameLabel": {
+    "message": "Color Name"
+  }
+}

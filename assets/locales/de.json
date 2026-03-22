@@ -1,0 +1,164 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Hilfserweiterung für Menschen mit Farbsehschwäche"
+  },
+  "colorsAndShades": {
+    "message": "Farben & Schattierungen"
+  },
+  "chartsAndGraphs": {
+    "message": "Diagramme & Grafiken"
+  },
+  "settings": {
+    "message": "Einstellungen"
+  },
+  "selection": {
+    "message": "Auswahl"
+  },
+  "domElement": {
+    "message": "DOM-Element"
+  },
+  "viewport": {
+    "message": "Ansichtsbereich"
+  },
+  "analyzeImage": {
+    "message": "Bild analysieren"
+  },
+  "analyzeSelection": {
+    "message": "Auswahl analysieren"
+  },
+  "analyzeDomElement": {
+    "message": "DOM-Element analysieren"
+  },
+  "analyzeViewport": {
+    "message": "Ansichtsbereich analysieren"
+  },
+  "openSettings": {
+    "message": "Einstellungen öffnen"
+  },
+  "copy": {
+    "message": "kopieren"
+  },
+  "interface": {
+    "message": "Oberfläche"
+  },
+  "processing": {
+    "message": "Verarbeitung"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Tastenkürzel"
+  },
+  "contextMenu": {
+    "message": "Kontextmenü"
+  },
+  "reset": {
+    "message": "Zurücksetzen"
+  },
+  "about": {
+    "message": "Über"
+  },
+  "colorTheme": {
+    "message": "Farbthema"
+  },
+  "alwaysLight": {
+    "message": "Immer hell"
+  },
+  "alwaysDark": {
+    "message": "Immer dunkel"
+  },
+  "systemDefault": {
+    "message": "Systemstandard"
+  },
+  "analyzerBackground": {
+    "message": "Analysator-Hintergrund"
+  },
+  "useThemeColor": {
+    "message": "Themenfarbe verwenden"
+  },
+  "useCustomColor": {
+    "message": "Eigene Farbe verwenden"
+  },
+  "maxPixels": {
+    "message": "Max. Pixel zu verarbeiten"
+  },
+  "maxPixelsHint": {
+    "message": "Maximale Anzahl zu verarbeitender Pixel. Ein höherer Wert bedeutet längere Verarbeitungszeit."
+  },
+  "unmatchedOpacity": {
+    "message": "Deckkraft nicht übereinstimmender"
+  },
+  "outlineColor": {
+    "message": "Rahmenfarbe"
+  },
+  "language": {
+    "message": "Sprache"
+  },
+  "languageBrowser": {
+    "message": "Browsersprache"
+  },
+  "permissionError": {
+    "message": "Sie müssen der Erweiterung die Berechtigung erteilen, auf Ihre Daten auf allen Websites zuzugreifen."
+  },
+  "permissionFirefox": {
+    "message": "Gehen Sie zu about:addons, klicken Sie auf \"color helper\", klicken Sie auf \"Berechtigungen\" und erteilen Sie die Berechtigung."
+  },
+  "highlightColorShade": {
+    "message": "Highlight color shade on hover"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reduce opacity for unmatched color shades"
+  },
+  "unmatchedSaturation": {
+    "message": "Unmatched saturation"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturate unmatched color shades"
+  },
+  "outlineMatched": {
+    "message": "Outline matched color shade"
+  },
+  "pauseOnClick": {
+    "message": "Pin info box on click"
+  },
+  "pauseOnClickHint": {
+    "message": "Useful when you want to copy the color"
+  },
+  "colorThemeAdapt": {
+    "message": "Attempt to adapt to the current website's design"
+  },
+  "showMatchQuality": {
+    "message": "Show Matched Color Quality and Distance (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Show heuristic color shade below the main color shade"
+  },
+  "logTimings": {
+    "message": "Log some timings to console"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Settings"
+  },
+  "useCompatMode": {
+    "message": "Use compatibility mode"
+  },
+  "useCompatModeHint": {
+    "message": "When you experience blank analyze views although the hover is still working, turn this option on."
+  },
+  "showShadePrefix": {
+    "message": "Differentiate color shades into light/[regular]/dark"
+  },
+  "addContextMenu": {
+    "message": "Add Analyze Options to Context Menu"
+  },
+  "colorShadeLabel": {
+    "message": "Color Shade"
+  },
+  "colorNameLabel": {
+    "message": "Color Name"
+  }
+}

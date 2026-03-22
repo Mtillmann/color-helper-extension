@@ -9,8 +9,13 @@ function inject(tab) {
     })
 }
 
+const GROUP_KEYS = { colors: 'colorsAndShades', settings: 'settings' };
+const ITEM_KEYS = { selection: 'selection', dom: 'domElement', viewport: 'viewport' };
+
 document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+
+    await initI18n();
 
     let groups;
 
@@ -95,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             
                 let span = document.createElement('span');
-                span.textContent = item.action ?? group.name;
+                span.textContent = ITEM_KEYS[item.id] ? t(ITEM_KEYS[item.id]) : (GROUP_KEYS[group.id] ? t(GROUP_KEYS[group.id]) : (item.action ?? group.name));
                 a.insertAdjacentElement('beforeend', span);
             
 

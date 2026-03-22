@@ -1,0 +1,164 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Вспомогательное расширение для людей с нарушением цветового зрения"
+  },
+  "colorsAndShades": {
+    "message": "Цвета и оттенки"
+  },
+  "chartsAndGraphs": {
+    "message": "Графики и диаграммы"
+  },
+  "settings": {
+    "message": "Настройки"
+  },
+  "selection": {
+    "message": "Выделение"
+  },
+  "domElement": {
+    "message": "DOM-элемент"
+  },
+  "viewport": {
+    "message": "Видимая область"
+  },
+  "analyzeImage": {
+    "message": "Анализировать изображение"
+  },
+  "analyzeSelection": {
+    "message": "Анализировать выделение"
+  },
+  "analyzeDomElement": {
+    "message": "Анализировать DOM-элемент"
+  },
+  "analyzeViewport": {
+    "message": "Анализировать видимую область"
+  },
+  "openSettings": {
+    "message": "Открыть настройки"
+  },
+  "copy": {
+    "message": "копировать"
+  },
+  "interface": {
+    "message": "Интерфейс"
+  },
+  "processing": {
+    "message": "Обработка"
+  },
+  "popup": {
+    "message": "Попап"
+  },
+  "shortcuts": {
+    "message": "Горячие клавиши"
+  },
+  "contextMenu": {
+    "message": "Контекстное меню"
+  },
+  "reset": {
+    "message": "Сбросить"
+  },
+  "about": {
+    "message": "О расширении"
+  },
+  "colorTheme": {
+    "message": "Цветовая тема"
+  },
+  "alwaysLight": {
+    "message": "Всегда светлая"
+  },
+  "alwaysDark": {
+    "message": "Всегда тёмная"
+  },
+  "systemDefault": {
+    "message": "По умолчанию системная"
+  },
+  "analyzerBackground": {
+    "message": "Фон анализатора"
+  },
+  "useThemeColor": {
+    "message": "Использовать цвет темы"
+  },
+  "useCustomColor": {
+    "message": "Использовать свой цвет"
+  },
+  "maxPixels": {
+    "message": "Макс. пикселей для обработки"
+  },
+  "maxPixelsHint": {
+    "message": "Максимальное количество пикселей для обработки. Большее число означает более долгое время обработки."
+  },
+  "unmatchedOpacity": {
+    "message": "Прозрачность несовпадающих"
+  },
+  "outlineColor": {
+    "message": "Цвет обводки"
+  },
+  "language": {
+    "message": "Язык"
+  },
+  "languageBrowser": {
+    "message": "Язык браузера"
+  },
+  "permissionError": {
+    "message": "Вам необходимо предоставить расширению разрешение на \"доступ к вашим данным на всех веб-сайтах\"."
+  },
+  "permissionFirefox": {
+    "message": "Перейдите в about:addons, нажмите \"color helper\", нажмите \"Разрешения\" и предоставьте разрешение."
+  },
+  "highlightColorShade": {
+    "message": "Highlight color shade on hover"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reduce opacity for unmatched color shades"
+  },
+  "unmatchedSaturation": {
+    "message": "Unmatched saturation"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturate unmatched color shades"
+  },
+  "outlineMatched": {
+    "message": "Outline matched color shade"
+  },
+  "pauseOnClick": {
+    "message": "Pin info box on click"
+  },
+  "pauseOnClickHint": {
+    "message": "Useful when you want to copy the color"
+  },
+  "colorThemeAdapt": {
+    "message": "Attempt to adapt to the current website's design"
+  },
+  "showMatchQuality": {
+    "message": "Show Matched Color Quality and Distance (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Show heuristic color shade below the main color shade"
+  },
+  "logTimings": {
+    "message": "Log some timings to console"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Settings"
+  },
+  "useCompatMode": {
+    "message": "Use compatibility mode"
+  },
+  "useCompatModeHint": {
+    "message": "When you experience blank analyze views although the hover is still working, turn this option on."
+  },
+  "showShadePrefix": {
+    "message": "Differentiate color shades into light/[regular]/dark"
+  },
+  "addContextMenu": {
+    "message": "Add Analyze Options to Context Menu"
+  },
+  "colorShadeLabel": {
+    "message": "Color Shade"
+  },
+  "colorNameLabel": {
+    "message": "Color Name"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "색각 이상자를 위한 보조 확장 프로그램"
+  },
+  "colorsAndShades": {
+    "message": "색상 & 음영"
+  },
+  "chartsAndGraphs": {
+    "message": "차트 & 그래프"
+  },
+  "settings": {
+    "message": "설정"
+  },
+  "selection": {
+    "message": "선택 영역"
+  },
+  "domElement": {
+    "message": "DOM 요소"
+  },
+  "viewport": {
+    "message": "뷰포트"
+  },
+  "analyzeImage": {
+    "message": "이미지 분석"
+  },
+  "analyzeSelection": {
+    "message": "선택 영역 분석"
+  },
+  "analyzeDomElement": {
+    "message": "DOM 요소 분석"
+  },
+  "analyzeViewport": {
+    "message": "뷰포트 분석"
+  },
+  "openSettings": {
+    "message": "설정 열기"
+  },
+  "copy": {
+    "message": "복사"
+  },
+  "interface": {
+    "message": "인터페이스"
+  },
+  "processing": {
+    "message": "처리"
+  },
+  "popup": {
+    "message": "팝업"
+  },
+  "shortcuts": {
+    "message": "단축키"
+  },
+  "contextMenu": {
+    "message": "컨텍스트 메뉴"
+  },
+  "reset": {
+    "message": "초기화"
+  },
+  "about": {
+    "message": "정보"
+  },
+  "colorTheme": {
+    "message": "색상 테마"
+  },
+  "alwaysLight": {
+    "message": "항상 밝게"
+  },
+  "alwaysDark": {
+    "message": "항상 어둡게"
+  },
+  "systemDefault": {
+    "message": "시스템 기본값"
+  },
+  "analyzerBackground": {
+    "message": "분석기 배경"
+  },
+  "useThemeColor": {
+    "message": "테마 색상 사용"
+  },
+  "useCustomColor": {
+    "message": "사용자 정의 색상 사용"
+  },
+  "maxPixels": {
+    "message": "처리할 최대 픽셀 수"
+  },
+  "maxPixelsHint": {
+    "message": "처리할 최대 픽셀 수입니다. 숫자가 높을수록 처리 시간이 길어집니다."
+  },
+  "unmatchedOpacity": {
+    "message": "불일치 항목 불투명도"
+  },
+  "outlineColor": {
+    "message": "윤곽선 색상"
+  },
+  "language": {
+    "message": "언어"
+  },
+  "languageBrowser": {
+    "message": "브라우저 기본 언어"
+  },
+  "permissionError": {
+    "message": "확장 프로그램에 \"모든 웹사이트의 데이터 접근\" 권한을 부여해야 합니다."
+  },
+  "permissionFirefox": {
+    "message": "about:addons로 이동하여 \"color helper\"를 클릭하고 \"권한\"을 클릭하여 권한을 부여하세요."
+  },
+  "highlightColorShade": {
+    "message": "Highlight color shade on hover"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reduce opacity for unmatched color shades"
+  },
+  "unmatchedSaturation": {
+    "message": "Unmatched saturation"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturate unmatched color shades"
+  },
+  "outlineMatched": {
+    "message": "Outline matched color shade"
+  },
+  "pauseOnClick": {
+    "message": "Pin info box on click"
+  },
+  "pauseOnClickHint": {
+    "message": "Useful when you want to copy the color"
+  },
+  "colorThemeAdapt": {
+    "message": "Attempt to adapt to the current website's design"
+  },
+  "showMatchQuality": {
+    "message": "Show Matched Color Quality and Distance (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Show heuristic color shade below the main color shade"
+  },
+  "logTimings": {
+    "message": "Log some timings to console"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Settings"
+  },
+  "useCompatMode": {
+    "message": "Use compatibility mode"
+  },
+  "useCompatModeHint": {
+    "message": "When you experience blank analyze views although the hover is still working, turn this option on."
+  },
+  "showShadePrefix": {
+    "message": "Differentiate color shades into light/[regular]/dark"
+  },
+  "addContextMenu": {
+    "message": "Add Analyze Options to Context Menu"
+  },
+  "colorShadeLabel": {
+    "message": "Color Shade"
+  },
+  "colorNameLabel": {
+    "message": "Color Name"
+  }
+}

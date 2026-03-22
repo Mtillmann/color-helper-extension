@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Color Helper</title>
   <link href="/options/bootstrap@5.3.2.css" rel="stylesheet" type="text/css" media="all" />
+  <script src="/assets/i18n.js"></script>
   <script src="/options/options.js" type="module"></script>
   <style>
     @media screen and (min-width: 1111px) {
@@ -37,25 +38,25 @@
       <div class="col-4 col-xl-2">
         <ul class="nav flex-column" id="verticalTabs">
           <li class="nav-item">
-            <a class="nav-link" data-target="interface" href="#">Interface</a>
+            <a class="nav-link" data-target="interface" href="#" data-i18n="interface">Interface</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="processing" href="#">Processing</a>
+            <a class="nav-link" data-target="processing" href="#" data-i18n="processing">Processing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="popup" href="#">Popup</a>
+            <a class="nav-link" data-target="popup" href="#" data-i18n="popup">Popup</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="shortcuts" href="#">Shortcuts</a>
+            <a class="nav-link" data-target="shortcuts" href="#" data-i18n="shortcuts">Shortcuts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="context" href="#">Context Menu</a>
+            <a class="nav-link" data-target="context" href="#" data-i18n="contextMenu">Context Menu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="reset" href="#">Reset</a>
+            <a class="nav-link" data-target="reset" href="#" data-i18n="reset">Reset</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-target="about" href="#">About</a>
+            <a class="nav-link" data-target="about" href="#" data-i18n="about">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">
@@ -69,7 +70,7 @@
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="highlightColorShadeCheckbox"
             data-bind-property="highlightColorShade">
-          <label class="form-check-label" for="highlightColorShadeCheckbox">
+          <label class="form-check-label" for="highlightColorShadeCheckbox" data-i18n="highlightColorShade">
             Highlight color shade on hover
           </label>
         </div>
@@ -77,13 +78,13 @@
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="reduceUnmatchedOpacityCheckbox"
             data-bind-property="reduceUnmatchedOpacity" data-disable-for-property="highlightOptionsDisabled">
-          <label class="form-check-label" for="reduceUnmatchedOpacityCheckbox">
+          <label class="form-check-label" for="reduceUnmatchedOpacityCheckbox" data-i18n="reduceUnmatchedOpacity">
             Reduce opacity for unmatched color shades
           </label>
         </div>
 
         <div data-show-for-property="reduceUnmatchedOpacity">
-          <label for="unmatchedOpacityRange" class="d-flex justify-content-between"><span>Unmatched opacity</span>
+          <label for="unmatchedOpacityRange" class="d-flex justify-content-between"><span data-i18n="unmatchedOpacity">Unmatched opacity</span>
             <strong class="" data-content-property="unmatchedOpacityFormatted"></strong></label>
           <input type="range" class="form-range" min="0" max="100" data-bind-property="unmatchedOpacity"
             id="unmatchedOpacityRange" data-disable-for-property="disableUnmatchedOpacity">
@@ -94,15 +95,14 @@
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="desaturateUnmatchedCheckbox"
             data-bind-property="desaturateUnmatched" data-disable-for-property="highlightOptionsDisabled">
-          <label class="form-check-label" for="desaturateUnmatchedCheckbox">
+          <label class="form-check-label" for="desaturateUnmatchedCheckbox" data-i18n="desaturateUnmatched">
             Desaturate unmatched color shades
           </label>
         </div>
 
 
         <div data-show-for-property="desaturateUnmatched">
-          <label for="unmatchedSaturationRange" class="d-flex justify-content-between"><span>Unmatched
-              saturation</span>
+          <label for="unmatchedSaturationRange" class="d-flex justify-content-between"><span data-i18n="unmatchedSaturation">Unmatched saturation</span>
             <strong class="" data-content-property="unmatchedSaturationFormatted"></strong></label>
           <input type="range" class="form-range" min="0" max="100" data-bind-property="unmatchedSaturation"
             id="unmatchedSaturationRange" data-disable-for-property="disableUnmatchedSaturation">
@@ -113,14 +113,14 @@
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="outlineMatchedCheckbox"
             data-bind-property="outlineMatched" data-disable-for-property="highlightOptionsDisabled">
-          <label class="form-check-label" for="outlineMatchedCheckbox">
+          <label class="form-check-label" for="outlineMatchedCheckbox" data-i18n="outlineMatched">
             Outline matched color shade
           </label>
         </div>
 
 
         <div data-show-for-property="outlineMatched" data-display-class="d-flex" class="d-flex">
-          <label for="outlineColorInput" class="form-label mb-0 d-flex align-items-center">Outline Color</label>
+          <label for="outlineColorInput" class="form-label mb-0 d-flex align-items-center" data-i18n="outlineColor">Outline Color</label>
           <input type="color" class="mx-3 d-flex form-control form-control-color" id="outlineColorInput"
             data-bind-property="outlineColor" data-disable-for-property="disableOutlineColor">
           <span class="font-monospace d-flex align-items-center" data-content-property="outlineColor"></span>
@@ -130,40 +130,39 @@
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="pauseOnClickCheckbox" data-bind-property="pauseOnClick">
           <label class="form-check-label" for="pauseOnClickCheckbox">
-            Pin info box on click<br><small class="text-muted">Useful when you want to copy the color</small>
+            <span data-i18n="pauseOnClick">Pin info box on click</span><br><small class="text-muted" data-i18n="pauseOnClickHint">Useful when you want to copy the color</small>
           </label>
         </div>
 
-        <label for="colorThemeCanvas" class="form-label mt-3 mb-1">Color Theme</label>
+        <label for="colorThemeCanvas" class="form-label mt-3 mb-1" data-i18n="colorTheme">Color Theme</label>
 
         <div class="form-check">
           <input class="form-check-input" type="radio" name="colorTheme" value="Canvas" id="colorThemeCanvas">
-          <label class="form-check-label" for="colorThemeCanvas">Attempt to adapt to the current website's
-            design</label>
+          <label class="form-check-label" for="colorThemeCanvas" data-i18n="colorThemeAdapt">Attempt to adapt to the current website's design</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="colorTheme" value="Light" id="colorThemeLight">
-          <label class="form-check-label" for="colorThemeLight">Always use light</label>
+          <label class="form-check-label" for="colorThemeLight" data-i18n="alwaysLight">Always use light</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="colorTheme" value="Dark" id="colorThemeDark">
-          <label class="form-check-label" for="colorThemeDark">Always use dark</label>
+          <label class="form-check-label" for="colorThemeDark" data-i18n="alwaysDark">Always use dark</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="colorTheme" value="System" id="colorThemeSystem">
-          <label class="form-check-label" for="colorThemeSystem">Use System Default</label>
+          <label class="form-check-label" for="colorThemeSystem" data-i18n="systemDefault">Use System Default</label>
         </div>
 
-        <label for="analyzerBackgroundAuto" class="mt-3 form-label mb-1">Analyzer Background</label>
+        <label for="analyzerBackgroundAuto" class="mt-3 form-label mb-1" data-i18n="analyzerBackground">Analyzer Background</label>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="analyzerBackgroundMode" value="theme"
             id="analyzerBackgroundAuto">
-          <label class="form-check-label" for="analyzerBackgroundAuto">Use Theme Color</label>
+          <label class="form-check-label" for="analyzerBackgroundAuto" data-i18n="useThemeColor">Use Theme Color</label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="analyzerBackgroundMode" value="custom"
             id="analyzerBackgroundCustom">
-          <label class="form-check-label" for="analyzerBackgroundCustom">Use Custom Color</label>
+          <label class="form-check-label" for="analyzerBackgroundCustom" data-i18n="useCustomColor">Use Custom Color</label>
         </div>
 
         <div data-show-for-property="showCustomAnalyzerBackgroundPicker" data-display-class="d-flex"
@@ -177,14 +176,14 @@
 
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="showMatchQualityCheckbox" data-bind-property="showMatchQuality">
-          <label class="form-check-label" for="showMatchQualityCheckbox">
-            Show Matched Color Quality and Distance (&Delta;E)
+          <label class="form-check-label" for="showMatchQualityCheckbox" data-i18n="showMatchQuality">
+            Show Matched Color Quality and Distance (ΔE)
           </label>
         </div>
 
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="showAlternativeShadeCheckbox" data-bind-property="showAlternativeShade">
-          <label class="form-check-label" for="showAlternativeShadeCheckbox">
+          <label class="form-check-label" for="showAlternativeShadeCheckbox" data-i18n="showAlternativeShade">
             Show heuristic color shade below the main color shade
           </label>
         </div>
@@ -192,11 +191,39 @@
 
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="logTimingsCheckbox" data-bind-property="logTimings">
-          <label class="form-check-label" for="logTimingsCheckbox">
+          <label class="form-check-label" for="logTimingsCheckbox" data-i18n="logTimings">
             Log some timings to console
           </label>
         </div>
 
+        <div class="mt-4">
+          <label class="form-label mb-1" data-i18n="language">Language</label>
+          <div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="languageSetting" id="langBrowser" value="browser">
+              <label class="form-check-label" for="langBrowser" data-i18n="languageBrowser">Browser default</label>
+            </div>
+            <div class="form-check d-flex align-items-center gap-2">
+              <input class="form-check-input" type="radio" name="languageSetting" id="langCustom" value="custom">
+              <select id="languageSelect" class="form-select form-select-sm w-auto" disabled>
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fa">فارسی</option>
+                <option value="fi">Suomi</option>
+                <option value="fr">Français</option>
+                <option value="ko">한국어</option>
+                <option value="nl">Nederlands</option>
+                <option value="pl">Polski</option>
+                <option value="pt">Português</option>
+                <option value="ro">Română</option>
+                <option value="ru">Русский</option>
+                <option value="sv">Svenska</option>
+                <option value="zh">中文</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
       </div>
 
@@ -218,7 +245,7 @@
 
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="useCompatModeCheckbox" data-bind-property="useCompatMode">
-          <label class="form-check-label" for="useCompatModeCheckbox">
+          <label class="form-check-label" for="useCompatModeCheckbox" data-i18n="useCompatMode">
             Use compatibility mode
           </label>
         </div>
@@ -228,7 +255,7 @@
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="showShadePrefixCheckbox"
             data-bind-property="showShadePrefix">
-          <label class="form-check-label" for="showShadePrefixCheckbox">
+          <label class="form-check-label" for="showShadePrefixCheckbox" data-i18n="showShadePrefix">
             Differentiate color shades into light/[regular]/dark
           </label>
         </div>
@@ -272,7 +299,7 @@
         <div class="form-check mt-3">
           <input class="form-check-input" type="checkbox" id="showContextMenuCheckbox"
             data-bind-property="showContextMenu">
-          <label class="form-check-label" for="showContextMenuCheckbox">
+          <label class="form-check-label" for="showContextMenuCheckbox" data-i18n="addContextMenu">
             Add Analyze Options to Context Menu
           </label>
         </div>
