@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Assistive extension for people with color vision deficiency"
+  },
+  "colorsAndShades": {
+    "message": "Colors & Shades"
+  },
+  "chartsAndGraphs": {
+    "message": "Charts & Graphs"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "selection": {
+    "message": "Selection"
+  },
+  "domElement": {
+    "message": "DOM Element"
+  },
+  "viewport": {
+    "message": "Viewport"
+  },
+  "analyzeImage": {
+    "message": "Analyze Image"
+  },
+  "analyzeSelection": {
+    "message": "Analyze Selection"
+  },
+  "analyzeDomElement": {
+    "message": "Analyze DOM Element"
+  },
+  "analyzeViewport": {
+    "message": "Analyze Viewport"
+  },
+  "openSettings": {
+    "message": "Open Settings"
+  },
+  "copy": {
+    "message": "copy"
+  },
+  "interface": {
+    "message": "Interface"
+  },
+  "processing": {
+    "message": "Processing"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Shortcuts"
+  },
+  "contextMenu": {
+    "message": "Context Menu"
+  },
+  "reset": {
+    "message": "Reset"
+  },
+  "about": {
+    "message": "About"
+  },
+  "colorTheme": {
+    "message": "Color Theme"
+  },
+  "alwaysLight": {
+    "message": "Always use light"
+  },
+  "alwaysDark": {
+    "message": "Always use dark"
+  },
+  "systemDefault": {
+    "message": "Use System Default"
+  },
+  "analyzerBackground": {
+    "message": "Analyzer Background"
+  },
+  "useThemeColor": {
+    "message": "Use Theme Color"
+  },
+  "useCustomColor": {
+    "message": "Use Custom Color"
+  },
+  "maxPixels": {
+    "message": "Max Pixels to Process"
+  },
+  "maxPixelsHint": {
+    "message": "Max number of pixels to process. A higher number means it takes longer to process the selection."
+  },
+  "unmatchedOpacity": {
+    "message": "Unmatched opacity"
+  },
+  "outlineColor": {
+    "message": "Outline Color"
+  },
+  "language": {
+    "message": "Language"
+  },
+  "languageBrowser": {
+    "message": "Browser default"
+  },
+  "permissionError": {
+    "message": "You need to grant the extension permission to \"access your data for all websites\"."
+  },
+  "permissionFirefox": {
+    "message": "Go to about:addons, click on \"color helper\", click on \"Permissions\" and grant the permission."
+  },
+  "highlightColorShade": {
+    "message": "Highlight color shade on hover"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reduce opacity for unmatched color shades"
+  },
+  "unmatchedSaturation": {
+    "message": "Unmatched saturation"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturate unmatched color shades"
+  },
+  "outlineMatched": {
+    "message": "Outline matched color shade"
+  },
+  "pauseOnClick": {
+    "message": "Pin info box on click"
+  },
+  "pauseOnClickHint": {
+    "message": "Useful when you want to copy the color"
+  },
+  "colorThemeAdapt": {
+    "message": "Attempt to adapt to the current website's design"
+  },
+  "showMatchQuality": {
+    "message": "Show Matched Color Quality and Distance (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Show heuristic color shade below the main color shade"
+  },
+  "logTimings": {
+    "message": "Log some timings to console"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Settings"
+  },
+  "useCompatMode": {
+    "message": "Use compatibility mode"
+  },
+  "useCompatModeHint": {
+    "message": "When you experience blank analyze views although the hover is still working, turn this option on."
+  },
+  "showShadePrefix": {
+    "message": "Differentiate color shades into light/[regular]/dark"
+  },
+  "addContextMenu": {
+    "message": "Add Analyze Options to Context Menu"
+  },
+  "colorShadeLabel": {
+    "message": "Color Shade"
+  },
+  "colorNameLabel": {
+    "message": "Color Name"
+  },
+  "clickToPin": {
+    "message": "Click to pin info box"
+  },
+  "copied": {
+    "message": "copied!"
+  },
+  "version": {
+    "message": "Version"
+  },
+  "maxPixelsDesc": {
+    "message": "When the product of your selection's dimensions exceeds the configured value, the selection will be internally scaled down."
+  },
+  "maxPixelsDefault": {
+    "message": "Default: 100,000"
+  },
+  "shortcutsTitle": {
+    "message": "Colors & Shades Shortcuts"
+  },
+  "change": {
+    "message": "change"
+  },
+  "resetDesc": {
+    "message": "Resetting the extension will restore the default settings. This action cannot be undone."
+  },
+  "resetButton": {
+    "message": "Reset to default settings"
+  },
+  "aboutDesc": {
+    "message": "This extension is intended to help colorblind people to better understand the colors they see on the web and to make online content more accessible to them."
+  },
+  "aboutGithub": {
+    "message": "Project page and sourcecode on GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - my assistive app for color vision deficient people"
+  },
+  "aboutBlog": {
+    "message": "More on colorblindness on my blog"
+  },
+  "aboutBug": {
+    "message": "Found a bug? Post it here!"
+  },
+  "aboutDisclaimer": {
+    "message": "This extension is a hobby project and is provided as is. I am not responsible for any damage or loss of data caused by the use of this extension."
+  },
+  "aboutPrivacy": {
+    "message": "This extension respects your privacy. It does not collect any personal data. It does not track you."
+  },
+  "settingsHint": {
+    "message": "If you disable the \"Settings\" button, you can still access the settings by right-clicking the extension icon and selecting \"Options\"."
+  }
+}

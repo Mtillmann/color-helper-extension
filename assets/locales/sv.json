@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Hjälptillägg för personer med färgsynsnedsättning"
+  },
+  "colorsAndShades": {
+    "message": "Färger & Nyanser"
+  },
+  "chartsAndGraphs": {
+    "message": "Diagram & Grafer"
+  },
+  "settings": {
+    "message": "Inställningar"
+  },
+  "selection": {
+    "message": "Markering"
+  },
+  "domElement": {
+    "message": "DOM-element"
+  },
+  "viewport": {
+    "message": "Synligt område"
+  },
+  "analyzeImage": {
+    "message": "Analysera bild"
+  },
+  "analyzeSelection": {
+    "message": "Analysera markering"
+  },
+  "analyzeDomElement": {
+    "message": "Analysera DOM-element"
+  },
+  "analyzeViewport": {
+    "message": "Analysera synligt område"
+  },
+  "openSettings": {
+    "message": "Öppna inställningar"
+  },
+  "copy": {
+    "message": "kopiera"
+  },
+  "interface": {
+    "message": "Gränssnitt"
+  },
+  "processing": {
+    "message": "Bearbetning"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Genvägar"
+  },
+  "contextMenu": {
+    "message": "Snabbmeny"
+  },
+  "reset": {
+    "message": "Återställ"
+  },
+  "about": {
+    "message": "Om"
+  },
+  "colorTheme": {
+    "message": "Färgtema"
+  },
+  "alwaysLight": {
+    "message": "Alltid ljust"
+  },
+  "alwaysDark": {
+    "message": "Alltid mörkt"
+  },
+  "systemDefault": {
+    "message": "Systemstandard"
+  },
+  "analyzerBackground": {
+    "message": "Analysbakgrund"
+  },
+  "useThemeColor": {
+    "message": "Använd temafärg"
+  },
+  "useCustomColor": {
+    "message": "Använd anpassad färg"
+  },
+  "maxPixels": {
+    "message": "Max pixlar att bearbeta"
+  },
+  "maxPixelsHint": {
+    "message": "Maximalt antal pixlar att bearbeta. Ett högre antal innebär längre bearbetningstid."
+  },
+  "unmatchedOpacity": {
+    "message": "Opacitet för icke-matchande"
+  },
+  "outlineColor": {
+    "message": "Konturfärg"
+  },
+  "language": {
+    "message": "Språk"
+  },
+  "languageBrowser": {
+    "message": "Webbläsarspråk"
+  },
+  "permissionError": {
+    "message": "Du måste ge tillägget behörighet att \"komma åt dina data på alla webbplatser\"."
+  },
+  "permissionFirefox": {
+    "message": "Gå till about:addons, klicka på \"color helper\", klicka på \"Behörigheter\" och bevilja behörigheten."
+  },
+  "highlightColorShade": {
+    "message": "Markera färgnyans vid hovring"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Minska opacitet för omatchade färgnyanser"
+  },
+  "unmatchedSaturation": {
+    "message": "Omatchad mättnad"
+  },
+  "desaturateUnmatched": {
+    "message": "Avmätta omatchade färgnyanser"
+  },
+  "outlineMatched": {
+    "message": "Konturera matchande färgnyans"
+  },
+  "pauseOnClick": {
+    "message": "Fäst informationsrutan vid klick"
+  },
+  "pauseOnClickHint": {
+    "message": "Användbart när du vill kopiera färgen"
+  },
+  "colorThemeAdapt": {
+    "message": "Försök anpassa till den aktuella webbplatsens design"
+  },
+  "showMatchQuality": {
+    "message": "Visa färgmatchningskvalitet och avstånd (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Visa heuristisk färgnyans under huvudnyansen"
+  },
+  "logTimings": {
+    "message": "Logga tider i konsolen"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Inställningar"
+  },
+  "useCompatMode": {
+    "message": "Använd kompatibilitetsläge"
+  },
+  "useCompatModeHint": {
+    "message": "Aktivera detta om analysvyn är tom trots att hovring fungerar."
+  },
+  "showShadePrefix": {
+    "message": "Särskilj färgnyanser i ljus/[normal]/mörk"
+  },
+  "addContextMenu": {
+    "message": "Lägg till analysalternativ i snabbmenyn"
+  },
+  "colorShadeLabel": {
+    "message": "Färgnyans"
+  },
+  "colorNameLabel": {
+    "message": "Färgnamn"
+  },
+  "clickToPin": {
+    "message": "Klicka for att fasta"
+  },
+  "copied": {
+    "message": "kopierat!"
+  },
+  "version": {
+    "message": "Version"
+  },
+  "maxPixelsDesc": {
+    "message": "När produkten av ditt urvals dimensioner överstiger det konfigurerade värdet, kommer urvalet att skalas ned internt."
+  },
+  "maxPixelsDefault": {
+    "message": "Standard: 100 000"
+  },
+  "shortcutsTitle": {
+    "message": "Färger och nyanser genvägar"
+  },
+  "change": {
+    "message": "ändra"
+  },
+  "resetDesc": {
+    "message": "Återställning av tillägget återställer standardinställningarna. Denna åtgärd kan inte ångras."
+  },
+  "resetButton": {
+    "message": "Återställ till standardinställningar"
+  },
+  "aboutDesc": {
+    "message": "Detta tillägg hjälper färgblinda personer att bättre förstå färgerna på webben och göra onlineinnehåll mer tillgängligt."
+  },
+  "aboutGithub": {
+    "message": "Projektsida och källkod på GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - min hjälpapp för personer med färgseendebrister"
+  },
+  "aboutBlog": {
+    "message": "Mer om färgblindhet på min blogg"
+  },
+  "aboutBug": {
+    "message": "Hittat en bugg? Rapportera den här!"
+  },
+  "aboutDisclaimer": {
+    "message": "Detta tillägg är ett hobbyprojekt och tillhandahålls i befintligt skick. Jag ansvarar inte för skador eller dataförlust."
+  },
+  "aboutPrivacy": {
+    "message": "Detta tillägg respekterar din integritet. Det samlar inte in personuppgifter. Det spårar dig inte."
+  },
+  "settingsHint": {
+    "message": "Om du inaktiverar knappen \"Inställningar\" kan du fortfarande komma åt inställningarna genom att högerklicka på tilläggssymbolen och välja \"Alternativ\"."
+  }
+}

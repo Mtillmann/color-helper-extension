@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Hulpextensie voor mensen met een kleurvisiestoornis"
+  },
+  "colorsAndShades": {
+    "message": "Kleuren & Tinten"
+  },
+  "chartsAndGraphs": {
+    "message": "Grafieken & Diagrammen"
+  },
+  "settings": {
+    "message": "Instellingen"
+  },
+  "selection": {
+    "message": "Selectie"
+  },
+  "domElement": {
+    "message": "DOM-element"
+  },
+  "viewport": {
+    "message": "Zichtbaar gebied"
+  },
+  "analyzeImage": {
+    "message": "Afbeelding analyseren"
+  },
+  "analyzeSelection": {
+    "message": "Selectie analyseren"
+  },
+  "analyzeDomElement": {
+    "message": "DOM-element analyseren"
+  },
+  "analyzeViewport": {
+    "message": "Zichtbaar gebied analyseren"
+  },
+  "openSettings": {
+    "message": "Instellingen openen"
+  },
+  "copy": {
+    "message": "kopiëren"
+  },
+  "interface": {
+    "message": "Interface"
+  },
+  "processing": {
+    "message": "Verwerking"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Sneltoetsen"
+  },
+  "contextMenu": {
+    "message": "Contextmenu"
+  },
+  "reset": {
+    "message": "Herstellen"
+  },
+  "about": {
+    "message": "Over"
+  },
+  "colorTheme": {
+    "message": "Kleurthema"
+  },
+  "alwaysLight": {
+    "message": "Altijd licht"
+  },
+  "alwaysDark": {
+    "message": "Altijd donker"
+  },
+  "systemDefault": {
+    "message": "Systeemstandaard"
+  },
+  "analyzerBackground": {
+    "message": "Analyseachtergrond"
+  },
+  "useThemeColor": {
+    "message": "Themakleur gebruiken"
+  },
+  "useCustomColor": {
+    "message": "Aangepaste kleur gebruiken"
+  },
+  "maxPixels": {
+    "message": "Max. pixels te verwerken"
+  },
+  "maxPixelsHint": {
+    "message": "Maximaal aantal te verwerken pixels. Een hoger getal betekent langere verwerkingstijd."
+  },
+  "unmatchedOpacity": {
+    "message": "Dekking van niet-overeenkomende"
+  },
+  "outlineColor": {
+    "message": "Omtrekkleur"
+  },
+  "language": {
+    "message": "Taal"
+  },
+  "languageBrowser": {
+    "message": "Browsertaal"
+  },
+  "permissionError": {
+    "message": "U moet de extensie toestemming geven om \"toegang te krijgen tot uw gegevens op alle websites\"."
+  },
+  "permissionFirefox": {
+    "message": "Ga naar about:addons, klik op \"color helper\", klik op \"Machtigingen\" en verleen de machtiging."
+  },
+  "highlightColorShade": {
+    "message": "Kleurtint markeren bij hover"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Dekking verminderen voor niet-overeenkomende kleurtinten"
+  },
+  "unmatchedSaturation": {
+    "message": "Verzadiging niet-overeenkomende"
+  },
+  "desaturateUnmatched": {
+    "message": "Niet-overeenkomende kleurtinten ontverzadigen"
+  },
+  "outlineMatched": {
+    "message": "Overeenkomende kleurtint omlijnen"
+  },
+  "pauseOnClick": {
+    "message": "Infovenster vastzetten bij klik"
+  },
+  "pauseOnClickHint": {
+    "message": "Handig wanneer u de kleur wilt kopiëren"
+  },
+  "colorThemeAdapt": {
+    "message": "Probeer aan te passen aan het ontwerp van de huidige website"
+  },
+  "showMatchQuality": {
+    "message": "Kleurovereenkomst kwaliteit en afstand (ΔE) tonen"
+  },
+  "showAlternativeShade": {
+    "message": "Heuristische kleurtint onder de hoofdtint tonen"
+  },
+  "logTimings": {
+    "message": "Tijdmetingen in console loggen"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Instellingen"
+  },
+  "useCompatMode": {
+    "message": "Compatibiliteitsmodus gebruiken"
+  },
+  "useCompatModeHint": {
+    "message": "Schakel deze optie in als de analyseweergave leeg is terwijl de hover werkt."
+  },
+  "showShadePrefix": {
+    "message": "Kleurtinten onderscheiden in licht/[normaal]/donker"
+  },
+  "addContextMenu": {
+    "message": "Analyseopties aan contextmenu toevoegen"
+  },
+  "colorShadeLabel": {
+    "message": "Kleurtint"
+  },
+  "colorNameLabel": {
+    "message": "Kleurnaam"
+  },
+  "clickToPin": {
+    "message": "Klik om vast te pinnen"
+  },
+  "copied": {
+    "message": "gekopieerd!"
+  },
+  "version": {
+    "message": "Versie"
+  },
+  "maxPixelsDesc": {
+    "message": "Wanneer het product van de afmetingen van uw selectie de ingestelde waarde overschrijdt, wordt de selectie intern verkleind."
+  },
+  "maxPixelsDefault": {
+    "message": "Standaard: 100.000"
+  },
+  "shortcutsTitle": {
+    "message": "Kleuren & tinten sneltoetsen"
+  },
+  "change": {
+    "message": "wijzigen"
+  },
+  "resetDesc": {
+    "message": "Het resetten van de extensie herstelt de standaardinstellingen. Deze actie kan niet ongedaan worden gemaakt."
+  },
+  "resetButton": {
+    "message": "Standaardinstellingen herstellen"
+  },
+  "aboutDesc": {
+    "message": "Deze extensie helpt kleurenblinde mensen om kleuren op het web beter te begrijpen en online inhoud toegankelijker te maken."
+  },
+  "aboutGithub": {
+    "message": "Projectpagina en broncode op GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - mijn hulp-app voor mensen met kleurenblindheid"
+  },
+  "aboutBlog": {
+    "message": "Meer over kleurenblindheid op mijn blog"
+  },
+  "aboutBug": {
+    "message": "Bug gevonden? Meld het hier!"
+  },
+  "aboutDisclaimer": {
+    "message": "Deze extensie is een hobbyproject en wordt aangeboden zoals het is. Ik ben niet verantwoordelijk voor schade of gegevensverlies door het gebruik."
+  },
+  "aboutPrivacy": {
+    "message": "Deze extensie respecteert uw privacy. Er worden geen persoonlijke gegevens verzameld. U wordt niet gevolgd."
+  },
+  "settingsHint": {
+    "message": "Als u de knop \"Instellingen\" uitschakelt, kunt u de instellingen nog steeds openen door rechts te klikken op het extensiepictogram en \"Opties\" te selecteren."
+  }
+}

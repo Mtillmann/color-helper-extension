@@ -1,9 +1,10 @@
 {
   "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 3,
-  "name": "color helper",
+  "default_locale": "en",
+  "name": "__MSG_extensionName__",
   "version": "0.0.8",
-  "description": "Assistive extension for people with color vision deficiency",
+  "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/Mtillmann/color-helper-extension",
   "icons": {
     "16": "/icons/16x16.png",
@@ -36,7 +37,8 @@
         "node_modules/@mtillmann/colors/dist/data/binaryLookup.bin",
         "node_modules/@mtillmann/colors/dist/data/binaryLookupMaps.json",
         "node_modules/@mtillmann/colors/dist/data/colorMap.json",
-        "node_modules/@mtillmann/colors/dist/data/lookupCube.json"
+        "node_modules/@mtillmann/colors/dist/data/lookupCube.json",
+        "assets/locales/*.json"
       ]
     }
   ],

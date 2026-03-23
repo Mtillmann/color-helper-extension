@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "افزونه کمکی برای افراد با اختلال بینایی رنگ"
+  },
+  "colorsAndShades": {
+    "message": "رنگ‌ها و سایه‌ها"
+  },
+  "chartsAndGraphs": {
+    "message": "نمودارها و گراف‌ها"
+  },
+  "settings": {
+    "message": "تنظیمات"
+  },
+  "selection": {
+    "message": "انتخاب"
+  },
+  "domElement": {
+    "message": "عنصر DOM"
+  },
+  "viewport": {
+    "message": "ناحیه دید"
+  },
+  "analyzeImage": {
+    "message": "تحلیل تصویر"
+  },
+  "analyzeSelection": {
+    "message": "تحلیل انتخاب"
+  },
+  "analyzeDomElement": {
+    "message": "تحلیل عنصر DOM"
+  },
+  "analyzeViewport": {
+    "message": "تحلیل ناحیه دید"
+  },
+  "openSettings": {
+    "message": "باز کردن تنظیمات"
+  },
+  "copy": {
+    "message": "کپی"
+  },
+  "interface": {
+    "message": "رابط کاربری"
+  },
+  "processing": {
+    "message": "پردازش"
+  },
+  "popup": {
+    "message": "پنجره بازشو"
+  },
+  "shortcuts": {
+    "message": "میانبرها"
+  },
+  "contextMenu": {
+    "message": "منوی زمینه"
+  },
+  "reset": {
+    "message": "بازنشانی"
+  },
+  "about": {
+    "message": "درباره"
+  },
+  "colorTheme": {
+    "message": "تم رنگی"
+  },
+  "alwaysLight": {
+    "message": "همیشه روشن"
+  },
+  "alwaysDark": {
+    "message": "همیشه تاریک"
+  },
+  "systemDefault": {
+    "message": "پیش‌فرض سیستم"
+  },
+  "analyzerBackground": {
+    "message": "پس‌زمینه تحلیلگر"
+  },
+  "useThemeColor": {
+    "message": "استفاده از رنگ تم"
+  },
+  "useCustomColor": {
+    "message": "استفاده از رنگ سفارشی"
+  },
+  "maxPixels": {
+    "message": "حداکثر پیکسل برای پردازش"
+  },
+  "maxPixelsHint": {
+    "message": "حداکثر تعداد پیکسل برای پردازش. عدد بالاتر زمان پردازش بیشتری می‌گیرد."
+  },
+  "unmatchedOpacity": {
+    "message": "شفافیت موارد نامطابق"
+  },
+  "outlineColor": {
+    "message": "رنگ حاشیه"
+  },
+  "language": {
+    "message": "زبان"
+  },
+  "languageBrowser": {
+    "message": "زبان مرورگر"
+  },
+  "permissionError": {
+    "message": "باید به افزونه دسترسی به \"اطلاعات شما در همه وب‌سایت‌ها\" را بدهید."
+  },
+  "permissionFirefox": {
+    "message": "به about:addons بروید، روی \"color helper\" کلیک کنید، روی \"مجوزها\" کلیک کنید و مجوز را بدهید."
+  },
+  "highlightColorShade": {
+    "message": "برجسته کردن سایه رنگ هنگام اشاره"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "کاهش شفافیت سایه‌های رنگ ناهمسان"
+  },
+  "unmatchedSaturation": {
+    "message": "اشباع ناهمسان"
+  },
+  "desaturateUnmatched": {
+    "message": "کاهش اشباع سایه‌های رنگ ناهمسان"
+  },
+  "outlineMatched": {
+    "message": "خط دور سایه رنگ همسان"
+  },
+  "pauseOnClick": {
+    "message": "ثابت کردن کادر اطلاعات با کلیک"
+  },
+  "pauseOnClickHint": {
+    "message": "مفید هنگام کپی کردن رنگ"
+  },
+  "colorThemeAdapt": {
+    "message": "تلاش برای تطبیق با طراحی وب‌سایت فعلی"
+  },
+  "showMatchQuality": {
+    "message": "نمایش کیفیت تطابق رنگ و فاصله (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "نمایش سایه رنگ اکتشافی زیر سایه اصلی"
+  },
+  "logTimings": {
+    "message": "ثبت زمان‌ها در کنسول"
+  },
+  "settingsTitle": {
+    "message": "تنظیمات Color Helper"
+  },
+  "useCompatMode": {
+    "message": "استفاده از حالت سازگاری"
+  },
+  "useCompatModeHint": {
+    "message": "اگر نمای تحلیل خالی است اما هاور کار می‌کند این گزینه را فعال کنید."
+  },
+  "showShadePrefix": {
+    "message": "تفکیک سایه‌ها به روشن/[معمولی]/تیره"
+  },
+  "addContextMenu": {
+    "message": "افزودن گزینه‌های تحلیل به منوی زمینه"
+  },
+  "colorShadeLabel": {
+    "message": "سایه رنگ"
+  },
+  "colorNameLabel": {
+    "message": "نام رنگ"
+  },
+  "clickToPin": {
+    "message": "برای پین کردن کلیک کنید"
+  },
+  "copied": {
+    "message": "کپی شد!"
+  },
+  "version": {
+    "message": "نسخه"
+  },
+  "maxPixelsDesc": {
+    "message": "وقتی حاصل‌ضرب ابعاد انتخاب شما از مقدار تنظیم شده بیشتر شود، انتخاب به صورت داخلی کوچک می‌شود."
+  },
+  "maxPixelsDefault": {
+    "message": "پیش‌فرض: ۱۰۰٬۰۰۰"
+  },
+  "shortcutsTitle": {
+    "message": "میانبرهای رنگ‌ها و سایه‌ها"
+  },
+  "change": {
+    "message": "تغییر"
+  },
+  "resetDesc": {
+    "message": "بازنشانی افزونه تنظیمات پیش‌فرض را بازیابی می‌کند. این عمل قابل بازگشت نیست."
+  },
+  "resetButton": {
+    "message": "بازنشانی به تنظیمات پیش‌فرض"
+  },
+  "aboutDesc": {
+    "message": "این افزونه برای کمک به افراد کوررنگ طراحی شده تا رنگ‌های وب را بهتر درک کنند و محتوای آنلاین برایشان قابل دسترس‌تر شود."
+  },
+  "aboutGithub": {
+    "message": "صفحه پروژه و کد منبع در GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - اپلیکیشن کمکی من برای افراد با نقص بینایی رنگ"
+  },
+  "aboutBlog": {
+    "message": "اطلاعات بیشتر درباره کوررنگی در وبلاگ من"
+  },
+  "aboutBug": {
+    "message": "باگ پیدا کردید؟ اینجا گزارش دهید!"
+  },
+  "aboutDisclaimer": {
+    "message": "این افزونه یک پروژه شخصی است و همان‌طور که هست ارائه می‌شود. من مسئول هیچ آسیب یا از دست رفتن داده ناشی از استفاده نیستم."
+  },
+  "aboutPrivacy": {
+    "message": "این افزونه حریم خصوصی شما را محترم می‌شمارد. هیچ داده شخصی جمع‌آوری نمی‌کند. شما را ردیابی نمی‌کند."
+  },
+  "settingsHint": {
+    "message": "اگر دکمه \"تنظیمات\" را غیرفعال کنید، همچنان می‌توانید با کلیک راست روی آیکون افزونه و انتخاب \"گزینه‌ها\" به تنظیمات دسترسی داشته باشید."
+  }
+}

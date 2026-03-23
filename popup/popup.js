@@ -9,8 +9,13 @@ function inject(tab) {
     })
 }
 
+const i18nGroupNames = { 'Colors & Shades': 'colorsAndShades', 'Charts & Graphs': 'chartsAndGraphs', 'Settings': 'settings' };
+const i18nActionNames = { 'Selection': 'selection', 'DOM Element': 'domElement', 'Viewport': 'viewport' };
+
 document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+
+    await initI18n();
 
     let groups;
 
@@ -95,7 +100,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             
                 let span = document.createElement('span');
-                span.textContent = item.action ?? group.name;
+                const rawLabel = item.action ?? group.name;
+                const i18nKey = i18nActionNames[rawLabel] || i18nGroupNames[rawLabel];
+                span.textContent = i18nKey ? t(i18nKey) : rawLabel;
                 a.insertAdjacentElement('beforeend', span);
             
 

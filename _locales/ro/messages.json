@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Extensie de asistență pentru persoanele cu deficiență de vedere a culorilor"
+  },
+  "colorsAndShades": {
+    "message": "Culori și Nuanțe"
+  },
+  "chartsAndGraphs": {
+    "message": "Grafice și Diagrame"
+  },
+  "settings": {
+    "message": "Setări"
+  },
+  "selection": {
+    "message": "Selecție"
+  },
+  "domElement": {
+    "message": "Element DOM"
+  },
+  "viewport": {
+    "message": "Zona vizibilă"
+  },
+  "analyzeImage": {
+    "message": "Analizați imaginea"
+  },
+  "analyzeSelection": {
+    "message": "Analizați selecția"
+  },
+  "analyzeDomElement": {
+    "message": "Analizați elementul DOM"
+  },
+  "analyzeViewport": {
+    "message": "Analizați zona vizibilă"
+  },
+  "openSettings": {
+    "message": "Deschide setările"
+  },
+  "copy": {
+    "message": "copiați"
+  },
+  "interface": {
+    "message": "Interfață"
+  },
+  "processing": {
+    "message": "Procesare"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Comenzi rapide"
+  },
+  "contextMenu": {
+    "message": "Meniu contextual"
+  },
+  "reset": {
+    "message": "Resetare"
+  },
+  "about": {
+    "message": "Despre"
+  },
+  "colorTheme": {
+    "message": "Temă de culoare"
+  },
+  "alwaysLight": {
+    "message": "Întotdeauna deschis"
+  },
+  "alwaysDark": {
+    "message": "Întotdeauna întunecat"
+  },
+  "systemDefault": {
+    "message": "Implicit sistem"
+  },
+  "analyzerBackground": {
+    "message": "Fundal analizor"
+  },
+  "useThemeColor": {
+    "message": "Utilizați culoarea temei"
+  },
+  "useCustomColor": {
+    "message": "Utilizați culoare personalizată"
+  },
+  "maxPixels": {
+    "message": "Max. pixeli de procesat"
+  },
+  "maxPixelsHint": {
+    "message": "Numărul maxim de pixeli de procesat. Un număr mai mare înseamnă timp de procesare mai lung."
+  },
+  "unmatchedOpacity": {
+    "message": "Opacitate nepotrivite"
+  },
+  "outlineColor": {
+    "message": "Culoarea conturului"
+  },
+  "language": {
+    "message": "Limbă"
+  },
+  "languageBrowser": {
+    "message": "Limba browserului"
+  },
+  "permissionError": {
+    "message": "Trebuie să acordați extensiei permisiunea de a \"accesa datele dvs. pe toate site-urile web\"."
+  },
+  "permissionFirefox": {
+    "message": "Mergeți la about:addons, faceți clic pe \"color helper\", faceți clic pe \"Permisiuni\" și acordați permisiunea."
+  },
+  "highlightColorShade": {
+    "message": "Evidențiază nuanța de culoare la trecere"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reduce opacitatea nuanțelor nepotrivite"
+  },
+  "unmatchedSaturation": {
+    "message": "Saturația nepotrivitelor"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturează nuanțele de culoare nepotrivite"
+  },
+  "outlineMatched": {
+    "message": "Conturează nuanța de culoare potrivită"
+  },
+  "pauseOnClick": {
+    "message": "Fixează caseta de informații la clic"
+  },
+  "pauseOnClickHint": {
+    "message": "Util când doriți să copiați culoarea"
+  },
+  "colorThemeAdapt": {
+    "message": "Încearcă să se adapteze la designul site-ului curent"
+  },
+  "showMatchQuality": {
+    "message": "Afișează calitatea potrivirii culorii și distanța (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Afișează nuanța euristică sub nuanța principală"
+  },
+  "logTimings": {
+    "message": "Înregistrează timpii în consolă"
+  },
+  "settingsTitle": {
+    "message": "Setări Color Helper"
+  },
+  "useCompatMode": {
+    "message": "Folosește modul de compatibilitate"
+  },
+  "useCompatModeHint": {
+    "message": "Activați această opțiune când vizualizarea analizei este goală deși hover-ul funcționează."
+  },
+  "showShadePrefix": {
+    "message": "Diferențiază nuanțele în deschis/[normal]/închis"
+  },
+  "addContextMenu": {
+    "message": "Adaugă opțiuni de analiză în meniul contextual"
+  },
+  "colorShadeLabel": {
+    "message": "Nuanță de culoare"
+  },
+  "colorNameLabel": {
+    "message": "Nume culoare"
+  },
+  "clickToPin": {
+    "message": "Click pentru a fixa"
+  },
+  "copied": {
+    "message": "copiat!"
+  },
+  "version": {
+    "message": "Versiune"
+  },
+  "maxPixelsDesc": {
+    "message": "Când produsul dimensiunilor selecției depășește valoarea configurată, selecția va fi redusă intern."
+  },
+  "maxPixelsDefault": {
+    "message": "Implicit: 100.000"
+  },
+  "shortcutsTitle": {
+    "message": "Comenzi rapide culori și nuanțe"
+  },
+  "change": {
+    "message": "modifică"
+  },
+  "resetDesc": {
+    "message": "Resetarea extensiei va restaura setările implicite. Această acțiune nu poate fi anulată."
+  },
+  "resetButton": {
+    "message": "Resetează la setările implicite"
+  },
+  "aboutDesc": {
+    "message": "Această extensie ajută persoanele daltoniste să înțeleagă mai bine culorile de pe web și să facă conținutul online mai accesibil."
+  },
+  "aboutGithub": {
+    "message": "Pagina proiectului și codul sursă pe GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - aplicația mea de asistență pentru persoanele cu deficiențe de vedere a culorilor"
+  },
+  "aboutBlog": {
+    "message": "Mai multe despre daltonism pe blogul meu"
+  },
+  "aboutBug": {
+    "message": "Ai găsit un bug? Raportează-l aici!"
+  },
+  "aboutDisclaimer": {
+    "message": "Această extensie este un proiect personal și este oferită ca atare. Nu sunt responsabil pentru daune sau pierderi de date cauzate de utilizare."
+  },
+  "aboutPrivacy": {
+    "message": "Această extensie respectă confidențialitatea dvs. Nu colectează date personale. Nu vă urmărește."
+  },
+  "settingsHint": {
+    "message": "Dacă dezactivați butonul \"Setări\", puteți accesa în continuare setările făcând clic dreapta pe pictograma extensiei și selectând \"Opțiuni\"."
+  }
+}

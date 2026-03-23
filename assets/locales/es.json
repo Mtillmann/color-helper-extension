@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Extensión de asistencia para personas con deficiencia visual del color"
+  },
+  "colorsAndShades": {
+    "message": "Colores y Tonos"
+  },
+  "chartsAndGraphs": {
+    "message": "Gráficos y Diagramas"
+  },
+  "settings": {
+    "message": "Configuración"
+  },
+  "selection": {
+    "message": "Selección"
+  },
+  "domElement": {
+    "message": "Elemento DOM"
+  },
+  "viewport": {
+    "message": "Área visible"
+  },
+  "analyzeImage": {
+    "message": "Analizar imagen"
+  },
+  "analyzeSelection": {
+    "message": "Analizar selección"
+  },
+  "analyzeDomElement": {
+    "message": "Analizar elemento DOM"
+  },
+  "analyzeViewport": {
+    "message": "Analizar área visible"
+  },
+  "openSettings": {
+    "message": "Abrir configuración"
+  },
+  "copy": {
+    "message": "copiar"
+  },
+  "interface": {
+    "message": "Interfaz"
+  },
+  "processing": {
+    "message": "Procesamiento"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Atajos"
+  },
+  "contextMenu": {
+    "message": "Menú contextual"
+  },
+  "reset": {
+    "message": "Restablecer"
+  },
+  "about": {
+    "message": "Acerca de"
+  },
+  "colorTheme": {
+    "message": "Tema de color"
+  },
+  "alwaysLight": {
+    "message": "Siempre claro"
+  },
+  "alwaysDark": {
+    "message": "Siempre oscuro"
+  },
+  "systemDefault": {
+    "message": "Predeterminado del sistema"
+  },
+  "analyzerBackground": {
+    "message": "Fondo del analizador"
+  },
+  "useThemeColor": {
+    "message": "Usar color del tema"
+  },
+  "useCustomColor": {
+    "message": "Usar color personalizado"
+  },
+  "maxPixels": {
+    "message": "Máx. píxeles a procesar"
+  },
+  "maxPixelsHint": {
+    "message": "Número máximo de píxeles a procesar. Un número mayor significa más tiempo de procesamiento."
+  },
+  "unmatchedOpacity": {
+    "message": "Opacidad de no coincidentes"
+  },
+  "outlineColor": {
+    "message": "Color del contorno"
+  },
+  "language": {
+    "message": "Idioma"
+  },
+  "languageBrowser": {
+    "message": "Idioma del navegador"
+  },
+  "permissionError": {
+    "message": "Necesita otorgar a la extensión permiso para \"acceder a sus datos en todos los sitios web\"."
+  },
+  "permissionFirefox": {
+    "message": "Vaya a about:addons, haga clic en \"color helper\", haga clic en \"Permisos\" y otorgue el permiso."
+  },
+  "highlightColorShade": {
+    "message": "Resaltar tono de color al pasar el cursor"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Reducir opacidad de tonos no coincidentes"
+  },
+  "unmatchedSaturation": {
+    "message": "Saturación de no coincidentes"
+  },
+  "desaturateUnmatched": {
+    "message": "Desaturar tonos de color no coincidentes"
+  },
+  "outlineMatched": {
+    "message": "Delinear el tono de color coincidente"
+  },
+  "pauseOnClick": {
+    "message": "Fijar cuadro de información al hacer clic"
+  },
+  "pauseOnClickHint": {
+    "message": "Útil cuando desea copiar el color"
+  },
+  "colorThemeAdapt": {
+    "message": "Intentar adaptarse al diseño del sitio web actual"
+  },
+  "showMatchQuality": {
+    "message": "Mostrar calidad de coincidencia de color y distancia (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Mostrar tono heurístico debajo del tono principal"
+  },
+  "logTimings": {
+    "message": "Registrar tiempos en la consola"
+  },
+  "settingsTitle": {
+    "message": "Ajustes de Color Helper"
+  },
+  "useCompatMode": {
+    "message": "Usar modo de compatibilidad"
+  },
+  "useCompatModeHint": {
+    "message": "Active esta opción cuando la vista de análisis esté en blanco aunque el hover funcione."
+  },
+  "showShadePrefix": {
+    "message": "Diferenciar tonos en claro/[normal]/oscuro"
+  },
+  "addContextMenu": {
+    "message": "Agregar opciones de análisis al menú contextual"
+  },
+  "colorShadeLabel": {
+    "message": "Tono de color"
+  },
+  "colorNameLabel": {
+    "message": "Nombre del color"
+  },
+  "clickToPin": {
+    "message": "Clic para fijar"
+  },
+  "copied": {
+    "message": "copiado!"
+  },
+  "version": {
+    "message": "Versión"
+  },
+  "maxPixelsDesc": {
+    "message": "Cuando el producto de las dimensiones de su selección supere el valor configurado, la selección se reducirá internamente."
+  },
+  "maxPixelsDefault": {
+    "message": "Predeterminado: 100.000"
+  },
+  "shortcutsTitle": {
+    "message": "Atajos de colores y tonos"
+  },
+  "change": {
+    "message": "cambiar"
+  },
+  "resetDesc": {
+    "message": "Restablecer la extensión restaurará la configuración predeterminada. Esta acción no se puede deshacer."
+  },
+  "resetButton": {
+    "message": "Restablecer configuración predeterminada"
+  },
+  "aboutDesc": {
+    "message": "Esta extensión está diseñada para ayudar a las personas daltónicas a comprender mejor los colores en la web y hacer el contenido en línea más accesible."
+  },
+  "aboutGithub": {
+    "message": "Página del proyecto y código fuente en GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - mi aplicación de asistencia para personas con deficiencia de visión cromática"
+  },
+  "aboutBlog": {
+    "message": "Más sobre daltonismo en mi blog"
+  },
+  "aboutBug": {
+    "message": "¿Encontraste un error? ¡Repórtalo aquí!"
+  },
+  "aboutDisclaimer": {
+    "message": "Esta extensión es un proyecto personal y se proporciona tal cual. No soy responsable de ningún daño o pérdida de datos causados por su uso."
+  },
+  "aboutPrivacy": {
+    "message": "Esta extensión respeta su privacidad. No recopila datos personales. No lo rastrea."
+  },
+  "settingsHint": {
+    "message": "Si desactiva el botón \"Configuración\", aún puede acceder a la configuración haciendo clic derecho en el icono de la extensión y seleccionando \"Opciones\"."
+  }
+}
