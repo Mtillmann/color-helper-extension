@@ -1,5 +1,40 @@
+let _bgLocaleMessages = null;
 
-//await chrome.storage.sync.clear()
+async function loadBgLocale(language) {
+  if (language === 'browser') { _bgLocaleMessages = null; return; }
+  try {
+    const url = chrome.runtime.getURL(`assets/locales/${language}.json`);
+    _bgLocaleMessages = await fetch(url).then(r => r.json());
+  } catch (e) {
+    _bgLocaleMessages = null;
+  }
+}
+
+function bgT(key) {
+  if (_bgLocaleMessages?.[key]) return _bgLocaleMessages[key].message;
+  return chrome.i18n.getMessage(key) || key;
+}
+
+async function updateContextMenuTitles() {
+  const { language } = await chrome.storage.sync.get({ language: 'browser' });
+  await loadBgLocale(language);
+  const updates = [
+    ['che_analyze_image', 'analyzeImage'],
+    ['che_analyze_selection', 'analyzeSelection'],
+    ['che_analyze_dom_element', 'analyzeDomElement'],
+    ['che_analyze_viewport', 'analyzeViewport'],
+    ['che_settings', 'openSettings'],
+  ];
+  for (const [id, key] of updates) {
+    chrome.contextMenus.update(id, { title: bgT(key) });
+  }
+}
+
+chrome.storage.onChanged.addListener((changes) => {
+  if (changes.language) {
+    updateContextMenuTitles();
+  }
+});
 
 //this controls which keys are stored in the storage and what is reverted to default in the options page
 const defaults = {
@@ -21,6 +56,7 @@ const defaults = {
   showMatchQuality: false,
   showAlternativeShade: false,
   showContextMenu: true,
+  language: 'browser',
   popupGroups: [
     {
       name: "Colors & Shades",
@@ -116,6 +152,7 @@ chrome.storage.sync.get((store) => {
 
 function inject(tab, options = { type: 'colors', action: 'selection' }) {
   chrome.tabs.sendMessage(tab.id, { message: 'init', options }, (res) => {
+    void chrome.runtime.lastError;
     if (res) {
       clearTimeout(timeout)
     }
@@ -192,9 +229,10 @@ chrome.runtime.onMessage.addListener((req, sender, res) => {
 
 
 chrome.runtime.onInstalled.addListener(() => {
-  for(const item of CONTEXTMENUITEMS){
-    chrome.contextMenus.create(item)
-  };
+  for (const item of CONTEXTMENUITEMS) {
+    chrome.contextMenus.create(item);
+  }
+  updateContextMenuTitles();
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {

@@ -1,5 +1,8 @@
 import { ARROW_UP, ARROW_DOWN } from "../assets/icons.js";
 
+const i18nGroupNames = { 'Colors & Shades': 'colorsAndShades', 'Charts & Graphs': 'chartsAndGraphs', 'Settings': 'settings' };
+const i18nActionNames = { 'Selection': 'selection', 'DOM Element': 'domElement', 'Viewport': 'viewport' };
+
 let DEFAULTSTATE = {
     //this is defined in background/index.js
 };
@@ -63,8 +66,10 @@ function renderPopupButtons() {
     for (let i = 0; i < STATE.popupGroups.length; i++) {
         const group = STATE.popupGroups[i];
 
+        const groupKey = i18nGroupNames[group.name];
+        const groupLabel = groupKey ? t(groupKey) : group.name;
         target.insertAdjacentHTML('beforeend', `
-        <h3>${group.name}</h3>
+        <h3>${groupLabel}</h3>
         <table class="table table-sm">
         <thead>
           <tr>
@@ -81,7 +86,7 @@ function renderPopupButtons() {
 
         if (group.name === 'Settings') {
             target.insertAdjacentHTML('beforeend', `
-                <p class="small text-muted">If you disable the "Settings" button, you can still access the settings by right-clicking the extension icon and selecting "Options".</p>
+                <p class="small text-muted">${t('settingsHint')}</p>
             `);
         }
 
@@ -95,7 +100,7 @@ function renderPopupButtons() {
           <div class="form-check">
             <input type="checkbox" class="form-check-input" ${item.show ? 'checked' : ''} data-bind-popup-property="${i},${j}" id="cb-${i}-${j}">
             <label class="form-check-label" for="cb-${i}-${j}">
-                ${item.action ?? group.name}
+                ${(() => { const raw = item.action ?? group.name; const key = i18nActionNames[raw] || i18nGroupNames[raw]; return key ? t(key) : raw; })()}
             </label>
           </div>
           
@@ -198,6 +203,9 @@ function changeTab(tab) {
 document.addEventListener('DOMContentLoaded', async () => {
     document.documentElement.setAttribute('data-bs-theme', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
+    await initI18n();
+    applyI18n();
+
     const settings = await chrome.storage.sync.get();
     for (const key in settings) {
         STATE[key] = settings[key];
@@ -206,6 +214,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     DEFAULTSTATE = settings.defaultState;
     CONTEXTMENUITEMS = settings.CONTEXTMENUITEMS;
 
+    onI18nApply(renderPopupButtons);
     renderPopupButtons();
 
     document.addEventListener('click', e => {
@@ -305,6 +314,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             chrome.contextMenus.removeAll();
         }
 
+    });
+
+    document.getElementById('languageSelect').value = settings.language || 'browser';
+
+    document.getElementById('languageSelect').addEventListener('change', async (e) => {
+        await chrome.storage.sync.set({ language: e.target.value });
+        await initI18n();
+        applyI18n();
     });
 
 });

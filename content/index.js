@@ -1,4 +1,11 @@
 
+let _contentLocaleMessages = null;
+
+function contentT(key) {
+  if (_contentLocaleMessages?.[key]) return _contentLocaleMessages[key].message;
+  return chrome.i18n.getMessage(key) || key;
+}
+
 let settings;
 let LOG_TIMINGS = false;
 let CHARTDOWNSAMPLE = 1;
@@ -98,7 +105,7 @@ function template() {
       <tbody>
         <tr class="underline">
           <td class="shade-cell">
-            <small>Color Shade</small>
+            <small>${contentT('colorShadeLabel')}</small>
             <h2><strong class="shade-name"></strong></h2>
 
             <small class="opacity-75 alt-shade">
@@ -106,7 +113,7 @@ function template() {
             </small>
           </td>
           <td class="name-cell">
-            <small>Color Name</small>
+            <small>${contentT('colorNameLabel')}</small>
             <h2 class="color-name"></h2>
             
             <small class="opacity-75 quality-box">
@@ -124,20 +131,20 @@ function template() {
         <tr class="underline">
           <td class="label nowrap">RGB</td>
           <td><span class="color-rgb copy-value"></span></td>
-          <td class="has-copy-button"><a href="#" class="copy-button">copy</a></td>
+          <td class="has-copy-button"><a href="#" class="copy-button">${contentT('copy')}</a></td>
         </tr>
         <tr class="underline">
           <td class="label nowrap">HEX</td>
           <td><span class="color-hex copy-value"></span></td>
           <td class="has-copy-button">
             <a href="#" class="copy-button">
-              copy
+              ${contentT('copy')}
             </a>
           </td>
         </tr>
         <tr class="hint">
           <td colspan="3">
-            <small>Click to pin info box</small>
+            <small>${contentT('clickToPin')}</small>
           </td>
         </tr>
       </tbody>
@@ -406,9 +413,9 @@ async function showAnalysis(crops) {
     if (cb) {
       e.preventDefault();
       copyToClipboard(cb.closest('tr').querySelector('.copy-value').textContent)
-      cb.textContent = 'copied!';
+      cb.textContent = contentT('copied');
       setTimeout(() => {
-        cb.textContent = 'copy';
+        cb.textContent = contentT('copy');
       }, 1000);
     }
   });
@@ -567,6 +574,16 @@ async function initialize() {
     return;
   }
   settings = await chrome.storage.sync.get()
+
+  const lang = settings.language || 'browser';
+  if (lang !== 'browser') {
+    try {
+      const url = chrome.runtime.getURL(`assets/locales/${lang}.json`);
+      _contentLocaleMessages = await fetch(url).then(r => r.json());
+    } catch (e) {
+      _contentLocaleMessages = null;
+    }
+  }
 
   let theme = settings.colorTheme;
   if (theme === 'System') {

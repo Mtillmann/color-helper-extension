@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Hilfserweiterung für Menschen mit Farbsehschwäche"
+  },
+  "colorsAndShades": {
+    "message": "Farben & Schattierungen"
+  },
+  "chartsAndGraphs": {
+    "message": "Diagramme & Grafiken"
+  },
+  "settings": {
+    "message": "Einstellungen"
+  },
+  "selection": {
+    "message": "Auswahl"
+  },
+  "domElement": {
+    "message": "DOM-Element"
+  },
+  "viewport": {
+    "message": "Ansichtsbereich"
+  },
+  "analyzeImage": {
+    "message": "Bild analysieren"
+  },
+  "analyzeSelection": {
+    "message": "Auswahl analysieren"
+  },
+  "analyzeDomElement": {
+    "message": "DOM-Element analysieren"
+  },
+  "analyzeViewport": {
+    "message": "Ansichtsbereich analysieren"
+  },
+  "openSettings": {
+    "message": "Einstellungen öffnen"
+  },
+  "copy": {
+    "message": "kopieren"
+  },
+  "interface": {
+    "message": "Oberfläche"
+  },
+  "processing": {
+    "message": "Verarbeitung"
+  },
+  "popup": {
+    "message": "Popup"
+  },
+  "shortcuts": {
+    "message": "Tastenkürzel"
+  },
+  "contextMenu": {
+    "message": "Kontextmenü"
+  },
+  "reset": {
+    "message": "Zurücksetzen"
+  },
+  "about": {
+    "message": "Über"
+  },
+  "colorTheme": {
+    "message": "Farbthema"
+  },
+  "alwaysLight": {
+    "message": "Immer hell"
+  },
+  "alwaysDark": {
+    "message": "Immer dunkel"
+  },
+  "systemDefault": {
+    "message": "Systemstandard"
+  },
+  "analyzerBackground": {
+    "message": "Analysator-Hintergrund"
+  },
+  "useThemeColor": {
+    "message": "Themenfarbe verwenden"
+  },
+  "useCustomColor": {
+    "message": "Eigene Farbe verwenden"
+  },
+  "maxPixels": {
+    "message": "Max. Pixel zu verarbeiten"
+  },
+  "maxPixelsHint": {
+    "message": "Maximale Anzahl zu verarbeitender Pixel. Ein höherer Wert bedeutet längere Verarbeitungszeit."
+  },
+  "unmatchedOpacity": {
+    "message": "Deckkraft nicht übereinstimmender"
+  },
+  "outlineColor": {
+    "message": "Rahmenfarbe"
+  },
+  "language": {
+    "message": "Sprache"
+  },
+  "languageBrowser": {
+    "message": "Browsersprache"
+  },
+  "permissionError": {
+    "message": "Sie müssen der Erweiterung die Berechtigung erteilen, auf Ihre Daten auf allen Websites zuzugreifen."
+  },
+  "permissionFirefox": {
+    "message": "Gehen Sie zu about:addons, klicken Sie auf \"color helper\", klicken Sie auf \"Berechtigungen\" und erteilen Sie die Berechtigung."
+  },
+  "highlightColorShade": {
+    "message": "Farbton beim Überfahren hervorheben"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Deckkraft für nicht übereinstimmende Farbtöne verringern"
+  },
+  "unmatchedSaturation": {
+    "message": "Sättigung nicht übereinstimmender"
+  },
+  "desaturateUnmatched": {
+    "message": "Nicht übereinstimmende Farbtöne entsättigen"
+  },
+  "outlineMatched": {
+    "message": "Übereinstimmenden Farbton umranden"
+  },
+  "pauseOnClick": {
+    "message": "Infobox bei Klick anheften"
+  },
+  "pauseOnClickHint": {
+    "message": "Nützlich wenn Sie die Farbe kopieren möchten"
+  },
+  "colorThemeAdapt": {
+    "message": "An das Design der aktuellen Website anpassen"
+  },
+  "showMatchQuality": {
+    "message": "Farbübereinstimmungsqualität und Abstand (ΔE) anzeigen"
+  },
+  "showAlternativeShade": {
+    "message": "Heuristischen Farbton unter dem Hauptfarbton anzeigen"
+  },
+  "logTimings": {
+    "message": "Zeitmessungen in der Konsole protokollieren"
+  },
+  "settingsTitle": {
+    "message": "Color Helper Einstellungen"
+  },
+  "useCompatMode": {
+    "message": "Kompatibilitätsmodus verwenden"
+  },
+  "useCompatModeHint": {
+    "message": "Aktivieren Sie diese Option wenn die Analyseansicht leer bleibt obwohl der Hover funktioniert."
+  },
+  "showShadePrefix": {
+    "message": "Farbtöne in hell/[normal]/dunkel unterscheiden"
+  },
+  "addContextMenu": {
+    "message": "Analyseoptionen zum Kontextmenü hinzufügen"
+  },
+  "colorShadeLabel": {
+    "message": "Farbton"
+  },
+  "colorNameLabel": {
+    "message": "Farbname"
+  },
+  "clickToPin": {
+    "message": "Klicken zum Anheften"
+  },
+  "copied": {
+    "message": "kopiert!"
+  },
+  "version": {
+    "message": "Version"
+  },
+  "maxPixelsDesc": {
+    "message": "Wenn das Produkt der Auswahlmaße den konfigurierten Wert überschreitet, wird die Auswahl intern herunterskaliert."
+  },
+  "maxPixelsDefault": {
+    "message": "Standard: 100.000"
+  },
+  "shortcutsTitle": {
+    "message": "Farben & Schattierungen Tastenkürzel"
+  },
+  "change": {
+    "message": "ändern"
+  },
+  "resetDesc": {
+    "message": "Das Zurücksetzen der Erweiterung stellt die Standardeinstellungen wieder her. Diese Aktion kann nicht rückgängig gemacht werden."
+  },
+  "resetButton": {
+    "message": "Auf Standardeinstellungen zurücksetzen"
+  },
+  "aboutDesc": {
+    "message": "Diese Erweiterung soll farbenblinden Menschen helfen, die Farben im Web besser zu verstehen und Online-Inhalte zugänglicher zu machen."
+  },
+  "aboutGithub": {
+    "message": "Projektseite und Quellcode auf GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - meine Hilfs-App für Menschen mit Farbsehschwäche"
+  },
+  "aboutBlog": {
+    "message": "Mehr über Farbenblindheit auf meinem Blog"
+  },
+  "aboutBug": {
+    "message": "Fehler gefunden? Hier melden!"
+  },
+  "aboutDisclaimer": {
+    "message": "Diese Erweiterung ist ein Hobbyprojekt und wird ohne Gewähr bereitgestellt. Ich übernehme keine Verantwortung für Schäden oder Datenverlust durch die Nutzung."
+  },
+  "aboutPrivacy": {
+    "message": "Diese Erweiterung respektiert Ihre Privatsphäre. Sie sammelt keine persönlichen Daten. Sie werden nicht verfolgt."
+  },
+  "settingsHint": {
+    "message": "Wenn Sie die Schaltfläche \"Einstellungen\" deaktivieren, können Sie die Einstellungen weiterhin über einen Rechtsklick auf das Erweiterungssymbol und \"Optionen\" aufrufen."
+  }
+}

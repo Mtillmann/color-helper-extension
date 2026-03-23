@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "为色觉障碍人士提供的辅助扩展"
+  },
+  "colorsAndShades": {
+    "message": "颜色与阴影"
+  },
+  "chartsAndGraphs": {
+    "message": "图表与图形"
+  },
+  "settings": {
+    "message": "设置"
+  },
+  "selection": {
+    "message": "选区"
+  },
+  "domElement": {
+    "message": "DOM 元素"
+  },
+  "viewport": {
+    "message": "可视区域"
+  },
+  "analyzeImage": {
+    "message": "分析图像"
+  },
+  "analyzeSelection": {
+    "message": "分析选区"
+  },
+  "analyzeDomElement": {
+    "message": "分析 DOM 元素"
+  },
+  "analyzeViewport": {
+    "message": "分析可视区域"
+  },
+  "openSettings": {
+    "message": "打开设置"
+  },
+  "copy": {
+    "message": "复制"
+  },
+  "interface": {
+    "message": "界面"
+  },
+  "processing": {
+    "message": "处理"
+  },
+  "popup": {
+    "message": "弹出窗口"
+  },
+  "shortcuts": {
+    "message": "快捷键"
+  },
+  "contextMenu": {
+    "message": "右键菜单"
+  },
+  "reset": {
+    "message": "重置"
+  },
+  "about": {
+    "message": "关于"
+  },
+  "colorTheme": {
+    "message": "颜色主题"
+  },
+  "alwaysLight": {
+    "message": "始终浅色"
+  },
+  "alwaysDark": {
+    "message": "始终深色"
+  },
+  "systemDefault": {
+    "message": "系统默认"
+  },
+  "analyzerBackground": {
+    "message": "分析器背景"
+  },
+  "useThemeColor": {
+    "message": "使用主题颜色"
+  },
+  "useCustomColor": {
+    "message": "使用自定义颜色"
+  },
+  "maxPixels": {
+    "message": "最大处理像素数"
+  },
+  "maxPixelsHint": {
+    "message": "最大处理像素数。数值越高，处理选区所需时间越长。"
+  },
+  "unmatchedOpacity": {
+    "message": "未匹配项透明度"
+  },
+  "outlineColor": {
+    "message": "轮廓颜色"
+  },
+  "language": {
+    "message": "语言"
+  },
+  "languageBrowser": {
+    "message": "浏览器默认语言"
+  },
+  "permissionError": {
+    "message": "您需要授予扩展权限以\"访问所有网站上的数据\"。"
+  },
+  "permissionFirefox": {
+    "message": "请前往 about:addons，点击\"color helper\"，点击\"权限\"并授予权限。"
+  },
+  "highlightColorShade": {
+    "message": "悬停时高亮色调"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "降低不匹配色调的不透明度"
+  },
+  "unmatchedSaturation": {
+    "message": "不匹配饱和度"
+  },
+  "desaturateUnmatched": {
+    "message": "降低不匹配色调的饱和度"
+  },
+  "outlineMatched": {
+    "message": "勾勒匹配的色调"
+  },
+  "pauseOnClick": {
+    "message": "点击固定信息框"
+  },
+  "pauseOnClickHint": {
+    "message": "需要复制颜色时很有用"
+  },
+  "colorThemeAdapt": {
+    "message": "尝试适应当前网站的设计"
+  },
+  "showMatchQuality": {
+    "message": "显示颜色匹配质量和距离 (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "在主色调下方显示启发式色调"
+  },
+  "logTimings": {
+    "message": "在控制台记录计时"
+  },
+  "settingsTitle": {
+    "message": "Color Helper 设置"
+  },
+  "useCompatMode": {
+    "message": "使用兼容模式"
+  },
+  "useCompatModeHint": {
+    "message": "当分析视图为空但悬停仍有效时请启用此选项。"
+  },
+  "showShadePrefix": {
+    "message": "将色调区分为浅色/[常规]/深色"
+  },
+  "addContextMenu": {
+    "message": "将分析选项添加到右键菜单"
+  },
+  "colorShadeLabel": {
+    "message": "色调"
+  },
+  "colorNameLabel": {
+    "message": "颜色名称"
+  },
+  "clickToPin": {
+    "message": "点击固定信息框"
+  },
+  "copied": {
+    "message": "已复制!"
+  },
+  "version": {
+    "message": "版本"
+  },
+  "maxPixelsDesc": {
+    "message": "当选区尺寸的乘积超过配置值时，选区将被内部缩小。"
+  },
+  "maxPixelsDefault": {
+    "message": "默认值：100,000"
+  },
+  "shortcutsTitle": {
+    "message": "颜色和色调快捷键"
+  },
+  "change": {
+    "message": "更改"
+  },
+  "resetDesc": {
+    "message": "重置扩展将恢复默认设置。此操作无法撤消。"
+  },
+  "resetButton": {
+    "message": "重置为默认设置"
+  },
+  "aboutDesc": {
+    "message": "此扩展旨在帮助色盲人群更好地理解网页上的颜色，使在线内容更加无障碍。"
+  },
+  "aboutGithub": {
+    "message": "GitHub上的项目页面和源代码"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - 我为色觉缺陷人群开发的辅助应用"
+  },
+  "aboutBlog": {
+    "message": "在我的博客上了解更多关于色盲的信息"
+  },
+  "aboutBug": {
+    "message": "发现了bug？在这里报告！"
+  },
+  "aboutDisclaimer": {
+    "message": "此扩展是一个业余项目，按原样提供。我不对使用此扩展造成的任何损害或数据丢失负责。"
+  },
+  "aboutPrivacy": {
+    "message": "此扩展尊重您的隐私。它不收集任何个人数据。它不会跟踪您。"
+  },
+  "settingsHint": {
+    "message": "如果禁用\"设置\"按钮，您仍然可以通过右键单击扩展图标并选择\"选项\"来访问设置。"
+  }
+}

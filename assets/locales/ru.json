@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Вспомогательное расширение для людей с нарушением цветового зрения"
+  },
+  "colorsAndShades": {
+    "message": "Цвета и оттенки"
+  },
+  "chartsAndGraphs": {
+    "message": "Графики и диаграммы"
+  },
+  "settings": {
+    "message": "Настройки"
+  },
+  "selection": {
+    "message": "Выделение"
+  },
+  "domElement": {
+    "message": "DOM-элемент"
+  },
+  "viewport": {
+    "message": "Видимая область"
+  },
+  "analyzeImage": {
+    "message": "Анализировать изображение"
+  },
+  "analyzeSelection": {
+    "message": "Анализировать выделение"
+  },
+  "analyzeDomElement": {
+    "message": "Анализировать DOM-элемент"
+  },
+  "analyzeViewport": {
+    "message": "Анализировать видимую область"
+  },
+  "openSettings": {
+    "message": "Открыть настройки"
+  },
+  "copy": {
+    "message": "копировать"
+  },
+  "interface": {
+    "message": "Интерфейс"
+  },
+  "processing": {
+    "message": "Обработка"
+  },
+  "popup": {
+    "message": "Попап"
+  },
+  "shortcuts": {
+    "message": "Горячие клавиши"
+  },
+  "contextMenu": {
+    "message": "Контекстное меню"
+  },
+  "reset": {
+    "message": "Сбросить"
+  },
+  "about": {
+    "message": "О расширении"
+  },
+  "colorTheme": {
+    "message": "Цветовая тема"
+  },
+  "alwaysLight": {
+    "message": "Всегда светлая"
+  },
+  "alwaysDark": {
+    "message": "Всегда тёмная"
+  },
+  "systemDefault": {
+    "message": "По умолчанию системная"
+  },
+  "analyzerBackground": {
+    "message": "Фон анализатора"
+  },
+  "useThemeColor": {
+    "message": "Использовать цвет темы"
+  },
+  "useCustomColor": {
+    "message": "Использовать свой цвет"
+  },
+  "maxPixels": {
+    "message": "Макс. пикселей для обработки"
+  },
+  "maxPixelsHint": {
+    "message": "Максимальное количество пикселей для обработки. Большее число означает более долгое время обработки."
+  },
+  "unmatchedOpacity": {
+    "message": "Прозрачность несовпадающих"
+  },
+  "outlineColor": {
+    "message": "Цвет обводки"
+  },
+  "language": {
+    "message": "Язык"
+  },
+  "languageBrowser": {
+    "message": "Язык браузера"
+  },
+  "permissionError": {
+    "message": "Вам необходимо предоставить расширению разрешение на \"доступ к вашим данным на всех веб-сайтах\"."
+  },
+  "permissionFirefox": {
+    "message": "Перейдите в about:addons, нажмите \"color helper\", нажмите \"Разрешения\" и предоставьте разрешение."
+  },
+  "highlightColorShade": {
+    "message": "Выделять оттенок цвета при наведении"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Уменьшить непрозрачность несовпадающих оттенков"
+  },
+  "unmatchedSaturation": {
+    "message": "Насыщенность несовпадающих"
+  },
+  "desaturateUnmatched": {
+    "message": "Обесцветить несовпадающие оттенки"
+  },
+  "outlineMatched": {
+    "message": "Обвести совпадающий оттенок"
+  },
+  "pauseOnClick": {
+    "message": "Закрепить информационное окно по клику"
+  },
+  "pauseOnClickHint": {
+    "message": "Полезно когда вы хотите скопировать цвет"
+  },
+  "colorThemeAdapt": {
+    "message": "Попытаться адаптироваться к дизайну текущего сайта"
+  },
+  "showMatchQuality": {
+    "message": "Показать качество совпадения цвета и расстояние (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Показать эвристический оттенок под основным"
+  },
+  "logTimings": {
+    "message": "Записывать тайминги в консоль"
+  },
+  "settingsTitle": {
+    "message": "Настройки Color Helper"
+  },
+  "useCompatMode": {
+    "message": "Использовать режим совместимости"
+  },
+  "useCompatModeHint": {
+    "message": "Включите эту опцию если вид анализа пуст хотя наведение работает."
+  },
+  "showShadePrefix": {
+    "message": "Различать оттенки на светлый/[обычный]/тёмный"
+  },
+  "addContextMenu": {
+    "message": "Добавить параметры анализа в контекстное меню"
+  },
+  "colorShadeLabel": {
+    "message": "Оттенок цвета"
+  },
+  "colorNameLabel": {
+    "message": "Название цвета"
+  },
+  "clickToPin": {
+    "message": "Нажмите чтобы закрепить"
+  },
+  "copied": {
+    "message": "скопировано!"
+  },
+  "version": {
+    "message": "Версия"
+  },
+  "maxPixelsDesc": {
+    "message": "Когда произведение размеров выделения превышает настроенное значение, выделение будет внутренне уменьшено."
+  },
+  "maxPixelsDefault": {
+    "message": "По умолчанию: 100 000"
+  },
+  "shortcutsTitle": {
+    "message": "Горячие клавиши цветов и оттенков"
+  },
+  "change": {
+    "message": "изменить"
+  },
+  "resetDesc": {
+    "message": "Сброс расширения восстановит настройки по умолчанию. Это действие нельзя отменить."
+  },
+  "resetButton": {
+    "message": "Сбросить до настроек по умолчанию"
+  },
+  "aboutDesc": {
+    "message": "Это расширение помогает людям с нарушением цветового зрения лучше понимать цвета в интернете и делает онлайн-контент более доступным."
+  },
+  "aboutGithub": {
+    "message": "Страница проекта и исходный код на GitHub"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - мое приложение-помощник для людей с нарушением цветового зрения"
+  },
+  "aboutBlog": {
+    "message": "Подробнее о дальтонизме в моём блоге"
+  },
+  "aboutBug": {
+    "message": "Нашли ошибку? Сообщите здесь!"
+  },
+  "aboutDisclaimer": {
+    "message": "Это расширение является хобби-проектом и предоставляется как есть. Я не несу ответственности за ущерб или потерю данных."
+  },
+  "aboutPrivacy": {
+    "message": "Это расширение уважает вашу конфиденциальность. Оно не собирает личные данные. Оно не отслеживает вас."
+  },
+  "settingsHint": {
+    "message": "Если вы отключите кнопку \"Настройки\", вы всё равно сможете открыть настройки, щёлкнув правой кнопкой мыши по значку расширения и выбрав \"Параметры\"."
+  }
+}

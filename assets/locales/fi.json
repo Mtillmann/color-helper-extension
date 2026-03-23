@@ -1,0 +1,215 @@
+{
+  "extensionName": {
+    "message": "color helper"
+  },
+  "extensionDescription": {
+    "message": "Apulaajennus värinäköhäiriöisille henkilöille"
+  },
+  "colorsAndShades": {
+    "message": "Värit & Sävyt"
+  },
+  "chartsAndGraphs": {
+    "message": "Kaaviot & Graafit"
+  },
+  "settings": {
+    "message": "Asetukset"
+  },
+  "selection": {
+    "message": "Valinta"
+  },
+  "domElement": {
+    "message": "DOM-elementti"
+  },
+  "viewport": {
+    "message": "Näkyvä alue"
+  },
+  "analyzeImage": {
+    "message": "Analysoi kuva"
+  },
+  "analyzeSelection": {
+    "message": "Analysoi valinta"
+  },
+  "analyzeDomElement": {
+    "message": "Analysoi DOM-elementti"
+  },
+  "analyzeViewport": {
+    "message": "Analysoi näkyvä alue"
+  },
+  "openSettings": {
+    "message": "Avaa asetukset"
+  },
+  "copy": {
+    "message": "kopioi"
+  },
+  "interface": {
+    "message": "Käyttöliittymä"
+  },
+  "processing": {
+    "message": "Käsittely"
+  },
+  "popup": {
+    "message": "Ponnahdusikkuna"
+  },
+  "shortcuts": {
+    "message": "Pikanäppäimet"
+  },
+  "contextMenu": {
+    "message": "Kontekstivalikko"
+  },
+  "reset": {
+    "message": "Palauta"
+  },
+  "about": {
+    "message": "Tietoja"
+  },
+  "colorTheme": {
+    "message": "Väriteema"
+  },
+  "alwaysLight": {
+    "message": "Aina vaalea"
+  },
+  "alwaysDark": {
+    "message": "Aina tumma"
+  },
+  "systemDefault": {
+    "message": "Järjestelmän oletus"
+  },
+  "analyzerBackground": {
+    "message": "Analysaattorin tausta"
+  },
+  "useThemeColor": {
+    "message": "Käytä teemaväriä"
+  },
+  "useCustomColor": {
+    "message": "Käytä mukautettua väriä"
+  },
+  "maxPixels": {
+    "message": "Maks. pikseliä käsiteltäväksi"
+  },
+  "maxPixelsHint": {
+    "message": "Käsiteltävien pikselien enimmäismäärä. Suurempi luku tarkoittaa pidempää käsittelyaikaa."
+  },
+  "unmatchedOpacity": {
+    "message": "Täsmäämättömien läpinäkyvyys"
+  },
+  "outlineColor": {
+    "message": "Ääriviivaväri"
+  },
+  "language": {
+    "message": "Kieli"
+  },
+  "languageBrowser": {
+    "message": "Selaimen kieli"
+  },
+  "permissionError": {
+    "message": "Sinun täytyy myöntää laajennukselle lupa \"käyttää tietojasi kaikilla verkkosivustoilla\"."
+  },
+  "permissionFirefox": {
+    "message": "Mene osoitteeseen about:addons, napsauta \"color helper\", napsauta \"Luvat\" ja myönnä lupa."
+  },
+  "highlightColorShade": {
+    "message": "Korosta värisävy osoittaessa"
+  },
+  "reduceUnmatchedOpacity": {
+    "message": "Vähennä ei-vastaavien värisävyjen peittävyyttä"
+  },
+  "unmatchedSaturation": {
+    "message": "Ei-vastaavien kylläisyys"
+  },
+  "desaturateUnmatched": {
+    "message": "Poista kylläisyys ei-vastaavista värisävyistä"
+  },
+  "outlineMatched": {
+    "message": "Reunusta vastaava värisävy"
+  },
+  "pauseOnClick": {
+    "message": "Kiinnitä tietolaatikko napsauttamalla"
+  },
+  "pauseOnClickHint": {
+    "message": "Hyödyllinen kun haluat kopioida värin"
+  },
+  "colorThemeAdapt": {
+    "message": "Yritä mukautua nykyisen verkkosivuston ulkoasuun"
+  },
+  "showMatchQuality": {
+    "message": "Näytä värin vastaavuuden laatu ja etäisyys (ΔE)"
+  },
+  "showAlternativeShade": {
+    "message": "Näytä heuristinen värisävy pääsävyn alapuolella"
+  },
+  "logTimings": {
+    "message": "Kirjaa ajoitukset konsoliin"
+  },
+  "settingsTitle": {
+    "message": "Color Helper asetukset"
+  },
+  "useCompatMode": {
+    "message": "Käytä yhteensopivuustilaa"
+  },
+  "useCompatModeHint": {
+    "message": "Ota tämä käyttöön jos analyysinäkymä on tyhjä vaikka hover toimii."
+  },
+  "showShadePrefix": {
+    "message": "Erota värisävyt vaaleaan/[tavalliseen]/tummaan"
+  },
+  "addContextMenu": {
+    "message": "Lisää analysointivaihtoehdot kontekstivalikkoon"
+  },
+  "colorShadeLabel": {
+    "message": "Värisävy"
+  },
+  "colorNameLabel": {
+    "message": "Värin nimi"
+  },
+  "clickToPin": {
+    "message": "Klikkaa kiinnittaaksesi"
+  },
+  "copied": {
+    "message": "kopioitu!"
+  },
+  "version": {
+    "message": "Versio"
+  },
+  "maxPixelsDesc": {
+    "message": "Kun valinnan mittojen tulo ylittää määritetyn arvon, valinta skaalataan sisäisesti pienemmäksi."
+  },
+  "maxPixelsDefault": {
+    "message": "Oletus: 100 000"
+  },
+  "shortcutsTitle": {
+    "message": "Värit ja sävyt pikanäppäimet"
+  },
+  "change": {
+    "message": "muuta"
+  },
+  "resetDesc": {
+    "message": "Laajennuksen nollaus palauttaa oletusasetukset. Tätä toimintoa ei voi kumota."
+  },
+  "resetButton": {
+    "message": "Palauta oletusasetukset"
+  },
+  "aboutDesc": {
+    "message": "Tämä laajennus auttaa värisokeita ihmisiä ymmärtämään paremmin verkossa näkemiään värejä ja tekemään verkkosisällöstä saavutettavampaa."
+  },
+  "aboutGithub": {
+    "message": "Projektisivu ja lähdekoodi GitHubissa"
+  },
+  "aboutIsitred": {
+    "message": "isit.red - avustava sovellukseni värinäkövammaisille"
+  },
+  "aboutBlog": {
+    "message": "Lisää värisokeudesta blogissani"
+  },
+  "aboutBug": {
+    "message": "Löysitkö virheen? Ilmoita siitä täällä!"
+  },
+  "aboutDisclaimer": {
+    "message": "Tämä laajennus on harrasteprojekti ja tarjotaan sellaisenaan. En ole vastuussa vahingoista tai tietojen menetyksistä."
+  },
+  "aboutPrivacy": {
+    "message": "Tämä laajennus kunnioittaa yksityisyyttäsi. Se ei kerää henkilötietoja. Se ei seuraa sinua."
+  },
+  "settingsHint": {
+    "message": "Jos poistat \"Asetukset\"-painikkeen käytöstä, voit silti käyttää asetuksia napsauttamalla laajennuskuvaketta hiiren oikealla painikkeella ja valitsemalla \"Asetukset\"."
+  }
+}
